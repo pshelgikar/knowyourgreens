@@ -4,9 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-app = Flask(__name__)
-app.secret_key = "RANDOM SECRETLY GENERATED KEY"
-
 class Plant(db.Model):
     """A plant"""
 
@@ -15,7 +12,6 @@ class Plant(db.Model):
     plant_id = db.Column(db.Integer, 
                          autoincrement=True,
                          primary_key=True)
-
     name = db.Column(db.String, 
                      nullable=False,
                      unique=True)
@@ -25,6 +21,7 @@ class Plant(db.Model):
     def __repr__(self):
         return f'Plant {self.name} was added to the database'
 
+
 class User(db.Model):
     """A user"""
 
@@ -33,17 +30,14 @@ class User(db.Model):
     user_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
-
     username = db.Column(db.String(25),
                          nullable=False,
                          unique=True)
-    
     name = db.Column(db.String,
                      nullable=False)
-
     password = db.Column(db.String,
                         nullable=False)
-    
+    ##passlib/werkzeug/Flask-Bcrypt
     favorites = db.relationship('Favorite',backref='user') #backref creates a table on users
 
     def __repr__(self):
@@ -58,11 +52,8 @@ class Favorite(db.Model):
     favorite_id = db.Column(db.Integer,
                             autoincrement=True,
                             primary_key=True)
-    
     user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
-    
     plant_id = db.Column(db.Integer,db.ForeignKey('plants.plant_id'))
-    
     varietal = db.Column(db.String,
                         nullable = False)
 
@@ -78,14 +69,11 @@ class Varietal(db.Model):
     varietal_id = db.Column(db.Integer,
                             autoincrement=True,
                             primary_key=True)
-
     plant_id = db.Column(db.Integer,
                          db.ForeignKey('plants.plant_id'))
-    
     varietal_name = db.Column(db.String,
                               nullable=False,
                               unique=True)
-    
     sunlight = db.Column(db.Text,
                          nullable=False)
     water = db.Column(db.Text,
@@ -99,7 +87,6 @@ class Varietal(db.Model):
 
     def __repr__(self):
         return f'Plant {self.varietal_name} was added to the database'
-
 
 
 def connect_to_db(flask_app, db_uri='postgresql:///knowyourgreens', echo=True):
