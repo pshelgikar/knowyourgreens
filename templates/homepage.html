@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+
+    <p>Worried about your plants? Not sure how to care for your new green housemates?</p>
+    <form action='/results' method="POST">
+        <p>Enter a name to find out how to take care of your plants!</p>
+        <input type="text" name="plant_name">
+        <input type="submit">
+    </form>
+
+{% endblock %}
