@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Plant Care Results{% endblock %}
+
+{% block content %}
+
+    {% if results %}
+        <ul>
+            {% for plant_name,instructions in results.items() %}
+                <h1>{{plant_name}}</h1>
+                {% for care,value in instructions.items() %}
+                    <h2>{{care}}</h2>
+                    <p>{{value}}</p>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %} 
