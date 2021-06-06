@@ -1,6 +1,6 @@
 """Server set up for KnowYourGreens"""
 
-from flask import (Flask, render_template)
+from flask import (Flask, render_template,request)
 from model import connect_to_db
 import crud
 
@@ -17,10 +17,11 @@ def homepage():
 def results():
     """Show info about plant from database"""
 
-    plant = request.form.get(plant_name)
-
-def results()
-
+    plant = request.form.get("plant_name")
+    results = crud.check_if_plant_in_db(plant)
+    print(results)
+    return render_template('results.html', results=results)
+    
 
 if __name__ == '__main__':
     connect_to_db(app)

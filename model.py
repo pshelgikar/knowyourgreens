@@ -2,6 +2,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+app = Flask(__name__)
+app.secret_key = "RANDOM SECRETLY GENERATED KEY"
 db = SQLAlchemy()
 
 class Plant(db.Model):
