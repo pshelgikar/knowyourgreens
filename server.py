@@ -2,7 +2,7 @@
 
 from flask import (Flask, render_template,request)
 from model import connect_to_db
-import crud
+import crud, scraper, time
 
 app = Flask(__name__)
 app.secret_key = "RANDOM SECRETLY GENERATED KEY"
@@ -16,10 +16,17 @@ def homepage():
 @app.route('/results',methods=["POST"])
 def results():
     """Show info about plant from database"""
-
     plant = request.form.get("plant_name")
+    plant.lower()
+    if ' ' in plant:
+        plant_url = plant.split(' ')
+        plant_url = '-'.join(plant_url)
     results = crud.check_if_plant_in_db(plant)
-    print(results)
+    if results == {} :
+        scraper.get_plant_info(plant_url)
+        results = crud.check_if_plant_in_db(plant)
+        print(plant)
+    
     return render_template('results.html', results=results)
     
 
