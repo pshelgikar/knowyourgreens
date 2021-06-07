@@ -14,7 +14,7 @@ def check_if_plant_in_db(name):
     """Check if plant info exists in db"""
     results = {}
     all_plants = Plant.query.options(db.joinedload('varietals'))
-    all_name_instances = all_plants.filter(Plant.name.like(f'%{name}%')).all()
+    all_name_instances = all_plants.filter(Plant.name.ilike(f'%{name}%')).all()
 
     for plant in all_name_instances:
         print(plant)
@@ -29,7 +29,7 @@ def check_if_plant_in_db(name):
             results[varietal.varietal_name]['Humidity'] = varietal.humidity
             results[varietal.varietal_name]['Temperature'] = varietal.temperature
             results[varietal.varietal_name]['Toxicity'] = varietal.toxicity
-            print("Added all details to dictionary")
+    
 
     
     return results

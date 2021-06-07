@@ -16,11 +16,13 @@ def get_plant_info(plant_name):
 
     plant_name = soup.find('a',class_="breadcrumbs--active").text
     
-    plant = Plant(name=plant_name)
+    plant = Plant(name=plant_name.lower())
     db.session.add(plant)
     db.session.commit()
 
     varietals = soup.find_all('details',class_='accordion')
+
+    print(len(varietals))
 
     for v in varietals:
         current_plant = v.summary.h2
@@ -44,6 +46,4 @@ def get_plant_info(plant_name):
         varietal = Varietal(plant_id = plant.plant_id, varietal_name = varietal_name, sunlight=sunlight,water=water,humidity=humidity,toxicity=toxicity, temperature=temperature)
         db.session.add(varietal)
         db.session.commit()
-        return True
-
 

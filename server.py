@@ -23,10 +23,10 @@ def results():
         if ' ' in plant:
             plant_url = plant.split(' ')
             plant_url = '-'.join(plant_url)
-        scraped = scraper.get_plant_info(plant_url)
-        if scraped: 
-            results = crud.check_if_plant_in_db(plant)
+        scraper.get_plant_info(plant_url)
+        results = crud.check_if_plant_in_db(plant)
     
+    print(results)
     return render_template('results.html', results=results)
     
 
