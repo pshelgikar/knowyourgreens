@@ -17,15 +17,15 @@ def homepage():
 def results():
     """Show info about plant from database"""
     plant = request.form.get("plant_name")
-    plant.lower()
-    if ' ' in plant:
-        plant_url = plant.split(' ')
-        plant_url = '-'.join(plant_url)
     results = crud.check_if_plant_in_db(plant)
-    if results == {} :
-        scraper.get_plant_info(plant_url)
-        results = crud.check_if_plant_in_db(plant)
-        print(plant)
+    if len(results)==0:
+        plant_url = plant.lower()
+        if ' ' in plant:
+            plant_url = plant.split(' ')
+            plant_url = '-'.join(plant_url)
+        scraped = scraper.get_plant_info(plant_url)
+        if scraped: 
+            results = crud.check_if_plant_in_db(plant)
     
     return render_template('results.html', results=results)
     

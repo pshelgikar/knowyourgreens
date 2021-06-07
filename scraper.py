@@ -8,7 +8,10 @@ def get_plant_info(plant_name):
     url = f"https://bloomscape.com/plant-care-guide/{plant_name}/"
     print(f'Fetching {url}')
     req = Request(url , headers={'User-Agent': 'Mozilla/5.0'})
-    webpage = urlopen(req).read()
+    try:
+        webpage = urlopen(req).read()
+    except:
+        return
     soup = BeautifulSoup(webpage,"html.parser")
 
     plant_name = soup.find('a',class_="breadcrumbs--active").text
@@ -41,5 +44,6 @@ def get_plant_info(plant_name):
         varietal = Varietal(plant_id = plant.plant_id, varietal_name = varietal_name, sunlight=sunlight,water=water,humidity=humidity,toxicity=toxicity, temperature=temperature)
         db.session.add(varietal)
         db.session.commit()
+        return True
 
 
