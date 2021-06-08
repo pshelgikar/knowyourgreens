@@ -3,9 +3,22 @@
     <head>
         <title>{% block title %}TITLE GOES HERE{% endblock %}</title>
     </head>
+    {% with messages = get_flashed_messages() %} 
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %} 
+    {% endwith %}
     <body>
+        <header>
+            {% if 'user_session' in session %}
+                <a href="/favorites">My Favorites</a>
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/signup">Sign Up</a>
+            {% endif %}
+        </header>
         <h1>KNOW YOUR GREENS</h1>
-        <header><a href="/login">Login</a><a href="/signup">Sign Up</a></header>
         {% block content %}BODY CONTENT GOES HERE{% endblock %}
     </body>
 </html>

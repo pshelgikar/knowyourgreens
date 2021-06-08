@@ -5,12 +5,15 @@ from passlib.hash import pbkdf2_sha256
 
 def create_user(username, name, password):
     """Create new user"""
-    
-    user = User(username=username,name=name,password=password)
-    print(user)
-    db.session.add(user)
-    db.session.commit()
-    return user.user_id
+    if not User.query.filter_by(username=username).first():
+        user = User(username=username,name=name,password=password)
+        print(user)
+        db.session.add(user)
+        db.session.commit()
+        return user.user_id
+    else:
+        print('Username exists!')
+        return 
     
 
 def insert_plant_into_db(name):
