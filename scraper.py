@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
-from model import db, Plant, User, Favorite, Varietal,connect_to_db
+from model import db, Plant, Varietal
 
 ##passing html to BS to get a BS object
 
@@ -22,8 +22,6 @@ def get_plant_info(plant_name):
 
     varietals = soup.find_all('details',class_='accordion')
 
-    print(len(varietals))
-
     for v in varietals:
         current_plant = v.summary.h2
         varietal_name = current_plant.text
@@ -32,16 +30,17 @@ def get_plant_info(plant_name):
         
         for care in care_list:
             value = care.find('div',class_='care-title').text.strip()
+            care_instructions = care.p.getText()
             if value == "LIGHT":
-                sunlight = care.p.getText()
-            if value == "HUMIDITY":
-                humidity = care.p.getText()
-            if value == "WATER":
-                water = care.p.getText()
-            if value == "TEMPERATURE":
-                temperature = care.p.getText()
-            if value == "TOXICITY":
-                toxicity = care.p.getText()
+                sunlight = care_instructions
+            elif value == "HUMIDITY":
+                humidity = care_instructions
+            elif value == "WATER":
+                water = care_instructions
+            elif value == "TEMPERATURE":
+                temperature = care_instructions
+            elif value == "TOXICITY":
+                toxicity = care_instructions
 
         varietal = Varietal(plant_id = plant.plant_id, varietal_name = varietal_name, sunlight=sunlight,water=water,humidity=humidity,toxicity=toxicity, temperature=temperature)
         db.session.add(varietal)

@@ -4,7 +4,13 @@ from model import db, Plant, User, Favorite, Varietal, connect_to_db
 
 def create_user(username, name, password):
     """Create new user"""
-    pass
+    
+    user = User(username=username,name=name,password=password)
+    print(user)
+    db.session.add(user)
+    db.session.commit()
+    return user.user_id
+    
 
 def insert_plant_into_db(name):
     """Insert plant into db if not already present"""
@@ -17,10 +23,7 @@ def check_if_plant_in_db(name):
     all_name_instances = all_plants.filter(Plant.name.ilike(f'%{name}%')).all()
 
     for plant in all_name_instances:
-        print(plant)
-        print(all_name_instances)
         plant_varietals = plant.varietals
-        print(plant_varietals)
         for varietal in plant_varietals:
             results[varietal.varietal_name] = varietal.varietal_name
             results[varietal.varietal_name] = {}
@@ -29,8 +32,6 @@ def check_if_plant_in_db(name):
             results[varietal.varietal_name]['Humidity'] = varietal.humidity
             results[varietal.varietal_name]['Temperature'] = varietal.temperature
             results[varietal.varietal_name]['Toxicity'] = varietal.toxicity
-    
-
     
     return results
             
