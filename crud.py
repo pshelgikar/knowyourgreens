@@ -1,6 +1,7 @@
 """CRUD Operations"""
 
 from model import db, Plant, User, Favorite, Varietal, connect_to_db
+from passlib.hash import pbkdf2_sha256
 
 def create_user(username, name, password):
     """Create new user"""
@@ -34,9 +35,6 @@ def check_if_plant_in_db(name):
             results[varietal.varietal_name]['Toxicity'] = varietal.toxicity
     
     return results
-            
-
-
 
 
 def get_favorites(userid):

@@ -1,12 +1,14 @@
 """Server set up for KnowYourGreens"""
+from jinja2 import StrictUndefined
 
-from flask import (Flask, render_template,session,request, redirect, flash)
-from model import connect_to_db
+from flask import Flask, render_template, request, flash, redirect, session
+from model import connect_to_db, User
 from passlib.hash import pbkdf2_sha256
 import crud, scraper
 
 app = Flask(__name__)
 app.secret_key = "RANDOM SECRETLY GENERATED KEY"
+app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 def homepage():
@@ -21,7 +23,6 @@ def results():
     results = crud.check_if_plant_in_db(plant)
     if len(results)==0:
         plant_url = plant.lower()
-        #replace function
         if ' ' in plant:
             plant_url = plant.replace(' ','-')
         scraper.get_plant_info(plant_url)
@@ -32,8 +33,28 @@ def results():
 
 @app.route('/login')
 def login():
-    """Log a user in"""
-    pass
+    """Show user the login page"""
+    
+    return render_template('login.html')
+
+@app.route('/login-user', methods=["POST"])
+def login_user():
+    """Log user into their account"""
+    username = request.form.get("username")
+    password = request.form.get("password")
+    try:
+        user = User.query.filter_by(username=username).one()
+        if not pbkdf2_sha256.verify(password, user.password):
+            flash('Incorrect password, please try again!')
+            return redirect('/login')
+        else:
+            flash(f'Welcome, {user.name}!')
+    except:
+        flash('No user found! Please try again!')
+        return redirect('/login')
+    
+    session['user_session'] = user.user_id
+    return redirect('/')
 
 @app.route('/signup')
 def sign_up():
@@ -56,7 +77,7 @@ def create_user():
     user_id = crud.create_user(username=username,name=name,password=password)
     session['user_session'] = user_id
     
-    return render_template('homepage.html')
+    return redirect('/')
 
     
 
