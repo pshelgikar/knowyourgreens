@@ -4,8 +4,15 @@
 
 {% block content %}
 
+    {% if 'user_session' in session %}
+        <form action='/add-to-favs' method="POST">
+            <button type="button">Add to Favorites</button>
+        </form>
+    {% endif %}
+
     {% if results %}
         <ul>
+            <img src={{img}}>
             {% for plant_name,instructions in results.items() %}
                 <h1>{{plant_name}}</h1>
                 {% for care,value in instructions.items() %}
@@ -17,6 +24,7 @@
     {% else %}
         <p>Sorry, no matching plant found! Please try searching for another/more specific plant name.</p>
     {% endif %}
+    <a href='/plants'>All Plants</a>
     <a href='/'>Back</a>
 
 {% endblock %} 

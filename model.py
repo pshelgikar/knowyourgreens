@@ -18,6 +18,9 @@ class Plant(db.Model):
                      nullable=False,
                      unique=True)
     
+    img_src = db.Column(db.String,
+                        nullable=False)
+    
     varietals = db.relationship('Varietal',backref='plant') #backref creates a table on plants
 
     def __repr__(self):

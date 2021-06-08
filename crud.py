@@ -16,9 +16,11 @@ def create_user(username, name, password):
         return 
     
 
-def insert_plant_into_db(name):
-    """Insert plant into db if not already present"""
-    
+def get_plant_info(name):
+    """Get info about plant"""
+    plant = Plant.query.filter(Plant.name.ilike(f'%{name}%')).one()
+
+    return plant.img_src
 
 def check_if_plant_in_db(name):
     """Check if plant info exists in db"""
@@ -40,14 +42,21 @@ def check_if_plant_in_db(name):
     return results
 
 
-def get_favorites(userid):
+def get_favorites_by_userid(userid):
     """Return list of favorites for userid"""
-    pass
+
+    favorites = Favorite.query.filter_by(user_id=userid).all()
+    return favorites
 
 def get_care_instructions(plant_id):
     """Show care instructions for plant with id passed"""
     pass
 
+def get_all_plants():
+    """Return all plants from database."""
+    all_plants = Plant.query.all()
+    return all_plants
+    
 def get_varietals(plant_id):
     """Return all varietals for a certain plant"""
     pass

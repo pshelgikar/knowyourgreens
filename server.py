@@ -27,9 +27,8 @@ def results():
             plant_url = plant.replace(' ','-')
         scraper.get_plant_info(plant_url)
         results = crud.check_if_plant_in_db(plant)
-    
-    print(results)
-    return render_template('results.html', results=results)
+    img = crud.get_plant_info(plant)
+    return render_template('results.html', results=results, img=img)
 
 @app.route('/login')
 def login_form():
@@ -54,10 +53,13 @@ def login_process():
     return redirect('/')
 
 
-@app.route('/favorites')
-def show_user_favorites():
+@app.route('/favorites/<int:user_id>')
+def show_user_favorites(user_id):
     """Show a list of user's favorited plants"""
-    pass
+    
+    favorites = crud.get_favorites_by_userid(user_id)
+
+    return render_template('favorites.html',favorites=favorites)
 
 @app.route('/signup')
 def sign_up_form():
@@ -88,7 +90,13 @@ def logout():
     del session['user_session']
     return redirect('/')
     
+@app.route('/plants')
+def view_all_plants():
+    """Show all plants from database."""
 
+    all_plants = crud.get_all_plants()
+
+    return render_template('/all_plants.html', all_plants=all_plants)
 
 if __name__ == '__main__':
     connect_to_db(app)
