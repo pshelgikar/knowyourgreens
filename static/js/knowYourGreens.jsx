@@ -1,6 +1,6 @@
 function App() {
     const [plants, getPlants] = React.useState({});
-    const [searchTerm, setSearchTerm] = React.useState({});
+    const [searchTerm, setSearchTerm] = React.useState([]);
 
     React.useEffect(()=>{
         fetch('/all-plants')
@@ -26,6 +26,8 @@ function App() {
         setSearchTerm(data);
         })
     }
+
+
 
 
     return (
