@@ -1,7 +1,7 @@
 """Server set up for KnowYourGreens"""
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, jsonify, render_template, request, flash, redirect, session
 from model import connect_to_db, User
 from passlib.hash import pbkdf2_sha256
 import crud, scraper
@@ -10,16 +10,18 @@ app = Flask(__name__)
 app.secret_key = "RANDOM SECRETLY GENERATED KEY"
 app.jinja_env.undefined = StrictUndefined
 
+
 @app.route('/')
 def homepage():
     """View Homepage"""
 
-    return render_template('homepage.html')
+    return render_template('index.html')
 
-@app.route('/results',methods=["POST"])
+
+@app.route('/api/results',methods=["POST"])
 def results():
     """Show info about plant from database"""
-    plant = request.form.get("plant_name")
+    plant = request.json.get("plant_name")
     results = crud.check_if_plant_in_db(plant)
     if len(results)==0:
         plant_url = plant.lower()
@@ -28,7 +30,8 @@ def results():
         scraper.get_plant_info(plant_url)
         results = crud.check_if_plant_in_db(plant)
     img = crud.get_plant_info(plant)
-    return render_template('results.html', results=results, img=img)
+    print(f'Results: {results}')
+    return jsonify(results)
 
 @app.route('/login')
 def login_form():
@@ -89,14 +92,19 @@ def logout():
 
     del session['user_session']
     return redirect('/')
+
+
+@app.route('/<path>')
+def route(path):
+
+    return render_template('index.html')
     
-@app.route('/plants')
+@app.route('/all-plants')
 def view_all_plants():
-    """Show all plants from database."""
+     """Show all plants from database."""
 
-    all_plants = crud.get_all_plants()
-
-    return render_template('/all_plants.html', all_plants=all_plants)
+     all_plants = crud.get_all_plants()
+     return jsonify(all_plants)
 
 if __name__ == '__main__':
     connect_to_db(app)

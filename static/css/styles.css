@@ -1,0 +1,23 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    min-height: 10vh;
+    background-color: green;
+    color: white;
+    align-items: center;
+    
+}
+
+.nav-links {
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    width: 50%;
+    color: white;
+    font-size: large;
+}
+
+.pageContents {
+    margin-top: 20px;
+}

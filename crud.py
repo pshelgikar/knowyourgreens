@@ -18,9 +18,9 @@ def create_user(username, name, password):
 
 def get_plant_info(name):
     """Get info about plant"""
-    plant = Plant.query.filter(Plant.name.ilike(f'%{name}%')).one()
-
-    return plant.img_src
+    plant = Plant.query.filter(Plant.name.ilike(f'%{name}%')).first()
+    if plant:
+        return plant.img_src
 
 def check_if_plant_in_db(name):
     """Check if plant info exists in db"""
@@ -55,8 +55,13 @@ def get_care_instructions(plant_id):
 def get_all_plants():
     """Return all plants from database."""
     all_plants = Plant.query.all()
-    return all_plants
-    
+    plants_dict = {}
+    for plant in all_plants:
+        plants_dict[plant.name] = {}
+        plants_dict[plant.name]['name'] = plant.name.capitalize()
+        plants_dict[plant.name]['img'] = plant.img_src
+    return plants_dict
+
 def get_varietals(plant_id):
     """Return all varietals for a certain plant"""
     pass
