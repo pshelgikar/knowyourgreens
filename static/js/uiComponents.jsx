@@ -31,32 +31,36 @@ function AllPlants(props) {
 
 function AllVarietals(props){
 
-    const {results} = props;
-    const varietalCards = [];
-    for(const varietal of Object.values(results)){
-        const varietalCard = (
-            <VarietalCard
-                name={varietal.name}
-                sunlight={varietal.sunlight}
-                water={varietal.water}
-                humidity={varietal.humidity}
-                toxicity={varietal.toxicity}
-                temperature={varietal.temperature}
-            />
-        );
-        varietalCards.push(varietalCard)
-    }
-
-    return(
-        <div className="pageContents">
-            <p>{varietalCards}</p>
-        </div>
-    )
+     const {results} = props;
+     const varietalCards = [];
+     let varietalCard=null;
+     for(const varietal of Object.keys(results)){
+         for(const care of Object.values(results)){
+            varietalCard = (
+                <VarietalCard
+                    name = {varietal}
+                    sunlight={care.Sunlight}
+                    water={care.Water}
+                    humidity={care.Humidity}
+                    toxicity={care.Toxicity}
+                    temperature={care.Temperature}
+                />
+            );
+            }
+            varietalCards.push(varietalCard)
+        }
+        
+     return(
+         <div className="pageContents">
+             <p>{varietalCards}</p>
+         </div>
+     )
 
 }
 
 function VarietalCard(props){
     const {name,sunlight,water,humidity,toxicity,temperature} = props;
+    console.log(props)
     return(
         <div>
             <h1>{name}</h1>
@@ -80,18 +84,17 @@ function PlantCard(props){
     const {name,img} = props;
     return(
         <div>
-            <h1>{name}</h1>
+            <h2>{name}</h2>
             <img src={img}/>
         </div>
     )
 }
 
-function Search(props) {
-    const {results} = props;
-
+function SearchResults(props) {
+    const {searchTerm} = props;
     return(
         <div>
-            <AllVarietals results={results}/>
+           <AllVarietals results={searchTerm}/> 
         </div>
     )
 }

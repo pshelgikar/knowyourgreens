@@ -1,6 +1,6 @@
 function App() {
     const [plants, getPlants] = React.useState({});
-    const [searchTerm, setSearchTerm] = React.useState([]);
+    const [searchTerm, setSearchTerm] = React.useState({});
 
     React.useEffect(()=>{
         fetch('/all-plants')
@@ -11,7 +11,6 @@ function App() {
     },[]);
 
     const onSearch = (plant) => {
-        console.log(plant)
         fetch('/api/results',{
             method:"POST",
             headers: {
@@ -28,8 +27,6 @@ function App() {
     }
 
 
-
-
     return (
         <ReactRouterDOM.BrowserRouter>
             <div className="App">
@@ -37,13 +34,11 @@ function App() {
                 <ReactRouterDOM.Route exact path="/">
                     <Homepage />
                     <SearchBar onSearch={onSearch} />
-                    <Search searchTerm={searchTerm}/>
+                    <SearchResults searchTerm={searchTerm}/>
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/all-plants">
-                    <SearchBar onSearch={onSearch}/>
                     <AllPlants plants={plants} />
-                    <Search searchTerm={searchTerm}/>
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/sign-up">

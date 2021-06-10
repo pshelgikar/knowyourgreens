@@ -77,8 +77,7 @@ class Varietal(db.Model):
     plant_id = db.Column(db.Integer,
                          db.ForeignKey('plants.plant_id'))
     varietal_name = db.Column(db.String,
-                              nullable=False,
-                              unique=True)
+                              nullable=False)
     sunlight = db.Column(db.Text,
                          nullable=False)
     water = db.Column(db.Text,
