@@ -1,6 +1,8 @@
 function App() {
-    const [plants, getPlants] = React.useState({});
+    const [plants, getPlants] = React.useState({plants});
     const [searchTerm, setSearchTerm] = React.useState({});
+    const [user, setUser] = React.useState([]);
+    const [newUser, setNewUser] = React.useState([]);
 
     React.useEffect(()=>{
         fetch('/all-plants')
@@ -27,6 +29,45 @@ function App() {
     }
 
 
+    const onLogin = (username,password) => {
+        
+        fetch('/api/login',{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'username': username,
+                'password': password
+            })
+        })
+        .then((response)=>response.json())
+        .then((data)=>{
+        setUser(data);
+        console.log(user)
+        })
+    }
+
+    const onCreateUser = (username, password, name) => {
+        
+        fetch('/api/signup',{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'name':name,
+                'username': username,
+                'password': password
+            })
+        })
+        .then((response)=>response.json())
+        .then((data)=>{
+        setNewUser(data);
+        console.log(newUser)
+        })
+    }
+
     return (
         <ReactRouterDOM.BrowserRouter>
             <div className="App">
@@ -37,19 +78,16 @@ function App() {
                     <SearchResults searchTerm={searchTerm}/>
                 </ReactRouterDOM.Route>
 
-                <ReactRouterDOM.Route exact path="/all-plants">
+                <ReactRouterDOM.Route exact path="/all-plants"> 
                     <AllPlants plants={plants} />
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/sign-up">
-                    <SignUp />
+                    <SignUp setNewUser={onCreateUser}/>
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/login">
-                    <Login />
-                </ReactRouterDOM.Route>
-                <ReactRouterDOM.Route exact path="/results">
-                    
+                    <Login setUser={onLogin} />
                 </ReactRouterDOM.Route>
 
             </div>

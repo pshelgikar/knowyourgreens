@@ -30,7 +30,7 @@ def results():
         scraper.get_plant_info(plant_url)
         results = crud.check_if_plant_in_db(plant)
     img = crud.get_plant_info(plant)
-    print(f'Results: {results}')
+    #results['img']  = img
     return jsonify(results)
 
 @app.route('/login')
@@ -39,12 +39,13 @@ def login_form():
     
     return render_template('login_form.html')
 
-@app.route('/login', methods=["POST"])
+@app.route('/api/login', methods=["POST"])
 def login_process():
     """Log user into their account"""
-    username = request.form.get("username")
-    password = request.form.get("password")
+    username = request.json.get("username")
+    password = request.json.get("password")
     user = User.query.filter_by(username=username).first()
+    print(f'FOUND {user}')
     if not user:
         flash('No user found! Please try again!')
         return redirect('/login')
@@ -71,13 +72,12 @@ def sign_up_form():
     return render_template('signup_form.html')
 
 
-@app.route('/signup',methods=["POST"])
+@app.route('/api/signup',methods=["POST"])
 def create_user():
     """Create a new user"""
-    name = request.form.get("name")
-    username = request.form.get("username")
-    password = pbkdf2_sha256.hash(request.form.get("password"))
-
+    name = request.json.get("name")
+    username = request.json.get("username")
+    password = pbkdf2_sha256.hash(request.json.get("password"))
     user_id = crud.create_user(username,name,password)
     if user_id:
         session['user_session'] = user_id

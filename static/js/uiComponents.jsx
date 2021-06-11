@@ -35,6 +35,7 @@ function AllVarietals(props){
      const varietalCards = [];
      let varietalCard=null;
      for(const varietal of Object.keys(results)){
+         
          for(const care of Object.values(results)){
             varietalCard = (
                 <VarietalCard
@@ -60,7 +61,6 @@ function AllVarietals(props){
 
 function VarietalCard(props){
     const {name,sunlight,water,humidity,toxicity,temperature} = props;
-    console.log(props)
     return(
         <div>
             <h1>{name}</h1>
@@ -78,12 +78,10 @@ function VarietalCard(props){
     )
 }
 
-
-
 function PlantCard(props){
     const {name,img} = props;
     return(
-        <div>
+        <div className="plant-card">
             <h2>{name}</h2>
             <img src={img}/>
         </div>
@@ -92,6 +90,7 @@ function PlantCard(props){
 
 function SearchResults(props) {
     const {searchTerm} = props;
+    
     return(
         <div>
            <AllVarietals results={searchTerm}/> 
@@ -131,27 +130,64 @@ function SearchBar(props) {
     );
 }
 
-function SignUp() {
+function SignUp(props) {
+    console.log(props)
+    const {setNewUser} = props;
+    const [state, setState] = React.useState({
+        username : "",
+        password : "",
+        name : ""
+    })
+    
+    const handleChange = (evt) => {
+        const {id, value} = evt.target
+        setState((prevState)=>({
+            ...prevState,
+            [id]:value
+        }))
+    }
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        setNewUser(state.username,state.password,state.name)
+    }
     return (
         <div className="pageContents">
             <h1>Sign Up</h1>
-            <form action="/signup" method="POST">
-                First Name<input type="name" name="name"/>
-                Enter Username<input type="text" name="username"/>
-                Password<input type="password" name="password"/>
-                <input type="submit"/>
+            <form onSubmit = {handleSubmit}>
+                First Name<input type="name" id = "name" value={state.name} onChange={handleChange}/>
+                Enter Username<input type="text" id="username" value={state.username} onChange={handleChange} />
+                Password<input type="password" id="password" value={state.password} onChange={handleChange}/>
+                <button type="submit">Sign up!</button>
             </form>
         </div>  
     );
 }
 
-function Login() {
+function Login(props) {
+
+    const {setUser} = props;
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    const handleUsername = (evt) => {
+        setUsername(evt.target.value)
+    }
+    const handlePassword = (evt) => {
+        setPassword(evt.target.value)
+    }
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        setUser(username,password)
+    }
+
+
     return(
         <div className="pageContents">
             <h1>Log In</h1>
-            <form action="/login" method="POST">
-                Enter Username<input type="text" name="username" required={true}/>
-                Password<input type="password" name="password" required={true}/>
+            <form onSubmit={handleSubmit}>
+                Enter Username<input type="text" name="username" required={true} onChange={handleUsername} />
+                Password<input type="password" name="password" required={true} onChange={handlePassword}/>
                 <input type="submit"/>
                 <p>New User?</p>
                 <a href='/sign-in'>Sign up instead!</a>
