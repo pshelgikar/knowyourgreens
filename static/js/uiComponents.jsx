@@ -34,12 +34,12 @@ function AllVarietals(props){
      const {results} = props;
      const varietalCards = [];
      let varietalCard=null;
+     
      for(const varietal of Object.keys(results)){
-         
          for(const care of Object.values(results)){
             varietalCard = (
                 <VarietalCard
-                    name = {varietal}
+                    name={varietal}
                     sunlight={care.Sunlight}
                     water={care.Water}
                     humidity={care.Humidity}
@@ -90,7 +90,6 @@ function PlantCard(props){
 
 function SearchResults(props) {
     const {searchTerm} = props;
-    
     return(
         <div>
            <AllVarietals results={searchTerm}/> 

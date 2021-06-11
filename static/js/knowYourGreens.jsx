@@ -1,5 +1,5 @@
 function App() {
-    const [plants, getPlants] = React.useState({plants});
+    const [plants, getPlants] = React.useState({});
     const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState([]);
     const [newUser, setNewUser] = React.useState([]);

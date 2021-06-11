@@ -33,11 +33,6 @@ def results():
     #results['img']  = img
     return jsonify(results)
 
-@app.route('/login')
-def login_form():
-    """Show user the login page"""
-    
-    return render_template('login_form.html')
 
 @app.route('/api/login', methods=["POST"])
 def login_process():
@@ -64,12 +59,6 @@ def show_user_favorites(user_id):
     favorites = crud.get_favorites_by_userid(user_id)
 
     return render_template('favorites.html',favorites=favorites)
-
-@app.route('/signup')
-def sign_up_form():
-    """Show user the sign up page"""
-    
-    return render_template('signup_form.html')
 
 
 @app.route('/api/signup',methods=["POST"])
