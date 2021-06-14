@@ -1,13 +1,14 @@
 function App() {
     const [plants, getPlants] = React.useState({});
     const [searchTerm, setSearchTerm] = React.useState({});
-    const [user, setUser] = React.useState([]);
+    const [user, setUser] = React.useState(false);
     const [newUser, setNewUser] = React.useState([]);
 
     React.useEffect(()=>{
         fetch('/all-plants')
         .then((response)=>response.json())
         .then((data)=>{
+            console.log(data)
             getPlants(data);
         })
     },[]);
@@ -30,7 +31,6 @@ function App() {
 
 
     const onLogin = (username,password) => {
-        
         fetch('/api/login',{
             method:"POST",
             headers: {
@@ -43,8 +43,13 @@ function App() {
         })
         .then((response)=>response.json())
         .then((data)=>{
-        setUser(data);
-        console.log(user)
+            console.log(`Data is ${data.isLoggedIn}`)
+            if(data.isLoggedIn==false){
+                setUser(false)
+            }
+            else{
+                setUser(true)
+            }
         })
     }
 
@@ -64,10 +69,9 @@ function App() {
         .then((response)=>response.json())
         .then((data)=>{
         setNewUser(data);
-        console.log(newUser)
         })
     }
-
+    
     return (
         <ReactRouterDOM.BrowserRouter>
             <div className="App">

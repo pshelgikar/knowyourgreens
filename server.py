@@ -2,6 +2,7 @@
 from jinja2 import StrictUndefined
 
 from flask import Flask, jsonify, render_template, request, flash, redirect, session
+from flask_login import LoginManager, current_user,login_user
 from model import connect_to_db, User
 from passlib.hash import pbkdf2_sha256
 import crud, scraper
@@ -10,6 +11,8 @@ app = Flask(__name__)
 app.secret_key = "RANDOM SECRETLY GENERATED KEY"
 app.jinja_env.undefined = StrictUndefined
 
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 @app.route('/')
 def homepage():
@@ -33,23 +36,43 @@ def results():
     #results['img']  = img
     return jsonify(results)
 
+@login_manager.user_loader
+def user_loader(user_id):
+    """Return User object for user user_id"""
 
-@app.route('/api/login', methods=["POST"])
-def login_process():
+    return User.query.get(user_id)
+
+@app.route("/api/login", methods=["POST"])
+def login():
     """Log user into their account"""
+    print("HEREEEEEE")
+    if current_user.is_authenticated:
+        print("authenticated")
+        return jsonify({"isLoggedIn": True})
     username = request.json.get("username")
     password = request.json.get("password")
     user = User.query.filter_by(username=username).first()
-    print(f'FOUND {user}')
-    if not user:
-        flash('No user found! Please try again!')
-        return redirect('/login')
-    elif not pbkdf2_sha256.verify(password, user.password):
-        flash('Incorrect password, please try again!')
-        return redirect('/login')
-    flash(f'Welcome, {user.name}!')
-    session['user_session'] = user.user_id
-    return redirect('/')
+    if user is not None and pbkdf2_sha256.verify(password, user.password):
+        login_user(user)
+        session['user_session'] = user.user_id
+        return jsonify({"isLoggedIn": True})
+    
+    return jsonify({"isLoggedIn": False})
+
+# @app.route('/api/login', methods=["POST"])
+# def login_process():
+#     """Log user into their account"""
+#     username = request.json.get("username")
+#     password = request.json.get("password")
+#     user = User.query.filter_by(username=username).first()
+#     print(f'FOUND {user}')
+#     if not user:
+#         return False
+#     elif not pbkdf2_sha256.verify(password, user.password):
+#         return False
+#     flash(f'Welcome, {user.name}!')
+#     session['user_session'] = user.user_id
+#     return True
 
 
 @app.route('/favorites/<int:user_id>')

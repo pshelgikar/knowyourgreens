@@ -34,9 +34,7 @@ function AllVarietals(props){
      const {results} = props;
      const varietalCards = [];
      let varietalCard=null;
-     
-     for(const varietal of Object.keys(results)){
-         for(const care of Object.values(results)){
+     for(const [varietal,care] of Object.entries(results)){
             varietalCard = (
                 <VarietalCard
                     name={varietal}
@@ -47,7 +45,6 @@ function AllVarietals(props){
                     temperature={care.Temperature}
                 />
             );
-            }
             varietalCards.push(varietalCard)
         }
         

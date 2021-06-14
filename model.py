@@ -42,7 +42,26 @@ class User(db.Model):
                      nullable=False)
     password = db.Column(db.String,
                         nullable=False)
-    ##passlib/werkzeug/Flask-Bcrypt
+
+    authenticated = db.Column(db.Boolean, default=False)
+
+    def is_active(self):
+        """True for all users"""
+        return True
+    
+    def get_id(self):
+        """Return the username for user logging in"""
+        return str(self.user_id)
+
+    def is_authenticated(self):
+        """Return true if user is authenticated."""
+        return self.authenticated
+
+    def is_anonymous(self):
+        """False as anonymous users are not allowed to view favorites"""
+        return False
+
+
     favorites = db.relationship('Favorite',backref='user') #backref creates a table on users
 
     def __repr__(self):
