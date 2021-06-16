@@ -1,7 +1,6 @@
 
 function Homepage(props) {
     const {isLoggedIn} = props;
-    console.log({isLoggedIn})
     if (isLoggedIn){
         return (
             <div className="pageContents">
@@ -215,8 +214,6 @@ function Login(props) {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
 
-   
-
     const handleUsername = (evt) => {
         setUsername(evt.target.value)
     }
@@ -244,7 +241,13 @@ function Login(props) {
     )
 }
 
-function Nav(){
+
+function Nav(props){
+    const {isLoggedIn, logUserOut} = props;
+    function onLogout(evt){
+        evt.preventDefault();
+        logUserOut()
+    }
     return(
         <nav>
             <ReactRouterDOM.NavLink to="/">
@@ -254,11 +257,25 @@ function Nav(){
             <ReactRouterDOM.NavLink to="/all-plants">
                 <li>All Plants</li>
             </ReactRouterDOM.NavLink>
+            <ReactRouterDOM.NavLink to="/add-to-favorites">
+                {isLoggedIn?
+                    (<li>My Favorites</li>):null
+                }
+            </ReactRouterDOM.NavLink>
+            <ReactRouterDOM.NavLink to="/logout" onClick = {onLogout}>
+                {isLoggedIn?
+                    (<li>Logout</li>):null
+                }
+            </ReactRouterDOM.NavLink>
             <ReactRouterDOM.NavLink to="/login">
-                <li>Login</li>
+                {!isLoggedIn?
+                    (<li>Login</li>):null
+                }
             </ReactRouterDOM.NavLink>
             <ReactRouterDOM.NavLink to="/sign-up">
-                <li>Sign Up</li>
+                {!isLoggedIn?
+                    (<li>Sign Up</li>):null
+                }
             </ReactRouterDOM.NavLink>
             </ul>
         </nav>

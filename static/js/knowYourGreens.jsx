@@ -3,6 +3,8 @@ function App() {
     const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
     const [newUser, setNewUser] = React.useState([]);
+    const history = ReactRouterDOM.useHistory();
+    const { pathname } = ReactRouterDOM.useLocation();
     //useeffect to check logged in state - loading state[shopping site]
 
     React.useEffect(()=>{
@@ -30,7 +32,6 @@ function App() {
         })
     }
 
-
     const onLogin = (username,password) => {
         fetch('/api/login',{
             method:"POST",
@@ -55,7 +56,21 @@ function App() {
         })
     }
 
-    console.log({user})
+
+    const onLogout = () => {
+        fetch('/api/logout',{
+            method:"GET",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>response.json())
+        .then(()=>{
+            console.log('Logout successful!')
+            setUser(false)
+            history.push('/')
+        })
+    }
 
     const onCreateUser = (username, password, name) => {
         
@@ -79,7 +94,7 @@ function App() {
     return (
         <React.Fragment>
             <div className="App">
-                <Nav />
+                <Nav isLoggedIn={user} logUserOut={onLogout} />
                 <ReactRouterDOM.Route exact path="/">
                     <Homepage isLoggedIn={user}/>
                     <SearchBar onSearch={onSearch} />
@@ -96,6 +111,9 @@ function App() {
                 
                 <ReactRouterDOM.Route exact path="/login">
                     <Login setUser={onLogin} />
+                </ReactRouterDOM.Route>
+                <ReactRouterDOM.Route exact path="/logout">
+                    <Homepage isLoggedIn={user} />
                 </ReactRouterDOM.Route>
             </div>
         </React.Fragment>

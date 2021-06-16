@@ -2,7 +2,7 @@
 from jinja2 import StrictUndefined
 
 from flask import Flask, jsonify, render_template, request, flash, redirect, session
-from flask_login import LoginManager, current_user,login_user
+from flask_login import LoginManager, current_user,login_user, logout_user
 from model import connect_to_db, User
 from passlib.hash import pbkdf2_sha256
 import crud, scraper
@@ -45,7 +45,6 @@ def user_loader(user_id):
 @app.route("/api/login", methods=["POST"])
 def login():
     """Log user into their account"""
-    print("HEREEEEEE")
     if current_user.is_authenticated:
         print("authenticated")
         return jsonify({"isLoggedIn": True})
@@ -54,7 +53,6 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user is not None and pbkdf2_sha256.verify(password, user.password):
         login_user(user)
-        session['user_session'] = user.user_id
         return jsonify({"isLoggedIn": True})
     
     return jsonify({"isLoggedIn": False})
@@ -98,12 +96,11 @@ def create_user():
         flash('Username taken! Please sign up with another username.')
         return redirect('/signup')
 
-@app.route('/logout')
+@app.route('/api/logout')
 def logout():
     """Log user out of session."""
-
-    del session['user_session']
-    return redirect('/')
+    logout_user()
+    return jsonify({})
 
 
 @app.route('/<path>')
