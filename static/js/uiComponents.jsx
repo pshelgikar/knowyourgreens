@@ -1,22 +1,74 @@
 
 function Homepage(props) {
+    const {isLoggedIn} = props;
+    console.log({isLoggedIn})
+    if (isLoggedIn){
+        return (
+            <div className="pageContents">
+                <h1>Welcome!</h1>
+                <h1>Know Your Greens</h1>
+                <p>Care instructions for your green housemates.</p>
+            </div>
+        );
+    }
     return (
-        <div className="pageContents">
-            <h1>Know Your Greens</h1>
-            <p>Care instructions for your green housemates.</p>
-        </div>
-    );
+            <div className="pageContents">
+                <h1>Know Your Greens</h1>
+                <p>Care instructions for your green housemates.</p>
+            </div>
+        );  
 }
 
+
+function NavigateToPlant(props){
+    const {plant} = props;
+
+    const onShowDetails = (evt) => {
+        return (
+            <div className="pageContents">
+                <AllVarietals results={plant}/> 
+            </div> 
+        )
+    }
+    return(
+        <div className="pageContents">
+            <button onClick={onShowDetails}>View Details</button>
+        </div>
+    )
+}
+
+
+function AddToFavorites(props){
+    const {plant} = props;
+
+    const onAddToFavorites = (evt) => {
+        return (
+            <div className="pageContents">
+                alert("Added"!) 
+            </div> 
+        )
+    }
+    return(
+        <div className="pageContents">
+            <button onClick={onAddToFavorites}>Add to Favorites</button>
+        </div>
+    )
+}
+
+
 function AllPlants(props) {
-    const {plants} = props;
+    const {plants, onSearch} = props;
     const plantCards = [];
     for(const plant of Object.values(plants)){
         const plantCard = (
-            <PlantCard
-                name = {plant.name}
-                img = {plant.img}
-            />
+            <div className="plant-card">
+                <PlantCard
+                    name = {plant.name}
+                    img = {plant.img}
+                />
+                <NavigateToPlant plant={plant} />
+                <AddToFavorites plant={plant} />
+            </div>
         );
         plantCards.push(plantCard);
     }
@@ -30,7 +82,7 @@ function AllPlants(props) {
 }
 
 function AllVarietals(props){
-
+    
      const {results} = props;
      const varietalCards = [];
      let varietalCard=null;
@@ -78,7 +130,7 @@ function VarietalCard(props){
 function PlantCard(props){
     const {name,img} = props;
     return(
-        <div className="plant-card">
+        <div>
             <h2>{name}</h2>
             <img src={img}/>
         </div>
@@ -88,9 +140,7 @@ function PlantCard(props){
 function SearchResults(props) {
     const {searchTerm} = props;
     return(
-        <div>
-           <AllVarietals results={searchTerm}/> 
-        </div>
+         <AllVarietals results={searchTerm}/> 
     )
 }
 
@@ -160,10 +210,12 @@ function SignUp(props) {
 }
 
 function Login(props) {
-
+    //change setUser to something else -> convention for useState
     const {setUser} = props;
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+
+   
 
     const handleUsername = (evt) => {
         setUsername(evt.target.value)

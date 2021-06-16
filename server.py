@@ -111,7 +111,7 @@ def route(path):
 
     return render_template('index.html')
     
-@app.route('/all-plants')
+@app.route('/api/all-plants')
 def view_all_plants():
      """Show all plants from database."""
 

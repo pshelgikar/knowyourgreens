@@ -3,9 +3,10 @@ function App() {
     const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
     const [newUser, setNewUser] = React.useState([]);
+    //useeffect to check logged in state - loading state[shopping site]
 
     React.useEffect(()=>{
-        fetch('/all-plants')
+        fetch('/api/all-plants')
         .then((response)=>response.json())
         .then((data)=>{
             console.log(data)
@@ -49,9 +50,12 @@ function App() {
             }
             else{
                 setUser(true)
+                history.push('/')
             }
         })
     }
+
+    console.log({user})
 
     const onCreateUser = (username, password, name) => {
         
@@ -73,11 +77,11 @@ function App() {
     }
     
     return (
-        <ReactRouterDOM.BrowserRouter>
+        <React.Fragment>
             <div className="App">
                 <Nav />
                 <ReactRouterDOM.Route exact path="/">
-                    <Homepage />
+                    <Homepage isLoggedIn={user}/>
                     <SearchBar onSearch={onSearch} />
                     <SearchResults searchTerm={searchTerm}/>
                 </ReactRouterDOM.Route>
@@ -89,14 +93,15 @@ function App() {
                 <ReactRouterDOM.Route exact path="/sign-up">
                     <SignUp setNewUser={onCreateUser}/>
                 </ReactRouterDOM.Route>
-
+                
                 <ReactRouterDOM.Route exact path="/login">
                     <Login setUser={onLogin} />
                 </ReactRouterDOM.Route>
-
             </div>
-        </ReactRouterDOM.BrowserRouter>
+        </React.Fragment>
     );
 }
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<ReactRouterDOM.BrowserRouter>
+        <App />
+  </ReactRouterDOM.BrowserRouter>, document.querySelector('#root'));
