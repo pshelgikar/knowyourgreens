@@ -115,6 +115,16 @@ def view_all_plants():
      all_plants = crud.get_all_plants()
      return jsonify(all_plants)
 
+
+@app.route('/api/plant/<plantname>', methods=["POST"])
+def view_plant_details(plantname):
+     """Show all plants from database."""
+
+     plant = crud.get_plant_info(plantname)
+     print(plant)
+     return jsonify(plant)
+
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)

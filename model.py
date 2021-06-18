@@ -97,16 +97,11 @@ class Varietal(db.Model):
                          db.ForeignKey('plants.plant_id'))
     varietal_name = db.Column(db.String,
                               nullable=False)
-    sunlight = db.Column(db.Text,
-                         nullable=False)
-    water = db.Column(db.Text,
-                         nullable=False)
-    humidity = db.Column(db.Text,
-                         nullable=False)
-    temperature = db.Column(db.Text,
-                         nullable=False)
-    toxicity = db.Column(db.Text,
-                         nullable=False)
+    sunlight = db.Column(db.Text)
+    water = db.Column(db.Text)
+    humidity = db.Column(db.Text)
+    temperature = db.Column(db.Text)
+    toxicity = db.Column(db.Text)
 
     def __repr__(self):
         return f'Plant {self.varietal_name} was added to the database'

@@ -6,14 +6,14 @@ function Homepage(props) {
             <div className="pageContents">
                 <h1>Welcome!</h1>
                 <h1>Know Your Greens</h1>
-                <p>Care instructions for your green housemates.</p>
+                <div>Care instructions for your green housemates.</div>
             </div>
         );
     }
     return (
             <div className="pageContents">
                 <h1>Know Your Greens</h1>
-                <p>Care instructions for your green housemates.</p>
+                <div>Care instructions for your green housemates.</div>
             </div>
         );  
 }
@@ -21,14 +21,12 @@ function Homepage(props) {
 
 function NavigateToPlant(props){
     const {plant} = props;
-
+    const history = ReactRouterDOM.useHistory();
     const onShowDetails = (evt) => {
-        return (
-            <div className="pageContents">
-                <AllVarietals results={plant}/> 
-            </div> 
-        )
+        history.push(`/plants/${plant.name}`) 
     }
+
+    
     return(
         <div className="pageContents">
             <button onClick={onShowDetails}>View Details</button>
@@ -56,17 +54,30 @@ function AddToFavorites(props){
 
 
 function AllPlants(props) {
-    const {plants, onSearch} = props;
+    const {isLoggedIn} = props;
+    const [plants, getPlants] = React.useState({});
+    
+    React.useEffect(()=>{
+        fetch('/api/all-plants')
+        .then((response)=>response.json())
+        .then((data)=>{
+            getPlants(data);
+        })
+    },[]);
+
     const plantCards = [];
     for(const plant of Object.values(plants)){
         const plantCard = (
             <div className="plant-card">
                 <PlantCard
+                    key = {plant.plant_id}
                     name = {plant.name}
                     img = {plant.img}
                 />
                 <NavigateToPlant plant={plant} />
-                <AddToFavorites plant={plant} />
+                {isLoggedIn &&
+                    <AddToFavorites plant={plant} /> 
+                }   
             </div>
         );
         plantCards.push(plantCard);
@@ -75,19 +86,58 @@ function AllPlants(props) {
     return (
         <div className="pageContents">
             <h1>All Plants</h1>
-            <p>{plantCards}</p>
+            <div>{plantCards}</div>
         </div>
     );
 }
 
 function AllVarietals(props){
-    
-     const {results} = props;
+    const [parentPlant, setParentPlant] = React.useState({});
+    const [plants, setPlants] = React.useState({});
+    const {plantName} = ReactRouterDOM.useParams();
+    let img='';
+
+    React.useEffect(()=>{
+        fetch('/api/results',{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'plant_name': plantName
+            })
+        })
+        .then((response)=>response.json())
+        .then((data)=>{
+            setPlants(data);
+        })
+
+    },[plantName])
+
+    React.useEffect(()=>{
+        fetch(`/api/plant/${plantName}`,{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'plantname': plantName
+            })
+        })
+        .then((response)=>response.json())
+        .then((data)=>{
+            setParentPlant(data);
+        })
+
+    },[parentPlant])
+    // if empty return loading state
+
      const varietalCards = [];
      let varietalCard=null;
-     for(const [varietal,care] of Object.entries(results)){
+     for(const [varietal,care] of Object.entries(plants)){
             varietalCard = (
                 <VarietalCard
+                    key={varietal.varietal_id}
                     name={varietal}
                     sunlight={care.Sunlight}
                     water={care.Water}
@@ -98,10 +148,12 @@ function AllVarietals(props){
             );
             varietalCards.push(varietalCard)
         }
-        
+
      return(
          <div className="pageContents">
-             <p>{varietalCards}</p>
+             <h1>{plantName}</h1>   
+             <img src={parentPlant}></img>
+             <div>{varietalCards}</div>
          </div>
      )
 
@@ -113,15 +165,15 @@ function VarietalCard(props){
         <div>
             <h1>{name}</h1>
             <h2>Sunlight</h2>
-            <p>{sunlight}</p>
+            <div>{sunlight}</div>
             <h2>Water</h2>
-            <p>{water}</p>
+            <div>{water}</div>
             <h2>Humidity</h2>
-            <p>{humidity}</p>
+            <div>{humidity}</div>
             <h2>Toxicity</h2>
-            <p>{toxicity}</p>
+            <div>{toxicity}</div>
             <h2>Temperature</h2>
-            <p>{temperature}</p>
+            <div>{temperature}</div>
         </div>
     )
 }
@@ -136,16 +188,18 @@ function PlantCard(props){
     )
 }
 
-function SearchResults(props) {
-    const {searchTerm} = props;
+function PlantDetails(props) {
+    
+    //hook that gives params back from URL. key is the "plantName", value is whatever user puts in
+    
     return(
-         <AllVarietals results={searchTerm}/> 
+         <AllVarietals results={plantName}/> 
     )
 }
 
 function SearchBar(props) {
-    const {onSearch} = props;
     const [plant, searchPlant] = React.useState('');
+    const history = ReactRouterDOM.useHistory();
 
     const handleInput = (evt) => {
         searchPlant(evt.target.value)
@@ -153,14 +207,14 @@ function SearchBar(props) {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        onSearch(plant)  
+        history.push(`/plants/${plant}`) 
     }
     
     return (
         <div className="pageContents">
-            <p>Worried about your plants? Not sure how to care for your new green housemates?</p>
+            <div>Worried about your plants? Not sure how to care for your new green housemates?</div>
             
-            <p>Enter a name to find out how to take care of your plants!</p>
+            <div>Enter a name to find out how to take care of your plants!</div>
             <form onSubmit={handleSubmit}>
                 <input 
                     placeholder="Plant Name" 
@@ -234,7 +288,7 @@ function Login(props) {
                 Enter Username<input type="text" name="username" required={true} onChange={handleUsername} />
                 Password<input type="password" name="password" required={true} onChange={handlePassword}/>
                 <input type="submit"/>
-                <p>New User?</p>
+                <div>New User?</div>
                 <a href='/sign-in'>Sign up instead!</a>
             </form>
         </div>
@@ -251,30 +305,30 @@ function Nav(props){
     return(
         <nav>
             <ReactRouterDOM.NavLink to="/">
-                <p>Home</p>
+                <div>Home</div>
             </ReactRouterDOM.NavLink>
             <ul className='nav-links'>
             <ReactRouterDOM.NavLink to="/all-plants">
                 <li>All Plants</li>
             </ReactRouterDOM.NavLink>
             <ReactRouterDOM.NavLink to="/add-to-favorites">
-                {isLoggedIn?
-                    (<li>My Favorites</li>):null
+                {isLoggedIn &&
+                    (<li>My Favorites</li>)
                 }
             </ReactRouterDOM.NavLink>
             <ReactRouterDOM.NavLink to="/logout" onClick = {onLogout}>
-                {isLoggedIn?
-                    (<li>Logout</li>):null
+                {isLoggedIn &&
+                    (<li>Logout</li>)
                 }
             </ReactRouterDOM.NavLink>
             <ReactRouterDOM.NavLink to="/login">
-                {!isLoggedIn?
-                    (<li>Login</li>):null
+                {!isLoggedIn && 
+                    (<li>Login</li>)
                 }
             </ReactRouterDOM.NavLink>
             <ReactRouterDOM.NavLink to="/sign-up">
-                {!isLoggedIn?
-                    (<li>Sign Up</li>):null
+                {!isLoggedIn && 
+                    (<li>Sign Up</li>)
                 }
             </ReactRouterDOM.NavLink>
             </ul>

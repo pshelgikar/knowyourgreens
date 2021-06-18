@@ -1,5 +1,5 @@
 function App() {
-    const [plants, getPlants] = React.useState({});
+    
     const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
     const [newUser, setNewUser] = React.useState([]);
@@ -7,30 +7,6 @@ function App() {
     const { pathname } = ReactRouterDOM.useLocation();
     //useeffect to check logged in state - loading state[shopping site]
 
-    React.useEffect(()=>{
-        fetch('/api/all-plants')
-        .then((response)=>response.json())
-        .then((data)=>{
-            console.log(data)
-            getPlants(data);
-        })
-    },[]);
-
-    const onSearch = (plant) => {
-        fetch('/api/results',{
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'plant_name': plant
-            })
-        })
-        .then((response)=>response.json())
-        .then((data)=>{
-        setSearchTerm(data);
-        })
-    }
 
     const onLogin = (username,password) => {
         fetch('/api/login',{
@@ -97,12 +73,15 @@ function App() {
                 <Nav isLoggedIn={user} logUserOut={onLogout} />
                 <ReactRouterDOM.Route exact path="/">
                     <Homepage isLoggedIn={user}/>
-                    <SearchBar onSearch={onSearch} />
-                    <SearchResults searchTerm={searchTerm}/>
+                    <SearchBar />
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/all-plants"> 
-                    <AllPlants plants={plants} />
+                    <AllPlants isLoggedIn={user}/>
+                </ReactRouterDOM.Route>
+
+                <ReactRouterDOM.Route exact path="/plants/:plantName"> 
+                    <AllVarietals />
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/sign-up">
