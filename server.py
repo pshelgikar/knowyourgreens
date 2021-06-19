@@ -90,11 +90,11 @@ def create_user():
     password = pbkdf2_sha256.hash(request.json.get("password"))
     user_id = crud.create_user(username,name,password)
     if user_id:
-        session['user_session'] = user_id
-        return redirect('/')
+        #session['user_session'] = user_id
+        return jsonify({"isLoggedIn": True})
     else:
         flash('Username taken! Please sign up with another username.')
-        return redirect('/signup')
+        return jsonify({"isLoggedIn": False})
 
 @app.route('/api/logout')
 def logout():

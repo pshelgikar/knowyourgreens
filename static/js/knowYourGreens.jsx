@@ -1,8 +1,8 @@
 function App() {
     
-    const [searchTerm, setSearchTerm] = React.useState({});
+    //const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
-    const [newUser, setNewUser] = React.useState([]);
+    //const [newUser, setNewUser] = React.useState(false);
     const history = ReactRouterDOM.useHistory();
     const { pathname } = ReactRouterDOM.useLocation();
     //useeffect to check logged in state - loading state[shopping site]
@@ -63,7 +63,8 @@ function App() {
         })
         .then((response)=>response.json())
         .then((data)=>{
-        setNewUser(data);
+        //setNewUser(data);
+        setUser(data)
         })
     }
     
@@ -85,7 +86,7 @@ function App() {
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/sign-up">
-                    <SignUp setNewUser={onCreateUser}/>
+                    <SignUp setUser={onCreateUser}/>
                 </ReactRouterDOM.Route>
                 
                 <ReactRouterDOM.Route exact path="/login">

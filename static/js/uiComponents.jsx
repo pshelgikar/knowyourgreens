@@ -231,7 +231,8 @@ function SearchBar(props) {
 
 function SignUp(props) {
     console.log(props)
-    const {setNewUser} = props;
+    const {setUser} = props;
+    const history = ReactRouterDOM.useHistory();
     const [state, setState] = React.useState({
         username : "",
         password : "",
@@ -248,6 +249,7 @@ function SignUp(props) {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         setNewUser(state.username,state.password,state.name)
+        history.push('/')
     }
     return (
         <div className="pageContents">
