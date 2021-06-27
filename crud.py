@@ -46,7 +46,14 @@ def get_favorites_by_userid(userid):
     """Return list of favorites for userid"""
 
     favorites = Favorite.query.filter_by(user_id=userid).all()
-    return favorites
+    favorite_plant_names = []
+
+    for fav in favorites:
+        p_id = fav.plant_id
+        plant = Plant.query.filter_by(plant_id=p_id).one()
+        if plant not in favorite_plant_names:
+            favorite_plant_names.append({'img':plant.img_src, 'name':(plant.name).capitalize()})
+    return (favorite_plant_names)
 
 def get_care_instructions(plant_id):
     """Show care instructions for plant with id passed"""
@@ -66,9 +73,15 @@ def get_varietals(plant_id):
     """Return all varietals for a certain plant"""
     pass
 
-def add_to_favorites(plant_id, userid):
+def add_to_user_favorites(user_id,plant):
     """Add plant to favorites for user"""
-    pass
+
+    favorite_plant = Plant.query.filter_by(name=(plant).lower()).one()
+    fav_plant_id = favorite_plant.plant_id
+    favorite = Favorite(user_id=user_id,plant_id=fav_plant_id)
+    db.session.add(favorite)
+    db.session.commit()
+    
 
 
 

@@ -7,6 +7,19 @@ function App() {
     const { pathname } = ReactRouterDOM.useLocation();
     //useeffect to check logged in state - loading state[shopping site]
 
+    const showFavorites = () => {
+        fetch('/api/show-favorites',{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=>JSON.stringify())
+        .then((data)=>{
+            console.log(data)
+        })
+    }
+
 
     const onLogin = (username,password) => {
         fetch('/api/login',{
@@ -88,9 +101,12 @@ function App() {
                 <ReactRouterDOM.Route exact path="/sign-up">
                     <SignUp setUser={onCreateUser}/>
                 </ReactRouterDOM.Route>
-                
                 <ReactRouterDOM.Route exact path="/login">
                     <Login setUser={onLogin} />
+                </ReactRouterDOM.Route>
+                
+                <ReactRouterDOM.Route exact path="/favorites">
+                    <Favorites />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route exact path="/logout">
                     <Homepage isLoggedIn={user} />

@@ -78,11 +78,9 @@ class Favorite(db.Model):
                             primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.user_id'))
     plant_id = db.Column(db.Integer,db.ForeignKey('plants.plant_id'))
-    varietal = db.Column(db.String,
-                        nullable = False)
 
     def __repr__(self):
-        return f'Plant {self.varietal} was added to the list of favorites for User id {self.user_id}'
+        return f'Plant {self.plant_id} was added to the list of favorites for User id {self.user_id}'
 
 
 class Varietal(db.Model):

@@ -53,6 +53,7 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user is not None and pbkdf2_sha256.verify(password, user.password):
         login_user(user)
+        session['user_session'] = user.user_id
         return jsonify({"isLoggedIn": True})
     
     return jsonify({"isLoggedIn": False})
@@ -81,6 +82,24 @@ def show_user_favorites(user_id):
 
     return render_template('favorites.html',favorites=favorites)
 
+@app.route('/api/add-favorites', methods=["POST"])
+def add_to_favorites():
+    """Add a plant to user's favorites"""
+    plant = request.json.get("plant")
+    user_id = session['user_session']
+    crud.add_to_user_favorites(user_id,plant)
+    user_favorites = crud.get_favorites_by_userid(user_id)
+    print(user_favorites)
+    return ({"favorites":user_favorites})
+
+@app.route('/api/show-favorites', methods=["POST"])
+def show_favorites():
+    """Show a list of user's favorited plants"""
+    user_id = session['user_session']
+    user_favorites = crud.get_favorites_by_userid(user_id)
+    print(f"{user_favorites} are user's favorites!")
+    return jsonify(user_favorites)
+
 
 @app.route('/api/signup',methods=["POST"])
 def create_user():
@@ -90,7 +109,7 @@ def create_user():
     password = pbkdf2_sha256.hash(request.json.get("password"))
     user_id = crud.create_user(username,name,password)
     if user_id:
-        #session['user_session'] = user_id
+        session['user_session'] = user_id
         return jsonify({"isLoggedIn": True})
     else:
         flash('Username taken! Please sign up with another username.')
@@ -99,6 +118,7 @@ def create_user():
 @app.route('/api/logout')
 def logout():
     """Log user out of session."""
+    del session['user_session']
     logout_user()
     return jsonify({})
 

@@ -25,10 +25,12 @@ nav {
 img {
     width: 300px;
     height: 300px;
+    padding-bottom: 10px;
 }
 
 .plant-card {
     display: inline-block;
     justify-content:space-evenly;
     margin: 10px 10px 10px 10px;
+    width: 300px;
 }
