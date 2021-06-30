@@ -34,47 +34,13 @@ function NavigateToPlant(props){
     )
 }
 
-function AddToFavorites(props){
-    const {plant} = props;
-    
-
-    return(
-        <div className="pageContents">
-            
-            
-        </div>
-    )
-}
-
 
 function AllPlants(props) {
     // pass favorites as a prop
     // potentially define favorites here
-    const {isLoggedIn,favs} = props;
+    const {isLoggedIn,favorites,onAddToFavorites,onRemoveFromFavorites} = props;
     const [plants, getPlants] = React.useState({});
-    const [favorites,setFavorites] = React.useState([favs])
-    if (isLoggedIn){
-        React.useEffect(()=>{
-            console.log("here")
-            const favsFromLocalStorage = JSON.parse(
-                window.localStorage.getItem("favPlants")
-            );
-            if (favsFromLocalStorage) {
-                setFavorites(favsFromLocalStorage)
-            }
-        }, []);
-
-        React.useEffect(()=>{
-            if (favorites.length) {
-                window.localStorage.setItem(
-                    "favPlants",
-                    JSON.stringify(favorites)
-                );
-            }
-        }, [favorites]);
-    }
         
-    
     React.useEffect(()=>{
         fetch('/api/all-plants')
         .then((response)=>response.json())
@@ -92,15 +58,15 @@ function AllPlants(props) {
                     name = {plant.name}
                     img = {plant.img}
                     isLoggedIn = {isLoggedIn}
-                    fav = {favorites}
-                    setFavs = {setFavorites}
+                    favorites = {favorites}
+                    onAddToFavorites = {onAddToFavorites}
+                    onRemoveFromFavorites = {onRemoveFromFavorites}
                 />
                 <NavigateToPlant plant={plant} />  
             </div>
         );
         plantCards.push(plantCard);
     }
-
     return (
         <div className="pageContents">
             <h1>All Plants</h1>
@@ -110,33 +76,23 @@ function AllPlants(props) {
 }
 
 function Favorites(props){
-    const {favs} = props;
-    const favoritePlants = [];
-    // React.useEffect(()=>{
-    //     fetch('/api/show-favorites',{
-    //         method:"POST",
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //     .then((response)=> response.json())
-    //     .then((data)=>{
-    //         getFavs(data)
-    //     })
-    // },[])  
+    const {favorites, setFavorites} = props;
     
+    const favoritePlants = [];
     let favCard = null;
 
-    for(let fav in favs){
-        for (const item of Object.entries(favs[fav])){ 
+    for(let fav in favorites){
+        for (const item of Object.entries(favorites[fav])){ 
               favCard = (
                   <div className="plant-card">
                        <PlantCard
                           key= {fav}
-                          name = {favs[fav]['name']}
-                          img = {favs[fav]['img']}
+                          name = {favorites[fav]['name']}
+                          img = {favorites[fav]['img']}
+                          favorites = {favorites}
+                          setFavorites = {setFavorites}
                       />
-                        <NavigateToPlant plant={favs[fav]} />
+                        <NavigateToPlant plant={favorites[fav]} />
                   </div>
                   
                   )
@@ -155,11 +111,8 @@ function Favorites(props){
 function AllVarietals(){
     const [parentPlant, setParentPlant] = React.useState({});
     const [plants, setPlants] = React.useState({});
-    
     const {plantName} = ReactRouterDOM.useParams();
     let img='';
-
-
 
     React.useEffect(()=>{
         fetch('/api/results',{
@@ -243,67 +196,56 @@ function VarietalCard(props){
 }
 
 function PlantCard(props){
-    const {name,img, isLoggedIn, fav, setFavs} = props;
-    //const [favorites,setFavorites] = React.useState([]);
-    props.setFavs(fav)
-    console.log(fav[0])
+    const {name,img, isLoggedIn, favorites, onAddToFavorites, onRemoveFromFavorites} = props;
 
-    const onAddToFavorites = (evt) => {
-        evt.preventDefault();
-        fetch('/api/add-favorites',{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'plant': name, 
-            })
-        })
-        .then((response)=> response.json())
-         .then((data)=>{
-            
-            console.log({data})
-            //update the state 
-            //setFavorite(favsFromLocalStorage)
-         })
-    }
-
-    const onRemoveFromFavorites = (evt) => {
-        evt.preventDefault();
-        fetch('/api/remove-favorite',{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                'plant': name, 
-            })
-        })
-        .then((response)=> response.json())
-         .then((data)=>{
-            console.log("remove")
-            //setFavorite(favsFromLocalStorage);
-         }) 
+    let fav=false;
+    console.log(favorites)
+    for(let plant of favorites){
+        if(plant['name']==name){
+          fav = true;  
+        }
     }
 
     return(
         <div className="plant-card">
             <h2>{name}</h2>
             <img src={img}/>
-            
+            <AddToFavorites isLoggedIn={isLoggedIn} 
+                            fav={fav} name={name} 
+                            onAddToFavorites={onAddToFavorites}
+                            onRemoveFromFavorites={onRemoveFromFavorites}
+                            />
+        </div>
+    )
+}
+
+function AddToFavorites(props){
+    const {isLoggedIn,fav,onAddToFavorites,onRemoveFromFavorites,name} = props;
+    const onAddFavs = (evt) => {
+        evt.preventDefault();
+        onAddToFavorites(name)
+    }
+
+    const onRemoveFavs = (evt) => {
+        evt.preventDefault();
+        onRemoveFromFavorites(name)
+    }
+    
+
+    return(
+        <div className="pageContents">  
+
             {(isLoggedIn) && 
                 fav ? 
-                <button onClick={onRemoveFromFavorites}>Remove from Favorites</button> :
-                <button onClick={onAddToFavorites}>Add to Favorites</button>
-                
+                    <button onClick={onRemoveFavs}>Remove from Favorites</button> :
+                    <button onClick={onAddFavs}>Add to Favorites</button>
+                            
             }
         </div>
     )
 }
 
 function PlantDetails(props) {
-    
-    //hook that gives params back from URL. key is the "plantName", value is whatever user puts in
     
     return(
          <AllVarietals results={plantName}/> 

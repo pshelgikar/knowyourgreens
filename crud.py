@@ -78,10 +78,26 @@ def add_to_user_favorites(user_id,plant):
 
     favorite_plant = Plant.query.filter_by(name=(plant).lower()).one()
     fav_plant_id = favorite_plant.plant_id
-    favorite = Favorite(user_id=user_id,plant_id=fav_plant_id)
+    all_favs = get_favorites_by_userid(user_id) 
+    if plant.lower() in all_favs:
+        return "Already in favs!"
+    else:
+        favorite = Favorite(user_id=user_id,plant_id=fav_plant_id)
     db.session.add(favorite)
     db.session.commit()
+    return ({'img': favorite_plant.img_src, 'name': favorite_plant.name.capitalize()})
     
+def remove_plant_from_favorites(user_id,plant):
+    """Add plant to favorites for user"""
+
+    favorite_plant = Plant.query.filter_by(name=(plant).lower()).one()
+    fav_plant_id = favorite_plant.plant_id
+    Favorite.query.filter_by(user_id=user_id,plant_id=fav_plant_id).delete()
+    all_favs = get_favorites_by_userid(user_id) 
+    print(all_favs)
+    return (all_favs)
+    
+
 
 
 

@@ -2,23 +2,9 @@ function App() {
     
     //const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
-    const [favs, getFavs] = React.useState({});
     const history = ReactRouterDOM.useHistory();
+    const [favorites,setFavorites] = React.useState([])
     const { pathname } = ReactRouterDOM.useLocation();
-    //useeffect to check logged in state - loading state[shopping site]
-   
-    React.useEffect(()=>{
-        fetch('/api/show-favorites',{
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((response)=> response.json())
-        .then((data)=>{
-            getFavs(data)
-        })
-    },[])  
    
     const onLogin = (username,password) => {
         fetch('/api/login',{
@@ -42,8 +28,6 @@ function App() {
             }
         })
     }
-
-
     const onLogout = () => {
         fetch('/api/logout',{
             method:"GET",
@@ -74,10 +58,74 @@ function App() {
         })
         .then((response)=>response.json())
         .then((data)=>{
-        //setNewUser(data);
         setUser(data)
         })
     }
+
+    
+    React.useEffect(()=>{
+        const favsFromLocalStorage = JSON.parse(
+            window.localStorage.getItem("favPlants")
+        );
+        if (favsFromLocalStorage) {
+            setFavorites(favsFromLocalStorage)
+        }
+    }, []);
+
+    const onAddToFavorites = (name) => {
+        fetch('/api/add-favorites',{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'plant': name, 
+            })
+        })
+        .then((response)=>response.json())
+        .then((data)=>{
+            console.log(data)
+            setFavorites((favs)=>[...favs,data])
+        })
+    }
+
+    const onRemoveFromFavorites = (name) => {
+        fetch('/api/remove-favorite',{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'plant': name, 
+            })
+        })
+        .then((response)=> response.json())
+         .then((data)=>{
+            console.log(data)
+            setFavorites(data);
+         }) 
+    }
+
+
+    React.useEffect(()=>{
+        fetch('/api/show-favorites',{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response)=> response.json())
+        .then((data)=>{
+            setFavorites(data)   
+        })
+        if (favorites.length) {
+            window.localStorage.setItem(
+                "favPlants",
+                JSON.stringify(favorites)
+            );
+        }
+    },[])  
+
     
     return (
         <React.Fragment>
@@ -89,7 +137,10 @@ function App() {
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/all-plants"> 
-                    <AllPlants isLoggedIn={user} favs={favs}/>
+                    <AllPlants isLoggedIn={user} 
+                               favorites={favorites}
+                               onAddToFavorites={onAddToFavorites}
+                               onRemoveFromFavorites={onRemoveFromFavorites}/>
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/plants/:plantName"> 
@@ -104,7 +155,9 @@ function App() {
                 </ReactRouterDOM.Route>
                 
                 <ReactRouterDOM.Route exact path="/favorites">
-                    <Favorites favs={favs}/>
+                    <Favorites favorites={favorites} 
+                               onAddToFavorites={onAddToFavorites}
+                               onRemoveFromFavorites={onRemoveFromFavorites}/>
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route exact path="/logout">
                     <Homepage isLoggedIn={user} />
