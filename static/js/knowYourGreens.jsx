@@ -2,25 +2,24 @@ function App() {
     
     //const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
-    //const [newUser, setNewUser] = React.useState(false);
+    const [favs, getFavs] = React.useState({});
     const history = ReactRouterDOM.useHistory();
     const { pathname } = ReactRouterDOM.useLocation();
     //useeffect to check logged in state - loading state[shopping site]
-
-    const showFavorites = () => {
+   
+    React.useEffect(()=>{
         fetch('/api/show-favorites',{
             method:"POST",
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then((response)=>JSON.stringify())
+        .then((response)=> response.json())
         .then((data)=>{
-            console.log(data)
+            getFavs(data)
         })
-    }
-
-
+    },[])  
+   
     const onLogin = (username,password) => {
         fetch('/api/login',{
             method:"POST",
@@ -34,7 +33,6 @@ function App() {
         })
         .then((response)=>response.json())
         .then((data)=>{
-            console.log(`Data is ${data.isLoggedIn}`)
             if(data.isLoggedIn==false){
                 setUser(false)
             }
@@ -91,7 +89,7 @@ function App() {
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/all-plants"> 
-                    <AllPlants isLoggedIn={user}/>
+                    <AllPlants isLoggedIn={user} favs={favs}/>
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/plants/:plantName"> 
@@ -106,7 +104,7 @@ function App() {
                 </ReactRouterDOM.Route>
                 
                 <ReactRouterDOM.Route exact path="/favorites">
-                    <Favorites />
+                    <Favorites favs={favs}/>
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route exact path="/logout">
                     <Homepage isLoggedIn={user} />

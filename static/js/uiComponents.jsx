@@ -48,8 +48,32 @@ function AddToFavorites(props){
 
 
 function AllPlants(props) {
-    const {isLoggedIn} = props;
+    // pass favorites as a prop
+    // potentially define favorites here
+    const {isLoggedIn,favs} = props;
     const [plants, getPlants] = React.useState({});
+    const [favorites,setFavorites] = React.useState([favs])
+    if (isLoggedIn){
+        React.useEffect(()=>{
+            console.log("here")
+            const favsFromLocalStorage = JSON.parse(
+                window.localStorage.getItem("favPlants")
+            );
+            if (favsFromLocalStorage) {
+                setFavorites(favsFromLocalStorage)
+            }
+        }, []);
+
+        React.useEffect(()=>{
+            if (favorites.length) {
+                window.localStorage.setItem(
+                    "favPlants",
+                    JSON.stringify(favorites)
+                );
+            }
+        }, [favorites]);
+    }
+        
     
     React.useEffect(()=>{
         fetch('/api/all-plants')
@@ -68,6 +92,8 @@ function AllPlants(props) {
                     name = {plant.name}
                     img = {plant.img}
                     isLoggedIn = {isLoggedIn}
+                    fav = {favorites}
+                    setFavs = {setFavorites}
                 />
                 <NavigateToPlant plant={plant} />  
             </div>
@@ -83,28 +109,28 @@ function AllPlants(props) {
     );
 }
 
-function Favorites(){
-    const [favs, getFavs] = React.useState({});
+function Favorites(props){
+    const {favs} = props;
     const favoritePlants = [];
-    React.useEffect(()=>{
-        fetch('/api/show-favorites',{
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((response)=> response.json())
-        .then((data)=>{
-            getFavs(data)
-        })
-    },[])  
+    // React.useEffect(()=>{
+    //     fetch('/api/show-favorites',{
+    //         method:"POST",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //     .then((response)=> response.json())
+    //     .then((data)=>{
+    //         getFavs(data)
+    //     })
+    // },[])  
     
     let favCard = null;
-    console.log(favs)
+
     for(let fav in favs){
         for (const item of Object.entries(favs[fav])){ 
               favCard = (
-                  <div>
+                  <div className="plant-card">
                        <PlantCard
                           key= {fav}
                           name = {favs[fav]['name']}
@@ -129,8 +155,11 @@ function Favorites(){
 function AllVarietals(){
     const [parentPlant, setParentPlant] = React.useState({});
     const [plants, setPlants] = React.useState({});
+    
     const {plantName} = ReactRouterDOM.useParams();
     let img='';
+
+
 
     React.useEffect(()=>{
         fetch('/api/results',{
@@ -214,9 +243,10 @@ function VarietalCard(props){
 }
 
 function PlantCard(props){
-    const {name,img, isLoggedIn} = props;
-    const [favorite,setFavorite] = React.useState(false);
-    console.log(favorite)
+    const {name,img, isLoggedIn, fav, setFavs} = props;
+    //const [favorites,setFavorites] = React.useState([]);
+    props.setFavs(fav)
+    console.log(fav[0])
 
     const onAddToFavorites = (evt) => {
         evt.preventDefault();
@@ -231,10 +261,12 @@ function PlantCard(props){
         })
         .then((response)=> response.json())
          .then((data)=>{
-            console.log("here")
-            setFavorite(true)
+            
+            console.log({data})
+            //update the state 
+            //setFavorite(favsFromLocalStorage)
          })
-    }   
+    }
 
     const onRemoveFromFavorites = (evt) => {
         evt.preventDefault();
@@ -250,7 +282,7 @@ function PlantCard(props){
         .then((response)=> response.json())
          .then((data)=>{
             console.log("remove")
-            setFavorite(false);
+            //setFavorite(favsFromLocalStorage);
          }) 
     }
 
@@ -260,7 +292,7 @@ function PlantCard(props){
             <img src={img}/>
             
             {(isLoggedIn) && 
-                favorite ? 
+                fav ? 
                 <button onClick={onRemoveFromFavorites}>Remove from Favorites</button> :
                 <button onClick={onAddToFavorites}>Add to Favorites</button>
                 
@@ -382,7 +414,8 @@ function Login(props) {
 function Nav(props){
     const {isLoggedIn, logUserOut} = props;
     function onLogout(evt){
-        evt.preventDefault();
+        evt.preventDefault();   
+        window.localStorage.removeItem('favPlants')
         logUserOut()
     }
     return(
