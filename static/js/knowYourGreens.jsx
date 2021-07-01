@@ -24,6 +24,7 @@ function App() {
             }
             else{
                 setUser(true)
+                setFavorites(favorites)
                 history.push('/')
             }
         })
@@ -44,7 +45,6 @@ function App() {
     }
 
     const onCreateUser = (username, password, name) => {
-        
         fetch('/api/signup',{
             method:"POST",
             headers: {
@@ -61,16 +61,6 @@ function App() {
         setUser(data)
         })
     }
-
-    
-    React.useEffect(()=>{
-        const favsFromLocalStorage = JSON.parse(
-            window.localStorage.getItem("favPlants")
-        );
-        if (favsFromLocalStorage) {
-            setFavorites(favsFromLocalStorage)
-        }
-    }, []);
 
     const onAddToFavorites = (name) => {
         fetch('/api/add-favorites',{
@@ -90,6 +80,8 @@ function App() {
     }
 
     const onRemoveFromFavorites = (name) => {
+        const updatedFavorites = favorites.filter((fav)=>fav.name!=name) //select only where the condition is true
+        setFavorites(updatedFavorites);
         fetch('/api/remove-favorite',{
             method: "POST",
             headers: {
@@ -98,34 +90,25 @@ function App() {
             body: JSON.stringify({
                 'plant': name, 
             })
+            //.catch()
         })
-        .then((response)=> response.json())
-         .then((data)=>{
-            console.log(data)
-            setFavorites(data);
-         }) 
     }
 
-
     React.useEffect(()=>{
-        fetch('/api/show-favorites',{
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((response)=> response.json())
-        .then((data)=>{
-            setFavorites(data)   
-        })
-        if (favorites.length) {
-            window.localStorage.setItem(
-                "favPlants",
-                JSON.stringify(favorites)
-            );
+        console.log(user)
+        if(user){
+            fetch('/api/show-favorites',{
+                method:"POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response)=> response.json())
+            .then((data)=>{
+                setFavorites(data)   
+            })
         }
-    },[])  
-
+    },[user]) 
     
     return (
         <React.Fragment>
@@ -155,9 +138,16 @@ function App() {
                 </ReactRouterDOM.Route>
                 
                 <ReactRouterDOM.Route exact path="/favorites">
-                    <Favorites favorites={favorites} 
-                               onAddToFavorites={onAddToFavorites}
-                               onRemoveFromFavorites={onRemoveFromFavorites}/>
+                    {(user)? 
+                            <Favorites 
+                                isLoggedIn={user}
+                                favorites={favorites} 
+                                onAddToFavorites={onAddToFavorites}
+                                onRemoveFromFavorites={onRemoveFromFavorites}
+                            />
+                            :
+                            <ReactRouterDOM.Redirect to="/login"/> 
+                    }
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route exact path="/logout">
                     <Homepage isLoggedIn={user} />

@@ -67,6 +67,7 @@ def get_all_plants():
         plants_dict[plant.name] = {}
         plants_dict[plant.name]['name'] = plant.name.capitalize()
         plants_dict[plant.name]['img'] = plant.img_src
+        plants_dict[plant.name]['id'] = plant.plant_id
     return plants_dict
 
 def get_varietals(plant_id):

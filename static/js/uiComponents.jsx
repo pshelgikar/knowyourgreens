@@ -1,4 +1,3 @@
-
 function Homepage(props) {
     const {isLoggedIn} = props;
     if (isLoggedIn){
@@ -18,7 +17,6 @@ function Homepage(props) {
         );  
 }
 
-
 function NavigateToPlant(props){
     const {plant} = props;
     const history = ReactRouterDOM.useHistory();
@@ -26,7 +24,6 @@ function NavigateToPlant(props){
         history.push(`/plants/${plant.name}`) 
     }
 
-    
     return(
         <div className="pageContents">
             <button onClick={onShowDetails}>View Details</button>
@@ -36,8 +33,6 @@ function NavigateToPlant(props){
 
 
 function AllPlants(props) {
-    // pass favorites as a prop
-    // potentially define favorites here
     const {isLoggedIn,favorites,onAddToFavorites,onRemoveFromFavorites} = props;
     const [plants, getPlants] = React.useState({});
         
@@ -52,9 +47,8 @@ function AllPlants(props) {
     const plantCards = [];
     for(const plant of Object.values(plants)){
         const plantCard = (
-            <div className="plant-card">
+            <div className="plant-card" key={plant.id}>
                 <PlantCard
-                    key = {plant.plant_id}
                     name = {plant.name}
                     img = {plant.img}
                     isLoggedIn = {isLoggedIn}
@@ -76,34 +70,34 @@ function AllPlants(props) {
 }
 
 function Favorites(props){
-    const {favorites, setFavorites} = props;
-    
+    const {isLoggedIn, favorites, onAddToFavorites, onRemoveFromFavorites} = props;
     const favoritePlants = [];
     let favCard = null;
-
     for(let fav in favorites){
         for (const item of Object.entries(favorites[fav])){ 
               favCard = (
-                  <div className="plant-card">
+                  <div className="plant-card" key={favorites[fav]['plant_id']}>
                        <PlantCard
-                          key= {fav}
                           name = {favorites[fav]['name']}
                           img = {favorites[fav]['img']}
                           favorites = {favorites}
-                          setFavorites = {setFavorites}
+                          isLoggedIn = {isLoggedIn}
+                          onAddToFavorites = {onAddToFavorites}
+                          onRemoveFromFavorites = {onRemoveFromFavorites}
                       />
                         <NavigateToPlant plant={favorites[fav]} />
                   </div>
-                  
-                  )
-          }
-          favoritePlants.push(favCard)
+                )
+            }
+        favoritePlants.push(favCard)
       }
     return(
+        
         <div className="pageContents">
             <div><h1>Favorites</h1></div>   
             <div>{favoritePlants}</div>
         </div>
+        
     )
 }
 
@@ -196,18 +190,18 @@ function VarietalCard(props){
 }
 
 function PlantCard(props){
-    const {name,img, isLoggedIn, favorites, onAddToFavorites, onRemoveFromFavorites} = props;
-
+    const {plant_id,name,img, isLoggedIn, favorites, onAddToFavorites, onRemoveFromFavorites} = props;
     let fav=false;
-    console.log(favorites)
     for(let plant of favorites){
         if(plant['name']==name){
           fav = true;  
         }
     }
 
+    //look into "includes"/verify keys
+
     return(
-        <div className="plant-card">
+        <div key={plant_id} className="plant-card">
             <h2>{name}</h2>
             <img src={img}/>
             <AddToFavorites isLoggedIn={isLoggedIn} 
@@ -233,20 +227,17 @@ function AddToFavorites(props){
     
 
     return(
-        <div className="pageContents">  
-
-            {(isLoggedIn) && 
-                fav ? 
+        <div className="pageContents"> 
+            {(isLoggedIn) &&  
+                (fav ? 
                     <button onClick={onRemoveFavs}>Remove from Favorites</button> :
-                    <button onClick={onAddFavs}>Add to Favorites</button>
-                            
+                    <button onClick={onAddFavs}>Add to Favorites</button>)       
             }
         </div>
     )
 }
 
 function PlantDetails(props) {
-    
     return(
          <AllVarietals results={plantName}/> 
     )

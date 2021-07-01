@@ -82,21 +82,11 @@ def show_user_favorites(user_id):
 
     return render_template('favorites.html',favorites=favorites)
 
-@app.route('/api/add-favorites', methods=["POST"])
-def add_to_favorites():
-    """Add a plant to user's favorites"""
-    plant = request.json.get("plant")
-    user_id = session['user_session']
-    new_favorite = crud.add_to_user_favorites(user_id,plant)
-    print(new_favorite)
-    #user_favorites = crud.get_favorites_by_userid(user_id)
-    #print(user_favorites)
-    return (new_favorite)
-
 @app.route('/api/show-favorites', methods=["POST"])
 def show_favorites():
     """Show a list of user's favorited plants"""
-    user_id = session['user_session']
+    user_id = session.get('user_session')
+    print(f'Getting favs for {user_id}')
     user_favorites = crud.get_favorites_by_userid(user_id)
     print(f"{user_favorites} are user's favorites!")
     return jsonify(user_favorites)
@@ -109,6 +99,17 @@ def remove_favorite():
     user_favorites = crud.remove_plant_from_favorites(user_id,plant)
     print(f'Deleted!! New Favorites are {user_favorites}')
     return jsonify(user_favorites)
+
+@app.route('/api/add-favorites', methods=["POST"])
+def add_to_favorites():
+    """Add a plant to user's favorites"""
+    plant = request.json.get("plant")
+    user_id = session['user_session']
+    new_favorite = crud.add_to_user_favorites(user_id,plant)
+    print(new_favorite)
+    #user_favorites = crud.get_favorites_by_userid(user_id)
+    #print(user_favorites)
+    return (new_favorite)
 
 
 @app.route('/api/signup',methods=["POST"])
