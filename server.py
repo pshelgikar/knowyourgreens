@@ -1,15 +1,13 @@
 """Server set up for KnowYourGreens"""
-from jinja2 import StrictUndefined
-
 from flask import Flask, jsonify, render_template, request, flash, redirect, session
 from flask_login import LoginManager, current_user,login_user, logout_user
 from model import connect_to_db, User
 from passlib.hash import pbkdf2_sha256
 import crud, scraper
 
+
 app = Flask(__name__)
 app.secret_key = "RANDOM SECRETLY GENERATED KEY"
-app.jinja_env.undefined = StrictUndefined
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -86,9 +84,7 @@ def show_user_favorites(user_id):
 def show_favorites():
     """Show a list of user's favorited plants"""
     user_id = session.get('user_session')
-    print(f'Getting favs for {user_id}')
     user_favorites = crud.get_favorites_by_userid(user_id)
-    print(f"{user_favorites} are user's favorites!")
     return jsonify(user_favorites)
 
 @app.route('/api/remove-favorite', methods=["POST"])
@@ -97,7 +93,6 @@ def remove_favorite():
     user_id = session['user_session']
     plant = request.json.get("plant")
     user_favorites = crud.remove_plant_from_favorites(user_id,plant)
-    print(f'Deleted!! New Favorites are {user_favorites}')
     return jsonify(user_favorites)
 
 @app.route('/api/add-favorites', methods=["POST"])
@@ -106,7 +101,6 @@ def add_to_favorites():
     plant = request.json.get("plant")
     user_id = session['user_session']
     new_favorite = crud.add_to_user_favorites(user_id,plant)
-    print(new_favorite)
     #user_favorites = crud.get_favorites_by_userid(user_id)
     #print(user_favorites)
     return (new_favorite)
@@ -152,7 +146,6 @@ def view_plant_details(plantname):
      """Show all plants from database."""
 
      plant = crud.get_plant_info(plantname)
-     print(plant)
      return jsonify(plant)
 
 

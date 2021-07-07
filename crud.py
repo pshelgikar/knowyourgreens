@@ -2,12 +2,12 @@
 
 from model import db, Plant, User, Favorite, Varietal, connect_to_db
 from passlib.hash import pbkdf2_sha256
+import time
 
 def create_user(username, name, password):
     """Create new user"""
     if not User.query.filter_by(username=username).first():
         user = User(username=username,name=name,password=password)
-        print(user)
         db.session.add(user)
         db.session.commit()
         return user.user_id
@@ -93,9 +93,12 @@ def remove_plant_from_favorites(user_id,plant):
 
     favorite_plant = Plant.query.filter_by(name=(plant).lower()).one()
     fav_plant_id = favorite_plant.plant_id
+    initial_favs = get_favorites_by_userid(user_id) 
+    print(f'inital ones are {initial_favs}')
     Favorite.query.filter_by(user_id=user_id,plant_id=fav_plant_id).delete()
+    db.session.commit()
     all_favs = get_favorites_by_userid(user_id) 
-    print(all_favs)
+    print(f'then {all_favs}')
     return (all_favs)
     
 
