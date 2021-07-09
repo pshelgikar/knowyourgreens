@@ -276,7 +276,8 @@ function SearchBar(props) {
 }
 
 function SignUp(props) {
-    const {setUser} = props;
+    const {setUser,isNewUser} = props;
+    console.log(isNewUser)
     const history = ReactRouterDOM.useHistory();
     const [state, setState] = React.useState({
         username : "",
@@ -294,10 +295,11 @@ function SignUp(props) {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         setUser(state.username,state.password,state.name)
-        history.push('/')
     }
     return (
         <div className="pageContents">
+            {!isNewUser &&
+                <div>User exists, please pick another username!</div>}
             <h1>Sign Up</h1>
             <form onSubmit = {handleSubmit}>
                 First Name<input type="name" id = "name" value={state.name} onChange={handleChange}/>

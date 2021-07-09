@@ -115,10 +115,10 @@ def create_user():
     user_id = crud.create_user(username,name,password)
     if user_id:
         session['user_session'] = user_id
-        return jsonify({"isLoggedIn": True})
+        return jsonify({"isUser": False})
     else:
         flash('Username taken! Please sign up with another username.')
-        return jsonify({"isLoggedIn": False})
+        return jsonify({"isUser": True})
 
 @app.route('/api/logout')
 def logout():

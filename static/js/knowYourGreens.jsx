@@ -3,6 +3,7 @@ function App() {
     //const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
     const [isValid, setValid] = React.useState([]);
+    const [isNewUser, setNewUser] = React.useState([]);
     const history = ReactRouterDOM.useHistory();
     const [favorites,setFavorites] = React.useState([])
     const { pathname } = ReactRouterDOM.useLocation();
@@ -62,7 +63,15 @@ function App() {
         })
         .then((response)=>response.json())
         .then((data)=>{
-        setUser(data)
+            if(data.isUser==true){
+                setNewUser(false)
+            }
+            else{
+                setNewUser(true)
+                setUser(true)
+                history.push('/')
+            }
+            
         })
     }
 
@@ -133,7 +142,7 @@ function App() {
                 </ReactRouterDOM.Route>
 
                 <ReactRouterDOM.Route exact path="/sign-up">
-                    <SignUp setUser={onCreateUser}/>
+                    <SignUp setUser={onCreateUser} isNewUser={isNewUser}/>
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route exact path="/login">
                     <Login setUser={onLogin} isValid = {isValid} />
