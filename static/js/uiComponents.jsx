@@ -276,7 +276,6 @@ function SearchBar(props) {
 }
 
 function SignUp(props) {
-    console.log(props)
     const {setUser} = props;
     const history = ReactRouterDOM.useHistory();
     const [state, setState] = React.useState({
@@ -312,7 +311,7 @@ function SignUp(props) {
 
 function Login(props) {
     //change setUser to something else -> convention for useState
-    const {setUser} = props;
+    const {setUser,isValid} = props;
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -331,6 +330,8 @@ function Login(props) {
 
     return(
         <div className="pageContents">
+             {!isValid && 
+                <div>Uh oh, login credentials don't look right..</div>}
             <h1>Log In</h1>
             <form onSubmit={handleSubmit}>
                 Enter Username<input type="text" name="username" required={true} onChange={handleUsername} />

@@ -2,6 +2,7 @@ function App() {
     
     //const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
+    const [isValid, setValid] = React.useState([]);
     const history = ReactRouterDOM.useHistory();
     const [favorites,setFavorites] = React.useState([])
     const { pathname } = ReactRouterDOM.useLocation();
@@ -20,9 +21,12 @@ function App() {
         .then((response)=>response.json())
         .then((data)=>{
             if(data.isLoggedIn==false){
+                setValid(false)
                 setUser(false)
+
             }
             else{
+                setValid(true)
                 setUser(true)
                 setFavorites(favorites)
                 history.push('/')
@@ -74,7 +78,6 @@ function App() {
         })
         .then((response)=>response.json())
         .then((data)=>{
-            console.log(data)
             setFavorites((favs)=>[...favs,data])
         })
     }
@@ -95,7 +98,6 @@ function App() {
     }
 
     React.useEffect(()=>{
-        console.log(user)
         if(user){
             fetch('/api/show-favorites',{
                 method:"POST",
@@ -134,7 +136,7 @@ function App() {
                     <SignUp setUser={onCreateUser}/>
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route exact path="/login">
-                    <Login setUser={onLogin} />
+                    <Login setUser={onLogin} isValid = {isValid} />
                 </ReactRouterDOM.Route>
                 
                 <ReactRouterDOM.Route exact path="/favorites">
