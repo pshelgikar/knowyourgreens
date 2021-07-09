@@ -373,8 +373,6 @@ function Login(props) {
                 Enter Username<input type="text" name="username" required={true} onChange={handleUsername} />
                 Password<input type="password" name="password" required={true} onChange={handlePassword}/>
                 <input type="submit"/>
-                <div>New User?</div>
-                <a href='/sign-in'>Sign up instead!</a>
             </form>
         </div>
     )
