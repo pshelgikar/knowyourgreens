@@ -262,6 +262,9 @@ function SearchBar(props) {
         searchPlant(evt.target.value)
     }
 
+    React.useEffect(()=>{
+        
+    })
     const handleSubmit = (evt) => {
         evt.preventDefault();
         fetch('/api/plant/<plantname>',{
@@ -276,6 +279,7 @@ function SearchBar(props) {
         .then((response)=>response.json())
         .then((data)=>{
             if(data==null){
+                console.log(data)
                 setPlant(false)
             }
             else{

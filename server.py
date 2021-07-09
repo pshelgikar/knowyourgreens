@@ -147,7 +147,14 @@ def view_plant_details(plantname):
      plantname = request.json.get("plantname")
      print(plantname)
      plant = crud.get_plant_info(plantname)
-     print(plant)
+     if not plant:
+        plant_url = plantname.lower()
+        if ' ' in plantname:
+            plant_url = plantname.replace(' ','-')
+        scraper.get_plant_info(plant_url)
+        plant = crud.check_if_plant_in_db(plantname)
+     if(plant=={}):
+         return jsonify(None)
      return jsonify(plant)
 
 
