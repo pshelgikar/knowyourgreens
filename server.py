@@ -143,9 +143,11 @@ def view_all_plants():
 
 @app.route('/api/plant/<plantname>', methods=["POST"])
 def view_plant_details(plantname):
-     """Show all plants from database."""
-
+     """Show matching plants from database."""
+     plantname = request.json.get("plantname")
+     print(plantname)
      plant = crud.get_plant_info(plantname)
+     print(plant)
      return jsonify(plant)
 
 
