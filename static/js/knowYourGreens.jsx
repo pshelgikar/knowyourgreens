@@ -1,3 +1,4 @@
+
 function App() {
     
     //const [searchTerm, setSearchTerm] = React.useState({});
@@ -45,6 +46,7 @@ function App() {
         .then(()=>{
             console.log('Logout successful!')
             setUser(false)
+            setValid([])
             history.push('/')
         })
     }

@@ -56,30 +56,6 @@ def login():
     
     return jsonify({"isLoggedIn": False})
 
-# @app.route('/api/login', methods=["POST"])
-# def login_process():
-#     """Log user into their account"""
-#     username = request.json.get("username")
-#     password = request.json.get("password")
-#     user = User.query.filter_by(username=username).first()
-#     print(f'FOUND {user}')
-#     if not user:
-#         return False
-#     elif not pbkdf2_sha256.verify(password, user.password):
-#         return False
-#     flash(f'Welcome, {user.name}!')
-#     session['user_session'] = user.user_id
-#     return True
-
-
-@app.route('/favorites/<int:user_id>')
-def show_user_favorites(user_id):
-    """Show a list of user's favorited plants"""
-    
-    favorites = crud.get_favorites_by_userid(user_id)
-
-    return render_template('favorites.html',favorites=favorites)
-
 @app.route('/api/show-favorites', methods=["POST"])
 def show_favorites():
     """Show a list of user's favorited plants"""
@@ -101,8 +77,6 @@ def add_to_favorites():
     plant = request.json.get("plant")
     user_id = session['user_session']
     new_favorite = crud.add_to_user_favorites(user_id,plant)
-    #user_favorites = crud.get_favorites_by_userid(user_id)
-    #print(user_favorites)
     return (new_favorite)
 
 

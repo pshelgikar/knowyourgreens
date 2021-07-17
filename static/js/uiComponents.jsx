@@ -1,3 +1,4 @@
+
 function Homepage(props) {
     const {isLoggedIn} = props;
     if (isLoggedIn){
@@ -97,8 +98,8 @@ function Favorites(props){
               }
           favoritePlants.push(favCard)
         }
-       
       }
+    console.log(favoritePlants)
     return(
         
         <div className="pageContents">
@@ -247,12 +248,6 @@ function AddToFavorites(props){
     )
 }
 
-function PlantDetails(props) {
-    return(
-         <AllVarietals results={plantName}/> 
-    )
-}
-
 function SearchBar(props) {
     const [plant, searchPlant] = React.useState('');
     const [isPlant, setPlant] = React.useState(true);
@@ -336,9 +331,9 @@ function SignUp(props) {
                 <div>User exists, please pick another username!</div>}
             <h1>Sign Up</h1>
             <form onSubmit = {handleSubmit}>
-                First Name<input type="name" id = "name" value={state.name} onChange={handleChange}/>
-                Enter Username<input type="text" id="username" value={state.username} onChange={handleChange} />
-                Password<input type="password" id="password" value={state.password} onChange={handleChange}/>
+                First Name<input type="name" id = "name" value={state.name} required={true} onChange={handleChange}/>
+                Enter Username<input type="text" id="username" value={state.username} required={true} onChange={handleChange} />
+                Password<input type="password" id="password" value={state.password} required={true} onChange={handleChange}/>
                 <button type="submit">Sign up!</button>
             </form>
         </div>  
@@ -388,33 +383,33 @@ function Nav(props){
     }
     return(
         <nav>
-            <ReactRouterDOM.NavLink to="/">
-                <div>Home</div>
-            </ReactRouterDOM.NavLink>
             <ul className='nav-links'>
-            <ReactRouterDOM.NavLink to="/all-plants">
-                <li>All Plants</li>
-            </ReactRouterDOM.NavLink>
-            <ReactRouterDOM.NavLink to="/favorites">
-                {isLoggedIn &&
-                    (<li>My Favorites</li>)
-                }
-            </ReactRouterDOM.NavLink>
-            <ReactRouterDOM.NavLink to="/logout" onClick = {onLogout}>
-                {isLoggedIn &&
-                    (<li>Logout</li>)
-                }
-            </ReactRouterDOM.NavLink>
-            <ReactRouterDOM.NavLink to="/login">
-                {!isLoggedIn && 
-                    (<li>Login</li>)
-                }
-            </ReactRouterDOM.NavLink>
-            <ReactRouterDOM.NavLink to="/sign-up">
-                {!isLoggedIn && 
-                    (<li>Sign Up</li>)
-                }
-            </ReactRouterDOM.NavLink>
+                <ReactRouterDOM.NavLink to="/">
+                    <li>know your greens</li>
+                </ReactRouterDOM.NavLink>
+                <ReactRouterDOM.NavLink to="/all-plants">
+                    <li>All Plants</li>
+                </ReactRouterDOM.NavLink>
+                <ReactRouterDOM.NavLink to="/favorites">
+                    {isLoggedIn &&
+                        (<li>My Favorites</li>)
+                    }
+                </ReactRouterDOM.NavLink>
+                <ReactRouterDOM.NavLink to="/logout" onClick = {onLogout}>
+                    {isLoggedIn &&
+                        (<li>Logout</li>)
+                    }
+                </ReactRouterDOM.NavLink>
+                <ReactRouterDOM.NavLink to="/login">
+                    {!isLoggedIn && 
+                        (<li>Login</li>)
+                    }
+                </ReactRouterDOM.NavLink>
+                <ReactRouterDOM.NavLink to="/sign-up">
+                    {!isLoggedIn && 
+                        (<li>Sign Up</li>)
+                    }
+                </ReactRouterDOM.NavLink>
             </ul>
         </nav>
     );

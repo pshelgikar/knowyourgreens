@@ -1,21 +1,18 @@
-nav {
-    display: flex;
-    justify-content: space-around;
-    min-height: 10vh;
-    background-color: green;
-    color: white;
-    align-items: center;
-    
+body {
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .nav-links {
-    list-style: none;
-    justify-content: space-around;
-    align-items: center;
     display: flex;
-    width: 50%;
+    list-style: none;
+    justify-content:space-evenly;
+    align-items: center;
+    min-height: 15vh;
+    display: flex;
+    width: 100%;
     color: white;
-    font-size: large;
+    font-size: 3vh;
+    background-color:#224229;
 }
 
 .pageContents {
@@ -34,3 +31,5 @@ img {
     margin: 10px 10px 10px 10px;
     width: 300px;
 }
+
+@import "~bootstrap/scss/bootstrap";

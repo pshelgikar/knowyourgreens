@@ -52,7 +52,7 @@ def get_favorites_by_userid(userid):
         p_id = fav.plant_id
         plant = Plant.query.filter_by(plant_id=p_id).one()
         if plant not in favorite_plant_names:
-            favorite_plant_names.append({'img':plant.img_src, 'name':(plant.name).capitalize()})
+            favorite_plant_names.append({'img':plant.img_src, 'name':(plant.name).capitalize(), 'plant_id':plant.plant_id})
     return (favorite_plant_names)
 
 def get_care_instructions(plant_id):
