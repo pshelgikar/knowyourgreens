@@ -1,0 +1,21 @@
+{
+  "name": "knowyourgreens",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pshel1702/knowyourgreens.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pshel1702/knowyourgreens/issues"
+  },
+  "homepage": "https://github.com/pshel1702/knowyourgreens#readme",
+  "description": ""
+}
