@@ -14,9 +14,9 @@ login_manager.init_app(app)
 
 # @app.route('/')
 # def homepage():
-#     """View Homepage"""
+#       """View Homepage"""
 
-#     return render_template('index.html')
+#       return render_template('index.html')
 
 
 @app.route('/api/results',methods=["POST"])
@@ -30,8 +30,6 @@ def results():
             plant_url = plant.replace(' ','-')
         scraper.get_plant_info(plant_url)
         results = crud.check_if_plant_in_db(plant)
-    img = crud.get_plant_info(plant)
-    #results['img']  = img
     return jsonify(results)
 
 @login_manager.user_loader
@@ -53,7 +51,7 @@ def login():
         login_user(user)
         session['user_session'] = user.user_id
         return jsonify({"isLoggedIn": True})
-    
+
     return jsonify({"isLoggedIn": False})
 
 @app.route('/api/show-favorites', methods=["POST"])
@@ -102,11 +100,11 @@ def logout():
     return jsonify({})
 
 
-# @app.route('/<path>')
-# def route(path):
+@app.route('/<path>')
+def route(path):
 
-#     return render_template('index.html')
-    
+     return render_template('index.html')
+
 @app.route('/api/all-plants')
 def view_all_plants():
      """Show all plants from database."""

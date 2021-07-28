@@ -55,9 +55,6 @@ def get_favorites_by_userid(userid):
             favorite_plant_names.append({'img':plant.img_src, 'name':(plant.name).capitalize(), 'plant_id':plant.plant_id})
     return (favorite_plant_names)
 
-def get_care_instructions(plant_id):
-    """Show care instructions for plant with id passed"""
-    pass
 
 def get_all_plants():
     """Return all plants from database."""
@@ -70,9 +67,6 @@ def get_all_plants():
         plants_dict[plant.name]['id'] = plant.plant_id
     return plants_dict
 
-def get_varietals(plant_id):
-    """Return all varietals for a certain plant"""
-    pass
 
 def add_to_user_favorites(user_id,plant):
     """Add plant to favorites for user"""
