@@ -6,8 +6,11 @@ import Favorites from './components/Favorites'
 import Nav from './components/Nav'
 import AllPlants from './components/AllPlants'
 import AllVarietals from './components/AllVarietals'
+import ReactDOM from 'react-dom'
+import React from 'react'
+import ReactRouterDOM from 'react-router-dom'
 
-export default function App() {
+function App() {
     
     //const [searchTerm, setSearchTerm] = React.useState({});
     const [user, setUser] = React.useState(false);
@@ -15,7 +18,7 @@ export default function App() {
     const [isNewUser, setNewUser] = React.useState([]);
     const history = ReactRouterDOM.useHistory();
     const [favorites,setFavorites] = React.useState([])
-    const { pathname } = ReactRouterDOM.useLocation();
+    //const { pathname } = ReactRouterDOM.useLocation();
    
     const onLogin = (username,password) => {
         fetch('/api/login',{
@@ -178,6 +181,4 @@ export default function App() {
     );
 }
 
-ReactDOM.render(<ReactRouterDOM.BrowserRouter>
-    <App />
-</ReactRouterDOM.BrowserRouter>, document.querySelector('#root'));
+export default App;

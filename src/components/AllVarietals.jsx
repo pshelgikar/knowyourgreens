@@ -1,10 +1,10 @@
+import React from 'react'
 import VarietalCard from './VarietalCard'
 
 export default function AllVarietals(){
     const [parentPlant, setParentPlant] = React.useState({});
     const [plants, setPlants] = React.useState({});
     const {plantName} = ReactRouterDOM.useParams();
-    let img='';
 
     React.useEffect(()=>{
         fetch('/api/results',{
