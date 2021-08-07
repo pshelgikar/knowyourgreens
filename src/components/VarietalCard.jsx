@@ -1,19 +1,26 @@
-
+import React from "react";
+import {Accordion} from 'react-bootstrap';
 export default function VarietalCard(props){
     const {name,sunlight,water,humidity,toxicity,temperature} = props;
     return(
-        <div>
-            <h1>{name}</h1>
-            <h2>Sunlight</h2>
-            <div>{sunlight}</div>
-            <h2>Water</h2>
-            <div>{water}</div>
-            <h2>Humidity</h2>
-            <div>{humidity}</div>
-            <h2>Toxicity</h2>
-            <div>{toxicity}</div>
-            <h2>Temperature</h2>
-            <div>{temperature}</div>
+        <div className='background'>
+            <Accordion className="accordion">
+                <Accordion.Item eventKey="0">
+                    <Accordion.Header>{name}</Accordion.Header>
+                    <Accordion.Body className='varietal-card'>
+                        <h4>Sunlight</h4>
+                        <div>{sunlight}</div>
+                        <h4>Water</h4>
+                        <div>{water}</div>
+                        <h4>Humidity</h4>
+                        <div>{humidity}</div>
+                        <h4>Toxicity</h4>
+                        <div>{toxicity}</div>
+                        <h4>Temperature</h4>
+                        <div>{temperature}</div>
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
         </div>
     )
 }

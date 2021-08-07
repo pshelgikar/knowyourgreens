@@ -1,3 +1,4 @@
+import React from 'react'
 import PlantCard from './PlantCard'
 import NavigateToPlant from './NavigateToPlant'
 
@@ -9,9 +10,11 @@ export default function AllPlants(props) {
         fetch('/api/all-plants')
         .then((response)=>response.json())
         .then((data)=>{
+            console.log(data)
             getPlants(data);
         })
     },[]);
+
 
     const plantCards = [];
     for(const plant of Object.values(plants)){
@@ -25,13 +28,12 @@ export default function AllPlants(props) {
                     onAddToFavorites = {onAddToFavorites}
                     onRemoveFromFavorites = {onRemoveFromFavorites}
                 />
-                <NavigateToPlant plant={plant} />  
             </div>
         );
         plantCards.push(plantCard);
     }
     return (
-        <div className="pageContents">
+        <div className="pageContents varietal all-plants">
             <h1>All Plants</h1>
             <div>{plantCards}</div>
         </div>

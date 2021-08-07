@@ -1,22 +1,61 @@
 body {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    height: 100%;
+    flex:1%;
+    text-align: center;
+    justify-content: center;
 }
 
 .nav-links {
-    display: flex;
     list-style: none;
-    justify-content:space-evenly;
+    justify-content:space-around;
+    padding-top: 10px;
     align-items: center;
-    min-height: 15vh;
+    min-height: 6vh;
     display: flex;
     width: 100%;
-    color: white;
+    color: #224229;
     font-size: 3vh;
-    background-color:#224229;
+    background-color:white;
 }
 
+.bg-image {
+    background: url('./../images/pexels-ksenia-chernaya-3952031.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+
+.background {
+    background: url('./../images/pexels-ksenia-chernaya-3952031.jpg');
+    position:relative;
+    background-size: cover;
+}
+
+.nav-contents {
+    margin:auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+a {
+    text-decoration: none !important;
+    color: #224229 !important;
+}
+
+a:active {
+    color: #067d46 !important;
+}
+
+
 .pageContents {
-    margin-top: 20px;
+    display: block;
+    margin: auto;
 }
 
 img {
@@ -32,3 +71,75 @@ img {
     width: 300px;
 }
 
+.body-text {
+    color:white;
+    font-size: 19px;
+    padding-top: 90px;
+}
+
+.homepage-contents{
+    display: flex;
+    flex-direction: column;
+    padding-top: 200px;
+}
+
+.all-plants {
+    color:white;
+    padding-top: 17px;
+}
+
+input {
+    border-radius: 7px;
+}
+
+.login {
+    height: 100vh;
+    padding-top: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.varietal-card{
+    color:darkgreen !important;
+    font-size: medium;
+    text-align: left;
+    line-height: 2.0;
+}
+
+.btn.btn-primary{
+    background-color:#224229;
+    margin-top: 20px;
+    border-color: green;
+}
+
+.btn.btn-primary:hover{
+    background-color:green;
+    margin-top: 20px;
+    border-color: green;
+}
+
+#varietal-image {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.form-elements {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.varietal{
+    background-color: #f6cfb2;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #224229 !important;
+    color: ghostwhite !important;
+    
+}
+
+.title{
+    text-transform:capitalize;
+    color: #224229
+}

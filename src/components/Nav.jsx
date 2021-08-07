@@ -1,3 +1,8 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Nav,Tab } from 'react-bootstrap';
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
+
 export default function Nav(props){
     const {isLoggedIn, logUserOut} = props;
     function onLogout(evt){
@@ -8,32 +13,32 @@ export default function Nav(props){
     return(
         <nav>
             <ul className='nav-links'>
-                <ReactRouterDOM.NavLink to="/">
-                    <li>know your greens</li>
-                </ReactRouterDOM.NavLink>
-                <ReactRouterDOM.NavLink to="/all-plants">
+                <NavLink to="/">
+                    <li>Home</li>
+                </NavLink>
+                <NavLink to="/all-plants">
                     <li>All Plants</li>
-                </ReactRouterDOM.NavLink>
-                <ReactRouterDOM.NavLink to="/favorites">
-                    {isLoggedIn &&
-                        (<li>My Favorites</li>)
-                    }
-                </ReactRouterDOM.NavLink>
-                <ReactRouterDOM.NavLink to="/logout" onClick = {onLogout}>
-                    {isLoggedIn &&
-                        (<li>Logout</li>)
-                    }
-                </ReactRouterDOM.NavLink>
-                <ReactRouterDOM.NavLink to="/login">
+                </NavLink>
+                <NavLink to="/login">
                     {!isLoggedIn && 
                         (<li>Login</li>)
                     }
-                </ReactRouterDOM.NavLink>
-                <ReactRouterDOM.NavLink to="/sign-up">
+                </NavLink>
+                <NavLink to="/sign-up">
                     {!isLoggedIn && 
                         (<li>Sign Up</li>)
                     }
-                </ReactRouterDOM.NavLink>
+                </NavLink>
+                <NavLink to="/favorites">
+                    {isLoggedIn && 
+                        (<li>My Favorites</li>)
+                    }
+                </NavLink>
+                <NavLink to="/logout" onClick = {onLogout}>
+                    {isLoggedIn &&
+                        (<li>Logout</li>)
+                    }
+                </NavLink>
             </ul>
         </nav>
     );

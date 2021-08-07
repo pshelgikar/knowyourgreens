@@ -1,7 +1,11 @@
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Button } from "react-bootstrap";
+
 export default function SignUp(props) {
     const {setUser,isNewUser} = props;
     console.log(isNewUser)
-    const history = ReactRouterDOM.useHistory();
+    const history = useHistory();
     const [state, setState] = React.useState({
         username : "",
         password : "",
@@ -20,15 +24,15 @@ export default function SignUp(props) {
         setUser(state.username,state.password,state.name)
     }
     return (
-        <div className="pageContents">
+        <div className="pageContents body-text bg-image login">
             {!isNewUser &&
                 <div>User exists, please pick another username!</div>}
             <h1>Sign Up</h1>
-            <form onSubmit = {handleSubmit}>
+            <form onSubmit = {handleSubmit} className="form-elements">
                 First Name<input type="name" id = "name" value={state.name} required={true} onChange={handleChange}/>
-                Enter Username<input type="text" id="username" value={state.username} required={true} onChange={handleChange} />
+                Username<input type="text" id="username" value={state.username} required={true} onChange={handleChange} />
                 Password<input type="password" id="password" value={state.password} required={true} onChange={handleChange}/>
-                <button type="submit">Sign up!</button>
+                <Button type="submit">Sign up</Button>
             </form>
         </div>  
     );

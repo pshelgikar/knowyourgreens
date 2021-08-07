@@ -1,10 +1,9 @@
 """Server set up for KnowYourGreens"""
-from flask import Flask, jsonify, render_template, request, flash, redirect, session
+from flask import Flask, jsonify, render_template, request, flash, session
 from flask_login import LoginManager, current_user,login_user, logout_user
 from model import connect_to_db, User
 from passlib.hash import pbkdf2_sha256
 import crud, scraper
-
 
 app = Flask(__name__)
 app.secret_key = "RANDOM SECRETLY GENERATED KEY"
@@ -41,6 +40,7 @@ def user_loader(user_id):
 @app.route("/api/login", methods=["POST"])
 def login():
     """Log user into their account"""
+   
     if current_user.is_authenticated:
         print("authenticated")
         return jsonify({"isLoggedIn": True})
@@ -57,6 +57,7 @@ def login():
 @app.route('/api/show-favorites', methods=["POST"])
 def show_favorites():
     """Show a list of user's favorited plants"""
+    print("my favorites")
     user_id = session.get('user_session')
     user_favorites = crud.get_favorites_by_userid(user_id)
     return jsonify(user_favorites)

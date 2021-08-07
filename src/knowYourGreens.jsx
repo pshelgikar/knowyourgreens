@@ -6,16 +6,16 @@ import Favorites from './components/Favorites'
 import Nav from './components/Nav'
 import AllPlants from './components/AllPlants'
 import AllVarietals from './components/AllVarietals'
-
+import React from 'react'
+import {useHistory, Route, Redirect} from 'react-router-dom'
+ 
 export default function App() {
-    
-    //const [searchTerm, setSearchTerm] = React.useState({});
+  
     const [user, setUser] = React.useState(false);
     const [isValid, setValid] = React.useState([]);
     const [isNewUser, setNewUser] = React.useState([]);
-    const history = ReactRouterDOM.useHistory();
+    let history = useHistory();
     const [favorites,setFavorites] = React.useState([])
-    const { pathname } = ReactRouterDOM.useLocation();
    
     const onLogin = (username,password) => {
         fetch('/api/login',{
@@ -133,33 +133,35 @@ export default function App() {
     
     return (
         <React.Fragment>
-            <div className="App">
+            <div className="App" >
                 <Nav isLoggedIn={user} logUserOut={onLogout} />
-                <ReactRouterDOM.Route exact path="/">
-                    <Homepage isLoggedIn={user}/>
-                    <SearchBar />
-                </ReactRouterDOM.Route>
+                <Route exact path="/">
+                    <div className="bg-image">
+                        <Homepage isLoggedIn={user}/>
+                        <SearchBar />
+                    </div>
+                </Route>
 
-                <ReactRouterDOM.Route exact path="/all-plants"> 
+                <Route exact path="/all-plants"> 
                     <AllPlants isLoggedIn={user} 
                                favorites={favorites}
                                onAddToFavorites={onAddToFavorites}
                                onRemoveFromFavorites={onRemoveFromFavorites}/>
-                </ReactRouterDOM.Route>
+                </Route>
 
-                <ReactRouterDOM.Route exact path="/plants/:plantName"> 
+                <Route exact path="/plants/:plantName"> 
                     <AllVarietals />
-                </ReactRouterDOM.Route>
+                </Route>
 
-                <ReactRouterDOM.Route exact path="/sign-up">
+                <Route exact path="/sign-up">
                     <SignUp setUser={onCreateUser} isNewUser={isNewUser}/>
-                </ReactRouterDOM.Route>
-                <ReactRouterDOM.Route exact path="/login">
+                </Route>
+                <Route exact path="/login">
                     <Login setUser={onLogin} isValid = {isValid} />
-                </ReactRouterDOM.Route>
+                </Route>
                 
-                <ReactRouterDOM.Route exact path="/favorites">
-                    {(user)? 
+                <Route exact path="/favorites">
+                    {user? 
                             <Favorites 
                                 isLoggedIn={user}
                                 favorites={favorites} 
@@ -167,17 +169,13 @@ export default function App() {
                                 onRemoveFromFavorites={onRemoveFromFavorites}
                             />
                             :
-                            <ReactRouterDOM.Redirect to="/login"/> 
+                            <Redirect to="/login"/> 
                     }
-                </ReactRouterDOM.Route>
-                <ReactRouterDOM.Route exact path="/logout">
+                </Route>
+                <Route exact path="/logout">
                     <Homepage isLoggedIn={user} />
-                </ReactRouterDOM.Route>
+                </Route>
             </div>
         </React.Fragment>
     );
 }
-
-ReactDOM.render(<ReactRouterDOM.BrowserRouter>
-    <App />
-</ReactRouterDOM.BrowserRouter>, document.querySelector('#root'));

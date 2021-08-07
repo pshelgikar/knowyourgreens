@@ -1,3 +1,6 @@
+import React from "react";
+import { Button } from "react-bootstrap";
+
 export default function AddToFavorites(props){
     const {isLoggedIn,fav,onAddToFavorites,onRemoveFromFavorites,name} = props;
     const onAddFavs = (evt) => {
@@ -15,8 +18,8 @@ export default function AddToFavorites(props){
         <div className="pageContents"> 
             {(isLoggedIn) &&  
                 (fav ? 
-                    <button onClick={onRemoveFavs}>Remove from Favorites</button> :
-                    <button onClick={onAddFavs}>Add to Favorites</button>)       
+                    <Button onClick={onRemoveFavs} size="sm">Remove from Favorites</Button> :
+                    <Button onClick={onAddFavs} size="sm">Add to Favorites</Button>)       
             }
         </div>
     )

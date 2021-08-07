@@ -1,10 +1,11 @@
+import React from 'react';
 import VarietalCard from './VarietalCard'
+import { useParams } from 'react-router-dom';
 
 export default function AllVarietals(){
     const [parentPlant, setParentPlant] = React.useState({});
     const [plants, setPlants] = React.useState({});
-    const {plantName} = ReactRouterDOM.useParams();
-    let img='';
+    const {plantName} = useParams();
 
     React.useEffect(()=>{
         fetch('/api/results',{
@@ -45,7 +46,7 @@ export default function AllVarietals(){
      let varietalCard=null;
      for(const [varietal,care] of Object.entries(plants)){
             varietalCard = (
-                <div key={varietal}>
+                <div key={varietal} className='search-results' >
                     <VarietalCard
                         name={varietal}
                         sunlight={care.Sunlight}
@@ -60,9 +61,9 @@ export default function AllVarietals(){
         }
 
      return(
-         <div className="pageContents">
-             <h1>{plantName}</h1>   
-             <img src={parentPlant}></img>
+         <div className="pageContents body-text varietal">
+             <h1 className="title">{plantName}</h1>   
+             <img id="varietal-image" src={parentPlant}></img>
              <div>{varietalCards}</div>
          </div>
      )

@@ -1,13 +1,17 @@
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Button } from "react-bootstrap";
+
 export default function NavigateToPlant(props){
     const {plant} = props;
-    const history = ReactRouterDOM.useHistory();
+    const history = useHistory();
     const onShowDetails = () => {
-        history.push(`/plants/${plant.name}`) 
+        history.push(`/plants/${plant}`) 
     }
 
     return(
         <div className="pageContents">
-            <button onClick={onShowDetails}>View Details</button>
+            <Button onClick={onShowDetails} size="sm">View Details</Button>
         </div>
     )
 }

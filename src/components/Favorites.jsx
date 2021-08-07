@@ -1,3 +1,4 @@
+import React from 'react'
 import PlantCard from './PlantCard'
 import NavigateToPlant from './NavigateToPlant'
 
@@ -6,6 +7,7 @@ export default function Favorites(props){
     const favoritePlants = [];
     let isFav=false;
     let favCard = null;
+    
     for(let fav in favorites){
         if(!favorites){
             isFav=false
@@ -23,7 +25,7 @@ export default function Favorites(props){
                             onAddToFavorites = {onAddToFavorites}
                             onRemoveFromFavorites = {onRemoveFromFavorites}
                         />
-                          <NavigateToPlant plant={favorites[fav]} />
+                          
                     </div>
                   )
               }
@@ -32,7 +34,7 @@ export default function Favorites(props){
       }
     return(
         
-        <div className="pageContents">
+        <div className="pageContents body-text varietal">
             <div><h1>Favorites</h1></div>   
             {!isFav && 
                 <div>This looks a little empty right now, add some plants to your list of favorites!</div>}

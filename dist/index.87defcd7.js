@@ -1046,77 +1046,17 @@ var _componentsAllPlants = require('./components/AllPlants');
 var _componentsAllPlantsDefault = _parcelHelpers.interopDefault(_componentsAllPlants);
 var _componentsAllVarietals = require('./components/AllVarietals');
 var _componentsAllVarietalsDefault = _parcelHelpers.interopDefault(_componentsAllVarietals);
-var _s2 = $RefreshSig$();
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || (/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/).test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/knowYourGreens.jsx", _s = $RefreshSig$();
 function App() {
-  _s2();
+  _s();
   // const [searchTerm, setSearchTerm] = React.useState({});
-  var _React$useState = React.useState(false), _React$useState2 = _slicedToArray(_React$useState, 2), user = _React$useState2[0], setUser = _React$useState2[1];
-  var _React$useState3 = React.useState([]), _React$useState4 = _slicedToArray(_React$useState3, 2), isValid = _React$useState4[0], setValid = _React$useState4[1];
-  var _React$useState5 = React.useState([]), _React$useState6 = _slicedToArray(_React$useState5, 2), isNewUser = _React$useState6[0], setNewUser = _React$useState6[1];
-  var history = ReactRouterDOM.useHistory();
-  var _React$useState7 = React.useState([]), _React$useState8 = _slicedToArray(_React$useState7, 2), favorites = _React$useState8[0], setFavorites = _React$useState8[1];
-  var _ReactRouterDOM$useLo = ReactRouterDOM.useLocation(), pathname = _ReactRouterDOM$useLo.pathname;
-  var onLogin = function onLogin(username, password) {
+  const [user, setUser] = React.useState(false);
+  const [isValid, setValid] = React.useState([]);
+  const [isNewUser, setNewUser] = React.useState([]);
+  const history = ReactRouterDOM.useHistory();
+  const [favorites, setFavorites] = React.useState([]);
+  const {pathname} = ReactRouterDOM.useLocation();
+  const onLogin = (username, password) => {
     fetch('/api/login', {
       method: "POST",
       headers: {
@@ -1126,9 +1066,7 @@ function App() {
         'username': username,
         'password': password
       })
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
+    }).then(response => response.json()).then(data => {
       if (data.isLoggedIn == false) {
         setValid(false);
         setUser(false);
@@ -1140,22 +1078,20 @@ function App() {
       }
     });
   };
-  var onLogout = function onLogout() {
+  const onLogout = () => {
     fetch('/api/logout', {
       method: "GET",
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(function (response) {
-      return response.json();
-    }).then(function () {
+    }).then(response => response.json()).then(() => {
       console.log('Logout successful!');
       setUser(false);
       setValid([]);
       history.push('/');
     });
   };
-  var onCreateUser = function onCreateUser(username, password, name) {
+  const onCreateUser = (username, password, name) => {
     fetch('/api/signup', {
       method: "POST",
       headers: {
@@ -1166,9 +1102,7 @@ function App() {
         'username': username,
         'password': password
       })
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
+    }).then(response => response.json()).then(data => {
       if (data.isUser == true) {
         setNewUser(false);
       } else {
@@ -1178,7 +1112,7 @@ function App() {
       }
     });
   };
-  var onAddToFavorites = function onAddToFavorites(name) {
+  const onAddToFavorites = name => {
     fetch('/api/add-favorites', {
       method: "POST",
       headers: {
@@ -1187,18 +1121,12 @@ function App() {
       body: JSON.stringify({
         'plant': name
       })
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      setFavorites(function (favs) {
-        return [].concat(_toConsumableArray(favs), [data]);
-      });
+    }).then(response => response.json()).then(data => {
+      setFavorites(favs => [...favs, data]);
     });
   };
-  var onRemoveFromFavorites = function onRemoveFromFavorites(name) {
-    var updatedFavorites = favorites.filter(function (fav) {
-      return fav.name != name;
-    });
+  const onRemoveFromFavorites = name => {
+    const updatedFavorites = favorites.filter(fav => fav.name != name);
     // select only where the condition is true
     setFavorites(updatedFavorites);
     fetch('/api/remove-favorite', {
@@ -1211,95 +1139,272 @@ function App() {
       })
     });
   };
-  React.useEffect(function () {
+  React.useEffect(() => {
     if (user) {
       fetch('/api/show-favorites', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(function (response) {
-        return response.json();
-      }).then(function (data) {
+      }).then(response => response.json()).then(data => {
         setFavorites(data);
       });
     }
   }, [user]);
   return (
-    /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-      className: "App"
+    /*#__PURE__*/React.createElement(React.Fragment, {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 135,
+        columnNumber: 9
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "App",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 136,
+        columnNumber: 13
+      }
     }, /*#__PURE__*/React.createElement(_componentsNavDefault.default, {
       isLoggedIn: user,
-      logUserOut: onLogout
+      logUserOut: onLogout,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 137,
+        columnNumber: 17
+      }
     }), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
       exact: true,
-      path: "/"
+      path: "/",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 138,
+        columnNumber: 17
+      }
     }, /*#__PURE__*/React.createElement(_componentsHomepageDefault.default, {
-      isLoggedIn: user
-    }), /*#__PURE__*/React.createElement(_componentsSearchBarDefault.default, null)), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
+      isLoggedIn: user,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 139,
+        columnNumber: 21
+      }
+    }), /*#__PURE__*/React.createElement(_componentsSearchBarDefault.default, {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 140,
+        columnNumber: 21
+      }
+    })), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
       exact: true,
-      path: "/all-plants"
+      path: "/all-plants",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 143,
+        columnNumber: 17
+      }
     }, /*#__PURE__*/React.createElement(_componentsAllPlantsDefault.default, {
       isLoggedIn: user,
       favorites: favorites,
       onAddToFavorites: onAddToFavorites,
-      onRemoveFromFavorites: onRemoveFromFavorites
+      onRemoveFromFavorites: onRemoveFromFavorites,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 144,
+        columnNumber: 21
+      }
     })), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
       exact: true,
-      path: "/plants/:plantName"
-    }, /*#__PURE__*/React.createElement(_componentsAllVarietalsDefault.default, null)), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
+      path: "/plants/:plantName",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 150,
+        columnNumber: 17
+      }
+    }, /*#__PURE__*/React.createElement(_componentsAllVarietalsDefault.default, {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 151,
+        columnNumber: 21
+      }
+    })), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
       exact: true,
-      path: "/sign-up"
+      path: "/sign-up",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 154,
+        columnNumber: 17
+      }
     }, /*#__PURE__*/React.createElement(_componentsSignUpDefault.default, {
       setUser: onCreateUser,
-      isNewUser: isNewUser
+      isNewUser: isNewUser,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 155,
+        columnNumber: 21
+      }
     })), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
       exact: true,
-      path: "/login"
+      path: "/login",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 157,
+        columnNumber: 17
+      }
     }, /*#__PURE__*/React.createElement(_componentsLoginDefault.default, {
       setUser: onLogin,
-      isValid: isValid
+      isValid: isValid,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 158,
+        columnNumber: 21
+      }
     })), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
       exact: true,
-      path: "/favorites"
+      path: "/favorites",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 161,
+        columnNumber: 17
+      }
     }, user ? /*#__PURE__*/React.createElement(_componentsFavoritesDefault.default, {
       isLoggedIn: user,
       favorites: favorites,
       onAddToFavorites: onAddToFavorites,
-      onRemoveFromFavorites: onRemoveFromFavorites
+      onRemoveFromFavorites: onRemoveFromFavorites,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 163,
+        columnNumber: 29
+      }
     }) : /*#__PURE__*/React.createElement(ReactRouterDOM.Redirect, {
-      to: "/login"
+      to: "/login",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 170,
+        columnNumber: 29
+      }
     })), /*#__PURE__*/React.createElement(ReactRouterDOM.Route, {
       exact: true,
-      path: "/logout"
+      path: "/logout",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 173,
+        columnNumber: 17
+      }
     }, /*#__PURE__*/React.createElement(_componentsHomepageDefault.default, {
-      isLoggedIn: user
+      isLoggedIn: user,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 174,
+        columnNumber: 21
+      }
     }))))
   );
 }
 exports.default = App;
-_s2(App, "kPj+Z/uAx6w517LD62IicjpKZIw=", true);
+_s(App, "kPj+Z/uAx6w517LD62IicjpKZIw=", true);
 _c = App;
-ReactDOM.render(/*#__PURE__*/React.createElement(ReactRouterDOM.BrowserRouter, null, /*#__PURE__*/React.createElement(App, null)), document.querySelector('#root'));
+ReactDOM.render(/*#__PURE__*/React.createElement(ReactRouterDOM.BrowserRouter, {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 181,
+    columnNumber: 17
+  }
+}, /*#__PURE__*/React.createElement(App, {
+  __self: undefined,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 182,
+    columnNumber: 5
+  }
+})), document.querySelector('#root'));
 var _c;
 $RefreshReg$(_c, "App");
 
 },{"./components/Homepage":"51tjO","./components/SearchBar":"7voIQ","./components/Login":"6Fq5q","./components/SignUp":"2JOZu","./components/Favorites":"1DrOW","./components/Nav":"aeZf1","./components/AllPlants":"6WFQY","./components/AllVarietals":"4La7Z","@parcel/transformer-js/lib/esmodule-helpers.js":"3tkE2"}],"51tjO":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/Homepage.jsx";
 function Homepage(props) {
-  var isLoggedIn = props.isLoggedIn;
+  const {isLoggedIn} = props;
   if (isLoggedIn) {
     return (
       /*#__PURE__*/React.createElement("div", {
-        className: "pageContents"
-      }, /*#__PURE__*/React.createElement("h1", null, "Welcome!"), /*#__PURE__*/React.createElement("h1", null, "Know Your Greens"), /*#__PURE__*/React.createElement("div", null, "Care instructions for your green housemates."))
+        className: "pageContents",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 5,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/React.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 6,
+          columnNumber: 17
+        }
+      }, "Welcome!"), /*#__PURE__*/React.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7,
+          columnNumber: 17
+        }
+      }, "Know Your Greens"), /*#__PURE__*/React.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8,
+          columnNumber: 17
+        }
+      }, "Care instructions for your green housemates."))
     );
   }
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
-    }, /*#__PURE__*/React.createElement("h1", null, "Know Your Greens"), /*#__PURE__*/React.createElement("div", null, "Care instructions for your green housemates."))
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13,
+        columnNumber: 13
+      }
+    }, /*#__PURE__*/React.createElement("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14,
+        columnNumber: 17
+      }
+    }, "Know Your Greens"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 17
+      }
+    }, "Care instructions for your green housemates."))
   );
 }
 exports.default = Homepage;
@@ -1352,65 +1457,17 @@ exports.export = function (dest, destName, get) {
 },{}],"7voIQ":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-var _s2 = $RefreshSig$();
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || (/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/).test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/SearchBar.jsx", _s = $RefreshSig$();
 function SearchBar() {
-  _s2();
-  var _React$useState = React.useState(''), _React$useState2 = _slicedToArray(_React$useState, 2), plant = _React$useState2[0], searchPlant = _React$useState2[1];
-  var _React$useState3 = React.useState(true), _React$useState4 = _slicedToArray(_React$useState3, 2), isPlant = _React$useState4[0], setPlant = _React$useState4[1];
-  var history = ReactRouterDOM.useHistory();
-  var handleInput = function handleInput(evt) {
+  _s();
+  const [plant, searchPlant] = React.useState('');
+  const [isPlant, setPlant] = React.useState(true);
+  const history = ReactRouterDOM.useHistory();
+  const handleInput = evt => {
     searchPlant(evt.target.value);
   };
-  React.useEffect(function () {});
-  var handleSubmit = function handleSubmit(evt) {
+  React.useEffect(() => {});
+  const handleSubmit = evt => {
     evt.preventDefault();
     fetch('/api/plant/<plantname>', {
       method: "POST",
@@ -1420,37 +1477,80 @@ function SearchBar() {
       body: JSON.stringify({
         'plantname': plant
       })
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
+    }).then(response => response.json()).then(data => {
       if (data == null) {
         console.log(data);
         setPlant(false);
       } else {
         setPlant(true);
-        history.push(("/plants/").concat(plant));
+        history.push(`/plants/${plant}`);
       }
     });
   };
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
-    }, !isPlant && /*#__PURE__*/React.createElement("div", null, "Hmmm this doesn't exist in our database. Please try with another plant name."), /*#__PURE__*/React.createElement("div", null, "Worried about your plants? Not sure how to care for your new green housemates?"), /*#__PURE__*/React.createElement("div", null, "Enter a name to find out how to take care of your plants!"), /*#__PURE__*/React.createElement("form", {
-      onSubmit: handleSubmit
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 9
+      }
+    }, !isPlant && /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41,
+        columnNumber: 17
+      }
+    }, "Hmmm this doesn't exist in our database. Please try with another plant name."), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42,
+        columnNumber: 13
+      }
+    }, "Worried about your plants? Not sure how to care for your new green housemates?"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 43,
+        columnNumber: 13
+      }
+    }, "Enter a name to find out how to take care of your plants!"), /*#__PURE__*/React.createElement("form", {
+      onSubmit: handleSubmit,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 44,
+        columnNumber: 13
+      }
     }, /*#__PURE__*/React.createElement("input", {
       placeholder: "Plant Name",
       type: "text",
       value: plant,
       name: "plant_name",
       onChange: handleInput,
-      required: true
+      required: true,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 45,
+        columnNumber: 17
+      }
     }), /*#__PURE__*/React.createElement("button", {
-      type: "submit"
+      type: "submit",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 51,
+        columnNumber: 17
+      }
     }, "Search")))
   );
 }
 exports.default = SearchBar;
-_s2(SearchBar, "4dET48JonHBxbvZ4C7aJXPjS73Y=", true);
+_s(SearchBar, "4dET48JonHBxbvZ4C7aJXPjS73Y=", true);
 _c = SearchBar;
 var _c;
 $RefreshReg$(_c, "SearchBar");
@@ -1458,93 +1558,89 @@ $RefreshReg$(_c, "SearchBar");
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"3tkE2"}],"6Fq5q":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-var _s2 = $RefreshSig$();
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || (/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/).test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/Login.jsx", _s = $RefreshSig$();
 function Login(props) {
-  _s2();
+  _s();
   // change setUser to something else -> convention for useState
-  var setUser = props.setUser, isValid = props.isValid;
-  var _React$useState = React.useState(''), _React$useState2 = _slicedToArray(_React$useState, 2), username = _React$useState2[0], setUsername = _React$useState2[1];
-  var _React$useState3 = React.useState(''), _React$useState4 = _slicedToArray(_React$useState3, 2), password = _React$useState4[0], setPassword = _React$useState4[1];
-  var handleUsername = function handleUsername(evt) {
+  const {setUser, isValid} = props;
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const handleUsername = evt => {
     setUsername(evt.target.value);
   };
-  var handlePassword = function handlePassword(evt) {
+  const handlePassword = evt => {
     setPassword(evt.target.value);
   };
-  var handleSubmit = function handleSubmit(evt) {
+  const handleSubmit = evt => {
     evt.preventDefault();
     setUser(username, password);
   };
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
-    }, !isValid && /*#__PURE__*/React.createElement("div", null, "Uh oh, login credentials don't look right.."), /*#__PURE__*/React.createElement("h1", null, "Log In"), /*#__PURE__*/React.createElement("form", {
-      onSubmit: handleSubmit
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20,
+        columnNumber: 9
+      }
+    }, !isValid && /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22,
+        columnNumber: 17
+      }
+    }, "Uh oh, login credentials don't look right.."), /*#__PURE__*/React.createElement("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23,
+        columnNumber: 13
+      }
+    }, "Log In"), /*#__PURE__*/React.createElement("form", {
+      onSubmit: handleSubmit,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 24,
+        columnNumber: 13
+      }
     }, "Enter Username", /*#__PURE__*/React.createElement("input", {
       type: "text",
       name: "username",
       required: true,
-      onChange: handleUsername
+      onChange: handleUsername,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25,
+        columnNumber: 31
+      }
     }), "Password", /*#__PURE__*/React.createElement("input", {
       type: "password",
       name: "password",
       required: true,
-      onChange: handlePassword
+      onChange: handlePassword,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26,
+        columnNumber: 25
+      }
     }), /*#__PURE__*/React.createElement("input", {
-      type: "submit"
+      type: "submit",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27,
+        columnNumber: 17
+      }
     })))
   );
 }
 exports.default = Login;
-_s2(Login, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
+_s(Login, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = Login;
 var _c;
 $RefreshReg$(_c, "Login");
@@ -1552,148 +1648,108 @@ $RefreshReg$(_c, "Login");
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"3tkE2"}],"2JOZu":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-var _s2 = $RefreshSig$();
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) {
-      symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    }
-    keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-  return target;
-}
-function _defineProperty(obj, key, value) {
-  if ((key in obj)) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || (/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/).test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/SignUp.jsx", _s = $RefreshSig$();
 function SignUp(props) {
-  _s2();
-  var setUser = props.setUser, isNewUser = props.isNewUser;
+  _s();
+  const {setUser, isNewUser} = props;
   console.log(isNewUser);
-  var history = ReactRouterDOM.useHistory();
-  var _React$useState = React.useState({
+  const history = ReactRouterDOM.useHistory();
+  const [state, setState] = React.useState({
     username: "",
     password: "",
     name: ""
-  }), _React$useState2 = _slicedToArray(_React$useState, 2), state = _React$useState2[0], setState = _React$useState2[1];
-  var handleChange = function handleChange(evt) {
-    var _evt$target = evt.target, id = _evt$target.id, value = _evt$target.value;
-    setState(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, id, value));
-    });
+  });
+  const handleChange = evt => {
+    const {id, value} = evt.target;
+    setState(prevState => ({
+      ...prevState,
+      [id]: value
+    }));
   };
-  var handleSubmit = function handleSubmit(evt) {
+  const handleSubmit = evt => {
     evt.preventDefault();
     setUser(state.username, state.password, state.name);
   };
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
-    }, !isNewUser && /*#__PURE__*/React.createElement("div", null, "User exists, please pick another username!"), /*#__PURE__*/React.createElement("h1", null, "Sign Up"), /*#__PURE__*/React.createElement("form", {
-      onSubmit: handleSubmit
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23,
+        columnNumber: 9
+      }
+    }, !isNewUser && /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25,
+        columnNumber: 17
+      }
+    }, "User exists, please pick another username!"), /*#__PURE__*/React.createElement("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26,
+        columnNumber: 13
+      }
+    }, "Sign Up"), /*#__PURE__*/React.createElement("form", {
+      onSubmit: handleSubmit,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27,
+        columnNumber: 13
+      }
     }, "First Name", /*#__PURE__*/React.createElement("input", {
       type: "name",
       id: "name",
       value: state.name,
       required: true,
-      onChange: handleChange
+      onChange: handleChange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28,
+        columnNumber: 27
+      }
     }), "Enter Username", /*#__PURE__*/React.createElement("input", {
       type: "text",
       id: "username",
       value: state.username,
       required: true,
-      onChange: handleChange
+      onChange: handleChange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29,
+        columnNumber: 31
+      }
     }), "Password", /*#__PURE__*/React.createElement("input", {
       type: "password",
       id: "password",
       value: state.password,
       required: true,
-      onChange: handleChange
+      onChange: handleChange,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30,
+        columnNumber: 25
+      }
     }), /*#__PURE__*/React.createElement("button", {
-      type: "submit"
+      type: "submit",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31,
+        columnNumber: 17
+      }
     }, "Sign up!")))
   );
 }
 exports.default = SignUp;
-_s2(SignUp, "D9031lA875R1Z+VOU3aMtfLM/4s=", true);
+_s(SignUp, "D9031lA875R1Z+VOU3aMtfLM/4s=", true);
 _c = SignUp;
 var _c;
 $RefreshReg$(_c, "SignUp");
@@ -1705,30 +1761,48 @@ var _PlantCard = require('./PlantCard');
 var _PlantCardDefault = _parcelHelpers.interopDefault(_PlantCard);
 var _NavigateToPlant = require('./NavigateToPlant');
 var _NavigateToPlantDefault = _parcelHelpers.interopDefault(_NavigateToPlant);
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/Favorites.jsx";
 function Favorites(props) {
-  var isLoggedIn = props.isLoggedIn, favorites = props.favorites, onAddToFavorites = props.onAddToFavorites, onRemoveFromFavorites = props.onRemoveFromFavorites;
-  var favoritePlants = [];
-  var isFav = false;
-  var favCard = null;
-  for (var fav in favorites) {
+  const {isLoggedIn, favorites, onAddToFavorites, onRemoveFromFavorites} = props;
+  const favoritePlants = [];
+  let isFav = false;
+  let favCard = null;
+  for (let fav in favorites) {
     if (!favorites) {
       isFav = false;
     } else {
       isFav = true;
-      for (var _i = 0, _Object$entries = Object.entries(favorites[fav]); _i < _Object$entries.length; _i++) {
-        var item = _Object$entries[_i];
+      for (const item of Object.entries(favorites[fav])) {
         favCard = /*#__PURE__*/React.createElement("div", {
           className: "plant-card",
-          key: favorites[fav]['plant_id']
+          key: favorites[fav]['plant_id'],
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 17,
+            columnNumber: 21
+          }
         }, /*#__PURE__*/React.createElement(_PlantCardDefault.default, {
           name: favorites[fav]['name'],
           img: favorites[fav]['img'],
           favorites: favorites,
           isLoggedIn: isLoggedIn,
           onAddToFavorites: onAddToFavorites,
-          onRemoveFromFavorites: onRemoveFromFavorites
+          onRemoveFromFavorites: onRemoveFromFavorites,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18,
+            columnNumber: 26
+          }
         }), /*#__PURE__*/React.createElement(_NavigateToPlantDefault.default, {
-          plant: favorites[fav]
+          plant: favorites[fav],
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26,
+            columnNumber: 27
+          }
         }));
       }
       favoritePlants.push(favCard);
@@ -1736,8 +1810,42 @@ function Favorites(props) {
   }
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
-    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Favorites")), !isFav && /*#__PURE__*/React.createElement("div", null, "This looks a little empty right now, add some plants to your list of favorites!"), /*#__PURE__*/React.createElement("div", null, favoritePlants))
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 35,
+        columnNumber: 9
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 36,
+        columnNumber: 13
+      }
+    }, /*#__PURE__*/React.createElement("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 36,
+        columnNumber: 18
+      }
+    }, "Favorites")), !isFav && /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 38,
+        columnNumber: 17
+      }
+    }, "This looks a little empty right now, add some plants to your list of favorites!"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 13
+      }
+    }, favoritePlants))
   );
 }
 exports.default = Favorites;
@@ -1750,99 +1858,53 @@ var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _AddToFavorites = require('./AddToFavorites');
 var _AddToFavoritesDefault = _parcelHelpers.interopDefault(_AddToFavorites);
-function _createForOfIteratorHelper(o, allowArrayLike) {
-  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-  if (!it) {
-    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-      if (it) o = it;
-      var i = 0;
-      var F = function F() {};
-      return {
-        s: F,
-        n: function n() {
-          if (i >= o.length) return {
-            done: true
-          };
-          return {
-            done: false,
-            value: o[i++]
-          };
-        },
-        e: function e(_e) {
-          throw _e;
-        },
-        f: F
-      };
-    }
-    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-  var normalCompletion = true, didErr = false, err;
-  return {
-    s: function s() {
-      it = it.call(o);
-    },
-    n: function n() {
-      var step = it.next();
-      normalCompletion = step.done;
-      return step;
-    },
-    e: function e(_e2) {
-      didErr = true;
-      err = _e2;
-    },
-    f: function f() {
-      try {
-        if (!normalCompletion && it["return"] != null) it["return"]();
-      } finally {
-        if (didErr) throw err;
-      }
-    }
-  };
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || (/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/).test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/PlantCard.jsx";
 function PlantCard(props) {
-  var plant_id = props.plant_id, name = props.name, img = props.img, isLoggedIn = props.isLoggedIn, favorites = props.favorites, onAddToFavorites = props.onAddToFavorites, onRemoveFromFavorites = props.onRemoveFromFavorites;
-  var fav = false;
-  var _iterator = _createForOfIteratorHelper(favorites), _step;
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done; ) {
-      var plant = _step.value;
-      if (plant['name'] == name) {
-        fav = true;
-      }
+  const {plant_id, name, img, isLoggedIn, favorites, onAddToFavorites, onRemoveFromFavorites} = props;
+  let fav = false;
+  for (let plant of favorites) {
+    if (plant['name'] == name) {
+      fav = true;
     }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
   }
-  /*look into "includes"/verify keys*/
+  // look into "includes"/verify keys
   return (
     /*#__PURE__*/React.createElement("div", {
       key: plant_id,
-      className: "plant-card"
-    }, /*#__PURE__*/React.createElement("h2", null, name), /*#__PURE__*/React.createElement("img", {
-      src: img
+      className: "plant-card",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 9
+      }
+    }, /*#__PURE__*/React.createElement("h2", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16,
+        columnNumber: 13
+      }
+    }, name), /*#__PURE__*/React.createElement("img", {
+      src: img,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 13
+      }
     }), /*#__PURE__*/React.createElement(_AddToFavoritesDefault.default, {
       isLoggedIn: isLoggedIn,
       fav: fav,
       name: name,
       onAddToFavorites: onAddToFavorites,
-      onRemoveFromFavorites: onRemoveFromFavorites
+      onRemoveFromFavorites: onRemoveFromFavorites,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 13
+      }
     }))
   );
 }
@@ -1854,23 +1916,42 @@ $RefreshReg$(_c, "PlantCard");
 },{"./AddToFavorites":"6rylu","@parcel/transformer-js/lib/esmodule-helpers.js":"3tkE2"}],"6rylu":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/AddToFavorites.jsx";
 function AddToFavorites(props) {
-  var isLoggedIn = props.isLoggedIn, fav = props.fav, onAddToFavorites = props.onAddToFavorites, onRemoveFromFavorites = props.onRemoveFromFavorites, name = props.name;
-  var onAddFavs = function onAddFavs(evt) {
+  const {isLoggedIn, fav, onAddToFavorites, onRemoveFromFavorites, name} = props;
+  const onAddFavs = evt => {
     evt.preventDefault();
     onAddToFavorites(name);
   };
-  var onRemoveFavs = function onRemoveFavs(evt) {
+  const onRemoveFavs = evt => {
     evt.preventDefault();
     onRemoveFromFavorites(name);
   };
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 9
+      }
     }, isLoggedIn && (fav ? /*#__PURE__*/React.createElement("button", {
-      onClick: onRemoveFavs
+      onClick: onRemoveFavs,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 21
+      }
     }, "Remove from Favorites") : /*#__PURE__*/React.createElement("button", {
-      onClick: onAddFavs
+      onClick: onAddFavs,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19,
+        columnNumber: 21
+      }
     }, "Add to Favorites")))
   );
 }
@@ -1882,19 +1963,31 @@ $RefreshReg$(_c, "AddToFavorites");
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"3tkE2"}],"37bBx":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
-var _s = $RefreshSig$();
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/NavigateToPlant.jsx", _s = $RefreshSig$();
 function NavigateToPlant(props) {
   _s();
-  var plant = props.plant;
-  var history = ReactRouterDOM.useHistory();
-  var onShowDetails = function onShowDetails() {
-    history.push(("/plants/").concat(plant.name));
+  const {plant} = props;
+  const history = ReactRouterDOM.useHistory();
+  const onShowDetails = () => {
+    history.push(`/plants/${plant.name}`);
   };
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9,
+        columnNumber: 9
+      }
     }, /*#__PURE__*/React.createElement("button", {
-      onClick: onShowDetails
+      onClick: onShowDetails,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10,
+        columnNumber: 13
+      }
     }, "View Details"))
   );
 }
@@ -1907,30 +2000,122 @@ $RefreshReg$(_c, "NavigateToPlant");
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"3tkE2"}],"aeZf1":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/Nav.jsx";
 function Nav(props) {
-  var isLoggedIn = props.isLoggedIn, logUserOut = props.logUserOut;
+  const {isLoggedIn, logUserOut} = props;
   function onLogout(evt) {
     evt.preventDefault();
     window.localStorage.removeItem('favPlants');
     logUserOut();
   }
   return (
-    /*#__PURE__*/React.createElement("nav", null, /*#__PURE__*/React.createElement("ul", {
-      className: "nav-links"
+    /*#__PURE__*/React.createElement("nav", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9,
+        columnNumber: 9
+      }
+    }, /*#__PURE__*/React.createElement("ul", {
+      className: "nav-links",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10,
+        columnNumber: 13
+      }
     }, /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
-      to: "/"
-    }, /*#__PURE__*/React.createElement("li", null, "know your greens")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
-      to: "/all-plants"
-    }, /*#__PURE__*/React.createElement("li", null, "All Plants")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
-      to: "/favorites"
-    }, isLoggedIn && /*#__PURE__*/React.createElement("li", null, "My Favorites")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
+      to: "/",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11,
+        columnNumber: 17
+      }
+    }, /*#__PURE__*/React.createElement("li", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12,
+        columnNumber: 21
+      }
+    }, "know your greens")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
+      to: "/all-plants",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14,
+        columnNumber: 17
+      }
+    }, /*#__PURE__*/React.createElement("li", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 21
+      }
+    }, "All Plants")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
+      to: "/favorites",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 17
+      }
+    }, isLoggedIn && /*#__PURE__*/React.createElement("li", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19,
+        columnNumber: 26
+      }
+    }, "My Favorites")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
       to: "/logout",
-      onClick: onLogout
-    }, isLoggedIn && /*#__PURE__*/React.createElement("li", null, "Logout")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
-      to: "/login"
-    }, !isLoggedIn && /*#__PURE__*/React.createElement("li", null, "Login")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
-      to: "/sign-up"
-    }, !isLoggedIn && /*#__PURE__*/React.createElement("li", null, "Sign Up"))))
+      onClick: onLogout,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22,
+        columnNumber: 17
+      }
+    }, isLoggedIn && /*#__PURE__*/React.createElement("li", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 24,
+        columnNumber: 26
+      }
+    }, "Logout")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
+      to: "/login",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27,
+        columnNumber: 17
+      }
+    }, !isLoggedIn && /*#__PURE__*/React.createElement("li", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29,
+        columnNumber: 26
+      }
+    }, "Login")), /*#__PURE__*/React.createElement(ReactRouterDOM.NavLink, {
+      to: "/sign-up",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32,
+        columnNumber: 17
+      }
+    }, !isLoggedIn && /*#__PURE__*/React.createElement("li", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34,
+        columnNumber: 26
+      }
+    }, "Sign Up"))))
   );
 }
 exports.default = Nav;
@@ -1945,92 +2130,79 @@ var _PlantCard = require('./PlantCard');
 var _PlantCardDefault = _parcelHelpers.interopDefault(_PlantCard);
 var _NavigateToPlant = require('./NavigateToPlant');
 var _NavigateToPlantDefault = _parcelHelpers.interopDefault(_NavigateToPlant);
-var _s2 = $RefreshSig$();
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || (/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/).test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/AllPlants.jsx", _s = $RefreshSig$();
 function AllPlants(props) {
-  _s2();
-  var isLoggedIn = props.isLoggedIn, favorites = props.favorites, onAddToFavorites = props.onAddToFavorites, onRemoveFromFavorites = props.onRemoveFromFavorites;
-  var _React$useState = React.useState({}), _React$useState2 = _slicedToArray(_React$useState, 2), plants = _React$useState2[0], getPlants = _React$useState2[1];
-  React.useEffect(function () {
-    fetch('/api/all-plants').then(function (response) {
-      return response.json();
-    }).then(function (data) {
+  _s();
+  const {isLoggedIn, favorites, onAddToFavorites, onRemoveFromFavorites} = props;
+  const [plants, getPlants] = React.useState({});
+  React.useEffect(() => {
+    fetch('/api/all-plants').then(response => response.json()).then(data => {
       getPlants(data);
     });
   }, []);
-  var plantCards = [];
-  for (var _i2 = 0, _Object$values = Object.values(plants); _i2 < _Object$values.length; _i2++) {
-    var plant = _Object$values[_i2];
-    var plantCard = /*#__PURE__*/React.createElement("div", {
+  const plantCards = [];
+  for (const plant of Object.values(plants)) {
+    const plantCard = /*#__PURE__*/React.createElement("div", {
       className: "plant-card",
-      key: plant.id
+      key: plant.id,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19,
+        columnNumber: 13
+      }
     }, /*#__PURE__*/React.createElement(_PlantCardDefault.default, {
       name: plant.name,
       img: plant.img,
       isLoggedIn: isLoggedIn,
       favorites: favorites,
       onAddToFavorites: onAddToFavorites,
-      onRemoveFromFavorites: onRemoveFromFavorites
+      onRemoveFromFavorites: onRemoveFromFavorites,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20,
+        columnNumber: 17
+      }
     }), /*#__PURE__*/React.createElement(_NavigateToPlantDefault.default, {
-      plant: plant
+      plant: plant,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28,
+        columnNumber: 17
+      }
     }));
     plantCards.push(plantCard);
   }
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
-    }, /*#__PURE__*/React.createElement("h1", null, "All Plants"), /*#__PURE__*/React.createElement("div", null, plantCards))
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34,
+        columnNumber: 9
+      }
+    }, /*#__PURE__*/React.createElement("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 35,
+        columnNumber: 13
+      }
+    }, "All Plants"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 36,
+        columnNumber: 13
+      }
+    }, plantCards))
   );
 }
 exports.default = AllPlants;
-_s2(AllPlants, "GQUABPPh5h2CF4kRNPnPrGXR1sU=");
+_s(AllPlants, "GQUABPPh5h2CF4kRNPnPrGXR1sU=");
 _c = AllPlants;
 var _c;
 $RefreshReg$(_c, "AllPlants");
@@ -2040,62 +2212,14 @@ var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 var _VarietalCard = require('./VarietalCard');
 var _VarietalCardDefault = _parcelHelpers.interopDefault(_VarietalCard);
-var _s2 = $RefreshSig$();
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || (/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/).test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-  return _arr;
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/AllVarietals.jsx", _s = $RefreshSig$();
 function AllVarietals() {
-  _s2();
-  var _React$useState = React.useState({}), _React$useState2 = _slicedToArray(_React$useState, 2), parentPlant = _React$useState2[0], setParentPlant = _React$useState2[1];
-  var _React$useState3 = React.useState({}), _React$useState4 = _slicedToArray(_React$useState3, 2), plants = _React$useState4[0], setPlants = _React$useState4[1];
-  var _ReactRouterDOM$usePa = ReactRouterDOM.useParams(), plantName = _ReactRouterDOM$usePa.plantName;
-  var img = '';
-  React.useEffect(function () {
+  _s();
+  const [parentPlant, setParentPlant] = React.useState({});
+  const [plants, setPlants] = React.useState({});
+  const {plantName} = ReactRouterDOM.useParams();
+  let img = '';
+  React.useEffect(() => {
     fetch('/api/results', {
       method: "POST",
       headers: {
@@ -2104,14 +2228,12 @@ function AllVarietals() {
       body: JSON.stringify({
         'plant_name': plantName
       })
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
+    }).then(response => response.json()).then(data => {
       setPlants(data);
     });
   }, [plantName]);
-  React.useEffect(function () {
-    fetch(("/api/plant/").concat(plantName), {
+  React.useEffect(() => {
+    fetch(`/api/plant/${plantName}`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -2119,39 +2241,74 @@ function AllVarietals() {
       body: JSON.stringify({
         'plantname': plantName
       })
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
+    }).then(response => response.json()).then(data => {
       setParentPlant(data);
     });
   }, [parentPlant]);
   // if empty return loading state
-  var varietalCards = [];
-  var varietalCard = null;
-  for (var _i2 = 0, _Object$entries = Object.entries(plants); _i2 < _Object$entries.length; _i2++) {
-    var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2), varietal = _Object$entries$_i[0], care = _Object$entries$_i[1];
+  const varietalCards = [];
+  let varietalCard = null;
+  for (const [varietal, care] of Object.entries(plants)) {
     varietalCard = /*#__PURE__*/React.createElement("div", {
-      key: varietal
+      key: varietal,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 48,
+        columnNumber: 17
+      }
     }, /*#__PURE__*/React.createElement(_VarietalCardDefault.default, {
       name: varietal,
       sunlight: care.Sunlight,
       water: care.Water,
       humidity: care.Humidity,
       toxicity: care.Toxicity,
-      temperature: care.Temperature
+      temperature: care.Temperature,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49,
+        columnNumber: 21
+      }
     }));
     varietalCards.push(varietalCard);
   }
   return (
     /*#__PURE__*/React.createElement("div", {
-      className: "pageContents"
-    }, /*#__PURE__*/React.createElement("h1", null, plantName), /*#__PURE__*/React.createElement("img", {
-      src: parentPlant
-    }), /*#__PURE__*/React.createElement("div", null, varietalCards))
+      className: "pageContents",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 63,
+        columnNumber: 10
+      }
+    }, /*#__PURE__*/React.createElement("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 64,
+        columnNumber: 14
+      }
+    }, plantName), /*#__PURE__*/React.createElement("img", {
+      src: parentPlant,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 65,
+        columnNumber: 14
+      }
+    }), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66,
+        columnNumber: 14
+      }
+    }, varietalCards))
   );
 }
 exports.default = AllVarietals;
-_s2(AllVarietals, "m5iX7/yJUg7x8DwcK6JZosbarOc=", true);
+_s(AllVarietals, "m5iX7/yJUg7x8DwcK6JZosbarOc=", true);
 _c = AllVarietals;
 var _c;
 $RefreshReg$(_c, "AllVarietals");
@@ -2159,10 +2316,95 @@ $RefreshReg$(_c, "AllVarietals");
 },{"./VarietalCard":"3wKiT","@parcel/transformer-js/lib/esmodule-helpers.js":"3tkE2"}],"3wKiT":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
+var _jsxFileName = "/Users/praachi/src/KnowYourGreens_v3/knowyourgreens/src/components/VarietalCard.jsx";
 function VarietalCard(props) {
-  var name = props.name, sunlight = props.sunlight, water = props.water, humidity = props.humidity, toxicity = props.toxicity, temperature = props.temperature;
+  const {name, sunlight, water, humidity, toxicity, temperature} = props;
   return (
-    /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, name), /*#__PURE__*/React.createElement("h2", null, "Sunlight"), /*#__PURE__*/React.createElement("div", null, sunlight), /*#__PURE__*/React.createElement("h2", null, "Water"), /*#__PURE__*/React.createElement("div", null, water), /*#__PURE__*/React.createElement("h2", null, "Humidity"), /*#__PURE__*/React.createElement("div", null, humidity), /*#__PURE__*/React.createElement("h2", null, "Toxicity"), /*#__PURE__*/React.createElement("div", null, toxicity), /*#__PURE__*/React.createElement("h2", null, "Temperature"), /*#__PURE__*/React.createElement("div", null, temperature))
+    /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 5,
+        columnNumber: 9
+      }
+    }, /*#__PURE__*/React.createElement("h1", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 6,
+        columnNumber: 13
+      }
+    }, name), /*#__PURE__*/React.createElement("h2", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7,
+        columnNumber: 13
+      }
+    }, "Sunlight"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8,
+        columnNumber: 13
+      }
+    }, sunlight), /*#__PURE__*/React.createElement("h2", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9,
+        columnNumber: 13
+      }
+    }, "Water"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10,
+        columnNumber: 13
+      }
+    }, water), /*#__PURE__*/React.createElement("h2", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11,
+        columnNumber: 13
+      }
+    }, "Humidity"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12,
+        columnNumber: 13
+      }
+    }, humidity), /*#__PURE__*/React.createElement("h2", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13,
+        columnNumber: 13
+      }
+    }, "Toxicity"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14,
+        columnNumber: 13
+      }
+    }, toxicity), /*#__PURE__*/React.createElement("h2", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 13
+      }
+    }, "Temperature"), /*#__PURE__*/React.createElement("div", {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16,
+        columnNumber: 13
+      }
+    }, temperature))
   );
 }
 exports.default = VarietalCard;

@@ -1,8 +1,11 @@
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 export default function SearchBar() {
     const [plant, searchPlant] = React.useState('');
     const [isPlant, setPlant] = React.useState(true);
-    const history = ReactRouterDOM.useHistory();
+    const history = useHistory();
 
     const handleInput = (evt) => {
         searchPlant(evt.target.value)
@@ -36,19 +39,19 @@ export default function SearchBar() {
     }
     
     return (
-        <div className="pageContents">
+        <div className="pageContents body-text">
             {!isPlant && 
                 <div>Hmmm this doesn't exist in our database. Please try with another plant name.</div>}
-            <div>Worried about your plants? Not sure how to care for your new green housemates?</div>
-            <div>Enter a name to find out how to take care of your plants!</div>
-            <form onSubmit={handleSubmit}>
+            
+            <form onSubmit={handleSubmit} className='form-elements'>
                 <input 
                     placeholder="Plant Name" 
                     type="text" 
                     value={plant} 
                     name="plant_name" 
                     onChange={handleInput} required={true}/>
-                <button type="submit">Search</button>
+                <Button type="submit" size="sm">Search</Button>
+                {/* <button type="submit">Search</button> */}
             </form>
             
         </div>
