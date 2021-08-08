@@ -38328,7 +38328,7 @@ function NavigateToPlant(props) {
                 lineNumber: 14
             },
             __self: this,
-            children: "View Details"
+            children: "View Varietals"
         })
     }));
 }

@@ -4,12 +4,14 @@ body {
     flex:1%;
     text-align: center;
     justify-content: center;
+    background-color: #f6cfb2 !important;
 }
 
 .nav-links {
     list-style: none;
     justify-content:space-around;
     padding-top: 10px;
+    padding-bottom: 10px;
     align-items: center;
     min-height: 6vh;
     display: flex;
@@ -17,9 +19,11 @@ body {
     color: #224229;
     font-size: 3vh;
     background-color:white;
+    margin-bottom: 0px;
 }
 
 .bg-image {
+    margin-top: 0;
     background: url('./../images/pexels-ksenia-chernaya-3952031.jpg') no-repeat center center;
     background-size: cover;
     height: 100%;

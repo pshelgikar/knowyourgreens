@@ -11,7 +11,7 @@ export default function NavigateToPlant(props){
 
     return(
         <div className="pageContents">
-            <Button onClick={onShowDetails} size="sm">View Details</Button>
+            <Button onClick={onShowDetails} size="sm">View Varietals</Button>
         </div>
     )
 }
