@@ -31,9 +31,7 @@ export default function Nav(props){
                 }
                 {isLoggedIn &&
                     <NavLink to="/favorites">
-                        
                             <li>My Favorites</li>
-                        
                     </NavLink>
                 }
                 {isLoggedIn &&

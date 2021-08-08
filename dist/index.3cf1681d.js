@@ -38835,7 +38835,7 @@ function Nav(props) {
                     children: /*#__PURE__*/ _jsxRuntime.jsx("li", {
                         __source: {
                             fileName: "src/components/Nav.jsx",
-                            lineNumber: 35
+                            lineNumber: 34
                         },
                         __self: this,
                         children: "My Favorites"
@@ -38846,13 +38846,13 @@ function Nav(props) {
                     onClick: onLogout,
                     __source: {
                         fileName: "src/components/Nav.jsx",
-                        lineNumber: 40
+                        lineNumber: 38
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("li", {
                         __source: {
                             fileName: "src/components/Nav.jsx",
-                            lineNumber: 42
+                            lineNumber: 40
                         },
                         __self: this,
                         children: "Logout"
