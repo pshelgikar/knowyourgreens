@@ -162,6 +162,7 @@ input {
     width: 100%;
     background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('kaufmann-mercantile-a7Woj8W6J0s-unsplash.1133bb4c.jpg') no-repeat center;
     background-position:center;
+    margin-bottom: 0px;
 }
 @charset "UTF-8";/*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)

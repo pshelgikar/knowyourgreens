@@ -7,7 +7,7 @@ export default function VarietalCard(props){
         <div className='background'>
             <Accordion className="accordion">
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>{name}</Accordion.Header>
+                    <Accordion.Header headerstyle={{height: "50px"}}>{name}</Accordion.Header>
                     <Accordion.Body className='varietal-card'>
                         <h4><i className="bi bi-brightness-high"></i> Sunlight</h4>
                         <div className="content">{sunlight}</div>

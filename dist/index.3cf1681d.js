@@ -39162,6 +39162,9 @@ function VarietalCard(props) {
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Accordion.Header, {
+                        headerstyle: {
+                            height: "50px"
+                        },
                         __source: {
                             fileName: "src/components/VarietalCard.jsx",
                             lineNumber: 10
