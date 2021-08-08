@@ -39,7 +39,7 @@ export default function SearchBar() {
     }
     
     return (
-        <div className="pageContents body-text">
+        <div className="pageContents body-text search">
             {!isPlant && 
                 <div>Hmmm this doesn't exist in our database. Please try with another plant name.</div>}
             

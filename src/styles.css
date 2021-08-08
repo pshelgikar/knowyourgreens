@@ -138,8 +138,22 @@ input {
     color: ghostwhite !important;
     
 }
-
+.accordion-body{
+    background-color: #f7e7da
+}
 .title{
     text-transform:capitalize;
     color: #224229
+}
+
+.search {
+    padding-top: 40px;
+}
+
+.content {
+    padding-bottom: 10px;
+}
+
+.loading {
+    padding-top: 50px;
 }

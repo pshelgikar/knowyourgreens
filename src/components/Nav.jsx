@@ -19,26 +19,30 @@ export default function Nav(props){
                 <NavLink to="/all-plants">
                     <li>All Plants</li>
                 </NavLink>
-                <NavLink to="/login">
-                    {!isLoggedIn && 
-                        (<li>Login</li>)
-                    }
-                </NavLink>
-                <NavLink to="/sign-up">
-                    {!isLoggedIn && 
-                        (<li>Sign Up</li>)
-                    }
-                </NavLink>
-                <NavLink to="/favorites">
-                    {isLoggedIn && 
-                        (<li>My Favorites</li>)
-                    }
-                </NavLink>
-                <NavLink to="/logout" onClick = {onLogout}>
-                    {isLoggedIn &&
-                        (<li>Logout</li>)
-                    }
-                </NavLink>
+                {!isLoggedIn && 
+                    <NavLink to="/login">
+                        <li>Login</li>
+                    </NavLink>
+                }
+                {!isLoggedIn && 
+                    <NavLink to="/sign-up">
+                        <li>Sign Up</li>
+                    </NavLink>
+                }
+                {isLoggedIn &&
+                    <NavLink to="/favorites">
+                        
+                            <li>My Favorites</li>
+                        
+                    </NavLink>
+                }
+                {isLoggedIn &&
+                    <NavLink to="/logout" onClick = {onLogout}>
+                        
+                            <li>Logout</li>
+                    </NavLink>
+                }
+               
             </ul>
         </nav>
     );

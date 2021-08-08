@@ -15,7 +15,7 @@ export default function PlantCard(props){
     return(
         <div key={plant_id} className="plant-card">
             <Card style={{ width: '18rem' }}>    
-                <Card.Img variant="top" src={img} />
+                <Card.Img variant="top" src={img} crossOrigin="anonymous"/>
                 <Card.Body>
                     <Card.Title className="title">{name}</Card.Title>
                     <Card.Text>

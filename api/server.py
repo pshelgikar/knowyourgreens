@@ -3,10 +3,12 @@ from flask import Flask, jsonify, render_template, request, flash, session
 from flask_login import LoginManager, current_user,login_user, logout_user
 from model import connect_to_db, User
 from passlib.hash import pbkdf2_sha256
+from flask_cors import CORS
 import crud, scraper
 
 app = Flask(__name__)
 app.secret_key = "RANDOM SECRETLY GENERATED KEY"
+CORS(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -109,8 +111,6 @@ def route(path):
 @app.route('/api/all-plants')
 def view_all_plants():
      """Show all plants from database."""
-     print("here")
-
      all_plants = crud.get_all_plants()
      return jsonify(all_plants)
 

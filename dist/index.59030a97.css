@@ -20,7 +20,7 @@ body {
 }
 
 .bg-image {
-    background: url('pexels-ksenia-chernaya-3952031.ae30f9e0.jpg') no-repeat center center;
+    background: url('pexels-ksenia-chernaya-3952031.4c9fbcdb.jpg') no-repeat center center;
     background-size: cover;
     height: 100%;
 }
@@ -30,7 +30,7 @@ input::placeholder{
 }
 
 .background {
-    background: url('pexels-ksenia-chernaya-3952031.ae30f9e0.jpg');
+    background: url('pexels-ksenia-chernaya-3952031.4c9fbcdb.jpg');
     position:relative;
     background-size: cover;
 }
@@ -166,8 +166,8 @@ input {
 
 @font-face {
   font-family: "bootstrap-icons";
-  src: url("bootstrap-icons.3ffda8a7.woff2") format("woff2"),
-url("bootstrap-icons.a80137e6.woff") format("woff");
+  src: url("bootstrap-icons.5357dada.woff2") format("woff2"),
+url("bootstrap-icons.97c6ef01.woff") format("woff");
 }
 
 [class^="bi-"]::before,
@@ -2924,4 +2924,4 @@ url("bootstrap-icons.a80137e6.woff") format("woff");
 
 .bi-safe::before { content: "\f65a"; }
 
-/*# sourceMappingURL=index.30ff162a.css.map */
+/*# sourceMappingURL=index.59030a97.css.map */

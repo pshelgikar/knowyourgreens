@@ -1,17 +1,20 @@
 import React from 'react'
 import PlantCard from './PlantCard'
-import NavigateToPlant from './NavigateToPlant'
+import {Spinner} from 'react-bootstrap'
+
 
 export default function AllPlants(props) {
     const {isLoggedIn,favorites,onAddToFavorites,onRemoveFromFavorites} = props;
+    const [loading, setLoading] = React.useState(false);
     const [plants, getPlants] = React.useState({});
         
     React.useEffect(()=>{
+        setLoading(true);
         fetch('/api/all-plants')
         .then((response)=>response.json())
         .then((data)=>{
-            console.log(data)
             getPlants(data);
+            setLoading(false);
         })
     },[]);
 
@@ -33,9 +36,17 @@ export default function AllPlants(props) {
         plantCards.push(plantCard);
     }
     return (
-        <div className="pageContents varietal all-plants">
-            <h1>All Plants</h1>
-            <div>{plantCards}</div>
+        <div className="pageContents">
+            
+            {loading?
+                (<Spinner animation="border" role="status">
+                    <span className="visually-hidden"></span>
+                </Spinner>):
+                <div className="varietal all-plants">
+                    <h1>All Plants</h1>
+                    <div>{plantCards}</div>
+                </div>  
+            }
         </div>
     );
 }
