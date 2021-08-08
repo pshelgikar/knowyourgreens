@@ -26445,11 +26445,11 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 function Homepage(props) {
     const { isLoggedIn  } = props;
-    if (isLoggedIn) return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         className: "pageContents body-text homepage-contents",
         __source: {
             fileName: "src/components/Homepage.jsx",
-            lineNumber: 7
+            lineNumber: 6
         },
         __self: this,
         children: [
@@ -26457,7 +26457,7 @@ function Homepage(props) {
                 className: "image-credit",
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 8
+                    lineNumber: 7
                 },
                 __self: this,
                 children: [
@@ -26466,7 +26466,7 @@ function Homepage(props) {
                         href: "https://unsplash.com/@kaufmann_mercantile?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
                         __source: {
                             fileName: "src/components/Homepage.jsx",
-                            lineNumber: 8
+                            lineNumber: 7
                         },
                         __self: this,
                         children: "Kaufmann Mercantile"
@@ -26476,14 +26476,14 @@ function Homepage(props) {
                         href: "https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
                         __source: {
                             fileName: "src/components/Homepage.jsx",
-                            lineNumber: 8
+                            lineNumber: 7
                         },
                         __self: this,
                         children: "Unsplash"
                     })
                 ]
             }),
-            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+            isLoggedIn && /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
                     lineNumber: 9
@@ -26494,66 +26494,23 @@ function Homepage(props) {
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 10
+                    lineNumber: 11
                 },
                 __self: this,
                 children: "Not sure how to care for your green housemates?"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-                __source: {
-                    fileName: "src/components/Homepage.jsx",
-                    lineNumber: 11
-                },
-                __self: this,
-                children: "Know Your Greens"
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
                     lineNumber: 12
                 },
                 __self: this,
-                children: "Enter a name to find out how to take care of your plants!"
-            })
-        ]
-    }));
-    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
-        className: "pageContents body-text homepage-contents",
-        __source: {
-            fileName: "src/components/Homepage.jsx",
-            lineNumber: 17
-        },
-        __self: this,
-        children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("span", {
-                className: "image-credit",
-                __source: {
-                    fileName: "src/components/Homepage.jsx",
-                    lineNumber: 18
-                },
-                __self: this,
-                children: "Photo by Ksenia Chernaya from Pexels"
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("div", {
-                __source: {
-                    fileName: "src/components/Homepage.jsx",
-                    lineNumber: 19
-                },
-                __self: this,
-                children: "Not sure how to care for your green housemates?"
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-                __source: {
-                    fileName: "src/components/Homepage.jsx",
-                    lineNumber: 20
-                },
-                __self: this,
                 children: "Know Your Greens"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 21
+                    lineNumber: 13
                 },
                 __self: this,
                 children: "Enter a name to find out how to take care of your plants!"
@@ -26785,6 +26742,26 @@ function SearchBar() {
                         },
                         __self: this,
                         children: "Search"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                        className: "credit",
+                        __source: {
+                            fileName: "src/components/SearchBar.jsx",
+                            lineNumber: 55
+                        },
+                        __self: this,
+                        children: [
+                            "Powered by ",
+                            /*#__PURE__*/ _jsxRuntime.jsx("a", {
+                                href: "https://bloomscape.com/",
+                                __source: {
+                                    fileName: "src/components/SearchBar.jsx",
+                                    lineNumber: 55
+                                },
+                                __self: this,
+                                children: "Bloomscape.com"
+                            })
+                        ]
                     })
                 ]
             })

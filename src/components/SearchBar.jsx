@@ -52,6 +52,7 @@ export default function SearchBar() {
                     autocomplete="off"
                     onChange={handleInput} required={true}/>
                 <Button type="submit" size="sm">Search</Button>
+                <p className="credit">Powered by <a href="https://bloomscape.com/">Bloomscape.com</a></p>
                 {/* <button type="submit">Search</button> */}
             </form>
             

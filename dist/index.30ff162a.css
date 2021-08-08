@@ -79,6 +79,7 @@ a:active {
     color:white;
     padding-top: 17px;
     background-color: #f6cfb2;
+    padding-bottom: 0px;
 }
 
 input {
@@ -188,6 +189,15 @@ input {
     position: fixed;
     bottom: 0px !important;
     left:0px !important
+}
+
+.credit {
+    font-size: 10px;
+}
+
+.credit a{
+    text-decoration: none !important;
+    color: white !important;
 }
 @charset "UTF-8";/*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)
