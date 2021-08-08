@@ -38049,7 +38049,7 @@ function Favorites(props) {
         favoritePlants.push(favCard);
     }
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
-        className: "pageContents body-text varietal",
+        className: "pageContents body-text all-plants",
         __source: {
             fileName: "src/components/Favorites.jsx",
             lineNumber: 37
@@ -38448,7 +38448,10 @@ var _zebraPlantJpeg = require("./../images/zebra-plant.jpeg");
 var _zebraPlantJpegDefault = parcelHelpers.interopDefault(_zebraPlantJpeg);
 var _zzPlantJpeg = require("./../images/zz-plant.jpeg");
 var _zzPlantJpegDefault = parcelHelpers.interopDefault(_zzPlantJpeg);
+var _kaufmannMercantileA7Woj8W6J0SUnsplashJpg = require("./../images/kaufmann-mercantile-a7Woj8W6J0s-unsplash.jpg");
+var _kaufmannMercantileA7Woj8W6J0SUnsplashJpgDefault = parcelHelpers.interopDefault(_kaufmannMercantileA7Woj8W6J0SUnsplashJpg);
 exports.default = {
+    bg: _kaufmannMercantileA7Woj8W6J0SUnsplashJpgDefault.default,
     zzplant: _zzPlantJpegDefault.default,
     zebraplant: _zebraPlantJpegDefault.default,
     yuccacane: _yuccaCaneJpegDefault.default,
@@ -38509,7 +38512,7 @@ exports.default = {
     aglaonema: _aglaonemaJpegDefault.default
 };
 
-},{"./../images/aglaonema.jpeg":"1ETvn","./../images/air-plant.jpeg":"cvP8C","./../images/alocasia.jpeg":"kcDCj","./../images/aloe.jpeg":"2pQcN","./../images/anthurium.jpeg":"g9OBS","./../images/aralia.jpeg":"7sQ3g","./../images/arrowhead-plant.jpeg":"lRz4C","./../images/begonia.jpeg":"dE7xi","./../images/bird-of-paradise.jpeg":"iPSNC","./../images/bromeliad.jpeg":"273MW","./../images/burgundy-rubber-tree.jpeg":"4NBTq","./../images/cactus.jpeg":"hN4Je","./../images/calathea.jpeg":"4pJcy","./../images/carnivorous-plant.jpeg":"1zmWS","./../images/croton.jpeg":"5cN1Y","./../images/dieffenbachia.jpeg":"43ayU","./../images/dracaena.jpeg":"cOP6u","./../images/dwarf-banana-tree.jpeg":"5FS9Z","./../images/fatsia.jpeg":"jNyTG","./../images/fern.jpeg":"40RGh","./../images/ficus.jpeg":"iUItv","./../images/fiddle-leaf-fig.jpeg":"6pRZF","./../images/fittonia.jpeg":"bqGbD","./../images/herbs.jpeg":"arNHF","./../images/homalomena.jpeg":"g5TRg","./../images/hoya.jpeg":"7aao7","./../images/hypoestes.jpeg":"lu3XN","./../images/ivy.jpeg":"5gefW","./../images/jade.jpeg":"5Rhwc","./../images/lipstick-plant.jpeg":"eoLY8","./../images/lucky-bamboo.jpeg":"jJQgl","./../images/money-tree.jpeg":"lY4eE","./../images/monstera.jpeg":"aPGhV","./../images/norfolk-pine.jpeg":"gEjnZ","./../images/orchid.jpeg":"fUGqw","./../images/oxalis.jpeg":"bMQtZ","./../images/peace-lily.jpeg":"l4d1x","./../images/peperomia.jpeg":"7eOi5","./../images/philodendron.jpeg":"jOSln","./../images/pilea.jpeg":"hyqGo","./../images/poinsettia.jpeg":"1t1xB","./../images/ponytail-palm.jpeg":"iFCQM","./../images/pothos.jpeg":"1Edpu","./../images/prayer-plant.jpeg":"kFVmY","./../images/purple-waffle.jpeg":"iNois","./../images/rhaphidophora.jpeg":"dHVLQ","./../images/sansevieria.jpeg":"g6sMA","./../images/schefflera.jpeg":"bEBR6","./../images/spider-plant.jpeg":"e4tHX","./../images/stromanthe.jpeg":"1MC14","./../images/succulent.jpeg":"fN73Q","./../images/tradescantia-zebrina.jpeg":"ahN0C","./../images/vegetable-plant.jpeg":"3YWIr","./../images/yucca-cane.jpeg":"7rTwD","./../images/zebra-plant.jpeg":"14nEZ","./../images/zz-plant.jpeg":"2eQgw","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./../images/rhoeooyster.jpeg":"btBgi","./../images/palm.jpeg":"ewhSq"}],"1ETvn":[function(require,module,exports) {
+},{"./../images/aglaonema.jpeg":"1ETvn","./../images/air-plant.jpeg":"cvP8C","./../images/alocasia.jpeg":"kcDCj","./../images/aloe.jpeg":"2pQcN","./../images/anthurium.jpeg":"g9OBS","./../images/aralia.jpeg":"7sQ3g","./../images/arrowhead-plant.jpeg":"lRz4C","./../images/begonia.jpeg":"dE7xi","./../images/bird-of-paradise.jpeg":"iPSNC","./../images/bromeliad.jpeg":"273MW","./../images/burgundy-rubber-tree.jpeg":"4NBTq","./../images/cactus.jpeg":"hN4Je","./../images/calathea.jpeg":"4pJcy","./../images/carnivorous-plant.jpeg":"1zmWS","./../images/croton.jpeg":"5cN1Y","./../images/dieffenbachia.jpeg":"43ayU","./../images/dracaena.jpeg":"cOP6u","./../images/dwarf-banana-tree.jpeg":"5FS9Z","./../images/fatsia.jpeg":"jNyTG","./../images/fern.jpeg":"40RGh","./../images/ficus.jpeg":"iUItv","./../images/fiddle-leaf-fig.jpeg":"6pRZF","./../images/fittonia.jpeg":"bqGbD","./../images/herbs.jpeg":"arNHF","./../images/homalomena.jpeg":"g5TRg","./../images/hoya.jpeg":"7aao7","./../images/hypoestes.jpeg":"lu3XN","./../images/ivy.jpeg":"5gefW","./../images/jade.jpeg":"5Rhwc","./../images/lipstick-plant.jpeg":"eoLY8","./../images/lucky-bamboo.jpeg":"jJQgl","./../images/money-tree.jpeg":"lY4eE","./../images/monstera.jpeg":"aPGhV","./../images/norfolk-pine.jpeg":"gEjnZ","./../images/orchid.jpeg":"fUGqw","./../images/oxalis.jpeg":"bMQtZ","./../images/peace-lily.jpeg":"l4d1x","./../images/peperomia.jpeg":"7eOi5","./../images/philodendron.jpeg":"jOSln","./../images/pilea.jpeg":"hyqGo","./../images/poinsettia.jpeg":"1t1xB","./../images/ponytail-palm.jpeg":"iFCQM","./../images/pothos.jpeg":"1Edpu","./../images/prayer-plant.jpeg":"kFVmY","./../images/purple-waffle.jpeg":"iNois","./../images/rhaphidophora.jpeg":"dHVLQ","./../images/sansevieria.jpeg":"g6sMA","./../images/schefflera.jpeg":"bEBR6","./../images/spider-plant.jpeg":"e4tHX","./../images/stromanthe.jpeg":"1MC14","./../images/succulent.jpeg":"fN73Q","./../images/tradescantia-zebrina.jpeg":"ahN0C","./../images/vegetable-plant.jpeg":"3YWIr","./../images/yucca-cane.jpeg":"7rTwD","./../images/zebra-plant.jpeg":"14nEZ","./../images/zz-plant.jpeg":"2eQgw","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./../images/rhoeooyster.jpeg":"btBgi","./../images/palm.jpeg":"ewhSq","./../images/kaufmann-mercantile-a7Woj8W6J0s-unsplash.jpg":"iDQQW"}],"1ETvn":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "aglaonema.8c8ef5a4.jpeg";
 
 },{"./helpers/bundle-url":"8YnfL"}],"8YnfL":[function(require,module,exports) {
@@ -38717,6 +38720,9 @@ module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "rhoeoo
 
 },{"./helpers/bundle-url":"8YnfL"}],"ewhSq":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "palm.add0cd66.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"iDQQW":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "kaufmann-mercantile-a7Woj8W6J0s-unsplash.1133bb4c.jpg";
 
 },{"./helpers/bundle-url":"8YnfL"}],"90k1u":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$abdf = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
@@ -39071,12 +39077,6 @@ function AllVarietals() {
     }
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         className: "pageContents body-text varietal",
-        style: {
-            backgroundImage: `url(${_imagesDefault.default[img_name]})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: '30% 30%'
-        },
         __source: {
             fileName: "src/components/AllVarietals.jsx",
             lineNumber: 69
@@ -39087,14 +39087,14 @@ function AllVarietals() {
                 className: "varietal-cover",
                 __source: {
                     fileName: "src/components/AllVarietals.jsx",
-                    lineNumber: 74
+                    lineNumber: 70
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                     className: "title",
                     __source: {
                         fileName: "src/components/AllVarietals.jsx",
-                        lineNumber: 75
+                        lineNumber: 71
                     },
                     __self: this,
                     children: plantName
@@ -39103,7 +39103,7 @@ function AllVarietals() {
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/AllVarietals.jsx",
-                    lineNumber: 77
+                    lineNumber: 73
                 },
                 __self: this,
                 children: varietalCards

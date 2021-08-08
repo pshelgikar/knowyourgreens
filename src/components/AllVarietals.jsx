@@ -1,7 +1,7 @@
 import React from 'react';
 import VarietalCard from './VarietalCard'
 import { useParams } from 'react-router-dom';
-import images from './../../images';
+import bg from './../../images';
 
 export default function AllVarietals(){
     const [parentPlant, setParentPlant] = React.useState({});
@@ -66,11 +66,7 @@ export default function AllVarietals(){
         varietalCards.push(varietalCard)
     }
     return(
-        <div className="pageContents body-text varietal" 
-             style={{backgroundImage:`url(${images[img_name]})`, 
-                     backgroundRepeat: 'no-repeat', 
-                     backgroundSize:'cover',
-                     backgroundPosition:'30% 30%' }}>
+        <div className="pageContents body-text varietal"> 
             <div className="varietal-cover">
                 <h1 className="title">{plantName}</h1> 
             </div>

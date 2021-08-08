@@ -34,7 +34,7 @@ export default function Favorites(props){
       }
     return(
         
-        <div className="pageContents body-text varietal">
+        <div className="pageContents body-text all-plants">
             <div><h1>Favorites</h1></div>   
             {!isFav && 
                 <div>This looks a little empty right now, add some plants to your list of favorites!</div>}

@@ -56,8 +56,10 @@ import vegetableplant from './../images/vegetable-plant.jpeg'
 import yuccacane from './../images/yucca-cane.jpeg'
 import zebraplant from './../images/zebra-plant.jpeg'
 import zzplant from './../images/zz-plant.jpeg'
+import bg from './../images/kaufmann-mercantile-a7Woj8W6J0s-unsplash.jpg'
 
 export default {
+    bg,
     zzplant,
     zebraplant,
     yuccacane,
