@@ -165,3 +165,8 @@ input {
     background-position:center;
     margin-bottom: 0px;
 }
+
+.card-img, .card-img-bottom, .card-img-top {
+    width: 100%;
+    height: 45vh;
+}
