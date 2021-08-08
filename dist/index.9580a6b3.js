@@ -38779,7 +38779,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-brightness-high",
+                                        className: "bi bi-brightness-high",
                                         __source: {
                                             fileName: "src/KnowYourGreens_v3/knowyourgreens/src/components/VarietalCard.jsx",
                                             lineNumber: 12
@@ -38806,7 +38806,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-water",
+                                        className: "bi bi-water",
                                         __source: {
                                             fileName: "src/KnowYourGreens_v3/knowyourgreens/src/components/VarietalCard.jsx",
                                             lineNumber: 14
@@ -38833,7 +38833,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-cloud-fill",
+                                        className: "bi bi-cloud-fill",
                                         __source: {
                                             fileName: "src/KnowYourGreens_v3/knowyourgreens/src/components/VarietalCard.jsx",
                                             lineNumber: 16
@@ -38860,7 +38860,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-exclamation-diamond",
+                                        className: "bi bi-exclamation-diamond",
                                         __source: {
                                             fileName: "src/KnowYourGreens_v3/knowyourgreens/src/components/VarietalCard.jsx",
                                             lineNumber: 18
@@ -38887,7 +38887,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-thermometer-half",
+                                        className: "bi bi-thermometer-half",
                                         __source: {
                                             fileName: "src/KnowYourGreens_v3/knowyourgreens/src/components/VarietalCard.jsx",
                                             lineNumber: 20

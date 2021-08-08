@@ -29,7 +29,7 @@ export default function SignUp(props) {
                 <div>User exists, please pick another username!</div>}
             <h1>Sign Up</h1>
             <form onSubmit = {handleSubmit} className="form-elements">
-                First Name<input type="name" id = "name" value={state.name} required={true} onChange={handleChange}/>
+                First Name<input type="name" id = "name" autocomplete="off" value={state.name} required={true} onChange={handleChange}/>
                 Username<input type="text" id="username" value={state.username} required={true} onChange={handleChange} />
                 Password<input type="password" id="password" value={state.password} required={true} onChange={handleChange}/>
                 <Button type="submit">Sign up</Button>

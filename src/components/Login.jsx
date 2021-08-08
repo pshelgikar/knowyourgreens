@@ -24,7 +24,7 @@ export default function Login(props) {
                 <div>Uh oh, login credentials don't look right..</div>}
             <h1>Log In</h1>
             <form onSubmit={handleSubmit} className='form-elements'>
-                Enter Username<input type="text" name="username" required={true} onChange={handleUsername} />
+                Enter Username<input type="text" name="username" autocomplete="off" required={true} onChange={handleUsername} />
                 Password<input type="password" name="password" required={true} onChange={handlePassword}/>
                 <Button type="submit">Submit</Button>
             </form>

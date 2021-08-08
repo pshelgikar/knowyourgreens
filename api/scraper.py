@@ -17,6 +17,7 @@ def get_plant_info(plant_name):
     plant_name = soup.find('a',class_="breadcrumbs--active").text
     img_src = soup.find('div',class_='guide-header--image').find('img').get('data-lazy-src')
     plant = Plant(name=plant_name.lower(), img_src=img_src)
+
     db.session.add(plant)
     db.session.commit()
 

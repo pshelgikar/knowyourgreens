@@ -56,23 +56,16 @@ a:active {
     margin: auto;
 }
 
-img {
-    width: 300px;
-    height: 300px;
-    padding-bottom: 10px;
-}
-
 .plant-card {
     display: inline-block;
     justify-content:space-evenly;
     margin: 10px 10px 10px 10px;
-    width: 300px;
+    width: 300px;   
 }
 
 .body-text {
     color:white;
     font-size: 19px;
-    padding-top: 90px;
 }
 
 .homepage-contents{
@@ -84,6 +77,7 @@ img {
 .all-plants {
     color:white;
     padding-top: 17px;
+    background-color: #f6cfb2;
 }
 
 input {
@@ -116,11 +110,6 @@ input {
     border-color: green;
 }
 
-#varietal-image {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
 .form-elements {
     display: grid;
     align-content: center;
@@ -128,7 +117,10 @@ input {
 }
 
 .varietal{
-    background-color: #f6cfb2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
 }
 
 .accordion-button:not(.collapsed) {
@@ -143,7 +135,7 @@ input {
 
 .title{
     text-transform:capitalize;
-    color: #224229
+    color: #224229;
 }
 
 .search {
@@ -156,6 +148,21 @@ input {
 
 .loading {
     padding-top: 50px;
+}
+
+.varietal-cover .title{
+    height: 80vh;
+    text-transform:capitalize;
+    color: #224229;
+    padding: 33vh;
+}
+
+.varietal-cover h1{
+    color:black !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 100%;
 }
 @charset "UTF-8";/*!
  * Bootstrap v5.0.2 (https://getbootstrap.com/)

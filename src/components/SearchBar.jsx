@@ -49,6 +49,7 @@ export default function SearchBar() {
                     type="text" 
                     value={plant} 
                     name="plant_name" 
+                    autocomplete="off"
                     onChange={handleInput} required={true}/>
                 <Button type="submit" size="sm">Search</Button>
                 {/* <button type="submit">Search</button> */}

@@ -2,7 +2,6 @@ import React from 'react'
 import PlantCard from './PlantCard'
 import {Spinner} from 'react-bootstrap'
 
-
 export default function AllPlants(props) {
     const {isLoggedIn,favorites,onAddToFavorites,onRemoveFromFavorites} = props;
     const [loading, setLoading] = React.useState(false);
@@ -42,7 +41,7 @@ export default function AllPlants(props) {
                 (<Spinner animation="border" role="status">
                     <span className="visually-hidden"></span>
                 </Spinner>):
-                <div className="varietal all-plants">
+                <div className="all-plants">
                     <h1>All Plants</h1>
                     <div>{plantCards}</div>
                 </div>  

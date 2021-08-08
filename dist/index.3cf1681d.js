@@ -26728,6 +26728,7 @@ function SearchBar() {
                         type: "text",
                         value: plant,
                         name: "plant_name",
+                        autocomplete: "off",
                         onChange: handleInput,
                         required: true,
                         __source: {
@@ -26741,7 +26742,7 @@ function SearchBar() {
                         size: "sm",
                         __source: {
                             fileName: "src/components/SearchBar.jsx",
-                            lineNumber: 53
+                            lineNumber: 54
                         },
                         __self: this,
                         children: "Search"
@@ -37817,6 +37818,7 @@ function Login(props) {
                     /*#__PURE__*/ _jsxRuntime.jsx("input", {
                         type: "text",
                         name: "username",
+                        autocomplete: "off",
                         required: true,
                         onChange: handleUsername,
                         __source: {
@@ -37936,6 +37938,7 @@ function SignUp(props) {
                     /*#__PURE__*/ _jsxRuntime.jsx("input", {
                         type: "name",
                         id: "name",
+                        autocomplete: "off",
                         value: state.name,
                         required: true,
                         onChange: handleChange,
@@ -38114,15 +38117,20 @@ var _addToFavoritesDefault = parcelHelpers.interopDefault(_addToFavorites);
 var _reactBootstrap = require("react-bootstrap");
 var _navigateToPlant = require("./NavigateToPlant");
 var _navigateToPlantDefault = parcelHelpers.interopDefault(_navigateToPlant);
+var _images = require("./../../images");
+var _imagesDefault = parcelHelpers.interopDefault(_images);
 function PlantCard(props) {
     const { plant_id , name , img , isLoggedIn , favorites , onAddToFavorites , onRemoveFromFavorites  } = props;
     let fav = false;
     for (let plant of favorites)if (plant['name'] == name) fav = true;
+    let img_name;
+    img_name = name.toLowerCase();
+    if (img_name.indexOf(' ') != 0) img_name = img_name.replace(/ +/g, '');
     return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         className: "plant-card",
         __source: {
             fileName: "src/components/PlantCard.jsx",
-            lineNumber: 16
+            lineNumber: 24
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
@@ -38131,24 +38139,24 @@ function PlantCard(props) {
             },
             __source: {
                 fileName: "src/components/PlantCard.jsx",
-                lineNumber: 17
+                lineNumber: 25
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
                     variant: "top",
-                    src: img,
-                    crossOrigin: "anonymous",
+                    src: _imagesDefault.default[img_name],
+                    className: "card-img",
                     __source: {
                         fileName: "src/components/PlantCard.jsx",
-                        lineNumber: 18
+                        lineNumber: 26
                     },
                     __self: this
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
                     __source: {
                         fileName: "src/components/PlantCard.jsx",
-                        lineNumber: 19
+                        lineNumber: 27
                     },
                     __self: this,
                     children: [
@@ -38156,7 +38164,7 @@ function PlantCard(props) {
                             className: "title",
                             __source: {
                                 fileName: "src/components/PlantCard.jsx",
-                                lineNumber: 20
+                                lineNumber: 28
                             },
                             __self: this,
                             children: name
@@ -38164,7 +38172,7 @@ function PlantCard(props) {
                         /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Text, {
                             __source: {
                                 fileName: "src/components/PlantCard.jsx",
-                                lineNumber: 21
+                                lineNumber: 29
                             },
                             __self: this,
                             children: [
@@ -38176,7 +38184,7 @@ function PlantCard(props) {
                                     onRemoveFromFavorites: onRemoveFromFavorites,
                                     __source: {
                                         fileName: "src/components/PlantCard.jsx",
-                                        lineNumber: 22
+                                        lineNumber: 30
                                     },
                                     __self: this
                                 }),
@@ -38184,7 +38192,7 @@ function PlantCard(props) {
                                     plant: name,
                                     __source: {
                                         fileName: "src/components/PlantCard.jsx",
-                                        lineNumber: 27
+                                        lineNumber: 35
                                     },
                                     __self: this
                                 })
@@ -38206,7 +38214,7 @@ $RefreshReg$(_c, "PlantCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./AddToFavorites":"1q9bn","react-bootstrap":"h2YVd","./NavigateToPlant":"9bWXn","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"1q9bn":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./AddToFavorites":"1q9bn","react-bootstrap":"h2YVd","./NavigateToPlant":"9bWXn","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./../../images":"84CDa"}],"1q9bn":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$beea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -38321,7 +38329,396 @@ $RefreshReg$(_c, "NavigateToPlant");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"90k1u":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-router-dom":"cpyQW","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"84CDa":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _aglaonemaJpeg = require("./../images/aglaonema.jpeg");
+var _aglaonemaJpegDefault = parcelHelpers.interopDefault(_aglaonemaJpeg);
+var _airPlantJpeg = require("./../images/air-plant.jpeg");
+var _airPlantJpegDefault = parcelHelpers.interopDefault(_airPlantJpeg);
+var _alocasiaJpeg = require("./../images/alocasia.jpeg");
+var _alocasiaJpegDefault = parcelHelpers.interopDefault(_alocasiaJpeg);
+var _aloeJpeg = require("./../images/aloe.jpeg");
+var _aloeJpegDefault = parcelHelpers.interopDefault(_aloeJpeg);
+var _anthuriumJpeg = require("./../images/anthurium.jpeg");
+var _anthuriumJpegDefault = parcelHelpers.interopDefault(_anthuriumJpeg);
+var _araliaJpeg = require("./../images/aralia.jpeg");
+var _araliaJpegDefault = parcelHelpers.interopDefault(_araliaJpeg);
+var _arrowheadPlantJpeg = require("./../images/arrowhead-plant.jpeg");
+var _arrowheadPlantJpegDefault = parcelHelpers.interopDefault(_arrowheadPlantJpeg);
+var _begoniaJpeg = require("./../images/begonia.jpeg");
+var _begoniaJpegDefault = parcelHelpers.interopDefault(_begoniaJpeg);
+var _birdOfParadiseJpeg = require("./../images/bird-of-paradise.jpeg");
+var _birdOfParadiseJpegDefault = parcelHelpers.interopDefault(_birdOfParadiseJpeg);
+var _bromeliadJpeg = require("./../images/bromeliad.jpeg");
+var _bromeliadJpegDefault = parcelHelpers.interopDefault(_bromeliadJpeg);
+var _burgundyRubberTreeJpeg = require("./../images/burgundy-rubber-tree.jpeg");
+var _burgundyRubberTreeJpegDefault = parcelHelpers.interopDefault(_burgundyRubberTreeJpeg);
+var _cactusJpeg = require("./../images/cactus.jpeg");
+var _cactusJpegDefault = parcelHelpers.interopDefault(_cactusJpeg);
+var _calatheaJpeg = require("./../images/calathea.jpeg");
+var _calatheaJpegDefault = parcelHelpers.interopDefault(_calatheaJpeg);
+var _carnivorousPlantJpeg = require("./../images/carnivorous-plant.jpeg");
+var _carnivorousPlantJpegDefault = parcelHelpers.interopDefault(_carnivorousPlantJpeg);
+var _crotonJpeg = require("./../images/croton.jpeg");
+var _crotonJpegDefault = parcelHelpers.interopDefault(_crotonJpeg);
+var _dieffenbachiaJpeg = require("./../images/dieffenbachia.jpeg");
+var _dieffenbachiaJpegDefault = parcelHelpers.interopDefault(_dieffenbachiaJpeg);
+var _dracaenaJpeg = require("./../images/dracaena.jpeg");
+var _dracaenaJpegDefault = parcelHelpers.interopDefault(_dracaenaJpeg);
+var _dwarfBananaTreeJpeg = require("./../images/dwarf-banana-tree.jpeg");
+var _dwarfBananaTreeJpegDefault = parcelHelpers.interopDefault(_dwarfBananaTreeJpeg);
+var _fatsiaJpeg = require("./../images/fatsia.jpeg");
+var _fatsiaJpegDefault = parcelHelpers.interopDefault(_fatsiaJpeg);
+var _fernJpeg = require("./../images/fern.jpeg");
+var _fernJpegDefault = parcelHelpers.interopDefault(_fernJpeg);
+var _ficusJpeg = require("./../images/ficus.jpeg");
+var _ficusJpegDefault = parcelHelpers.interopDefault(_ficusJpeg);
+var _fiddleLeafFigJpeg = require("./../images/fiddle-leaf-fig.jpeg");
+var _fiddleLeafFigJpegDefault = parcelHelpers.interopDefault(_fiddleLeafFigJpeg);
+var _fittoniaJpeg = require("./../images/fittonia.jpeg");
+var _fittoniaJpegDefault = parcelHelpers.interopDefault(_fittoniaJpeg);
+var _herbsJpeg = require("./../images/herbs.jpeg");
+var _herbsJpegDefault = parcelHelpers.interopDefault(_herbsJpeg);
+var _homalomenaJpeg = require("./../images/homalomena.jpeg");
+var _homalomenaJpegDefault = parcelHelpers.interopDefault(_homalomenaJpeg);
+var _hoyaJpeg = require("./../images/hoya.jpeg");
+var _hoyaJpegDefault = parcelHelpers.interopDefault(_hoyaJpeg);
+var _hypoestesJpeg = require("./../images/hypoestes.jpeg");
+var _hypoestesJpegDefault = parcelHelpers.interopDefault(_hypoestesJpeg);
+var _ivyJpeg = require("./../images/ivy.jpeg");
+var _ivyJpegDefault = parcelHelpers.interopDefault(_ivyJpeg);
+var _jadeJpeg = require("./../images/jade.jpeg");
+var _jadeJpegDefault = parcelHelpers.interopDefault(_jadeJpeg);
+var _lipstickPlantJpeg = require("./../images/lipstick-plant.jpeg");
+var _lipstickPlantJpegDefault = parcelHelpers.interopDefault(_lipstickPlantJpeg);
+var _luckyBambooJpeg = require("./../images/lucky-bamboo.jpeg");
+var _luckyBambooJpegDefault = parcelHelpers.interopDefault(_luckyBambooJpeg);
+var _moneyTreeJpeg = require("./../images/money-tree.jpeg");
+var _moneyTreeJpegDefault = parcelHelpers.interopDefault(_moneyTreeJpeg);
+var _monsteraJpeg = require("./../images/monstera.jpeg");
+var _monsteraJpegDefault = parcelHelpers.interopDefault(_monsteraJpeg);
+var _norfolkPineJpeg = require("./../images/norfolk-pine.jpeg");
+var _norfolkPineJpegDefault = parcelHelpers.interopDefault(_norfolkPineJpeg);
+var _orchidJpeg = require("./../images/orchid.jpeg");
+var _orchidJpegDefault = parcelHelpers.interopDefault(_orchidJpeg);
+var _oxalisJpeg = require("./../images/oxalis.jpeg");
+var _oxalisJpegDefault = parcelHelpers.interopDefault(_oxalisJpeg);
+var _palmJpeg = require("./../images/palm.jpeg");
+var _palmJpegDefault = parcelHelpers.interopDefault(_palmJpeg);
+var _peaceLilyJpeg = require("./../images/peace-lily.jpeg");
+var _peaceLilyJpegDefault = parcelHelpers.interopDefault(_peaceLilyJpeg);
+var _peperomiaJpeg = require("./../images/peperomia.jpeg");
+var _peperomiaJpegDefault = parcelHelpers.interopDefault(_peperomiaJpeg);
+var _philodendronJpeg = require("./../images/philodendron.jpeg");
+var _philodendronJpegDefault = parcelHelpers.interopDefault(_philodendronJpeg);
+var _pileaJpeg = require("./../images/pilea.jpeg");
+var _pileaJpegDefault = parcelHelpers.interopDefault(_pileaJpeg);
+var _poinsettiaJpeg = require("./../images/poinsettia.jpeg");
+var _poinsettiaJpegDefault = parcelHelpers.interopDefault(_poinsettiaJpeg);
+var _ponytailPalmJpeg = require("./../images/ponytail-palm.jpeg");
+var _ponytailPalmJpegDefault = parcelHelpers.interopDefault(_ponytailPalmJpeg);
+var _pothosJpeg = require("./../images/pothos.jpeg");
+var _pothosJpegDefault = parcelHelpers.interopDefault(_pothosJpeg);
+var _prayerPlantJpeg = require("./../images/prayer-plant.jpeg");
+var _prayerPlantJpegDefault = parcelHelpers.interopDefault(_prayerPlantJpeg);
+var _purpleWaffleJpeg = require("./../images/purple-waffle.jpeg");
+var _purpleWaffleJpegDefault = parcelHelpers.interopDefault(_purpleWaffleJpeg);
+var _rhoeooysterJpeg = require("./../images/rhoeooyster.jpeg");
+var _rhoeooysterJpegDefault = parcelHelpers.interopDefault(_rhoeooysterJpeg);
+var _rhaphidophoraJpeg = require("./../images/rhaphidophora.jpeg");
+var _rhaphidophoraJpegDefault = parcelHelpers.interopDefault(_rhaphidophoraJpeg);
+var _sansevieriaJpeg = require("./../images/sansevieria.jpeg");
+var _sansevieriaJpegDefault = parcelHelpers.interopDefault(_sansevieriaJpeg);
+var _scheffleraJpeg = require("./../images/schefflera.jpeg");
+var _scheffleraJpegDefault = parcelHelpers.interopDefault(_scheffleraJpeg);
+var _spiderPlantJpeg = require("./../images/spider-plant.jpeg");
+var _spiderPlantJpegDefault = parcelHelpers.interopDefault(_spiderPlantJpeg);
+var _stromantheJpeg = require("./../images/stromanthe.jpeg");
+var _stromantheJpegDefault = parcelHelpers.interopDefault(_stromantheJpeg);
+var _succulentJpeg = require("./../images/succulent.jpeg");
+var _succulentJpegDefault = parcelHelpers.interopDefault(_succulentJpeg);
+var _tradescantiaZebrinaJpeg = require("./../images/tradescantia-zebrina.jpeg");
+var _tradescantiaZebrinaJpegDefault = parcelHelpers.interopDefault(_tradescantiaZebrinaJpeg);
+var _vegetablePlantJpeg = require("./../images/vegetable-plant.jpeg");
+var _vegetablePlantJpegDefault = parcelHelpers.interopDefault(_vegetablePlantJpeg);
+var _yuccaCaneJpeg = require("./../images/yucca-cane.jpeg");
+var _yuccaCaneJpegDefault = parcelHelpers.interopDefault(_yuccaCaneJpeg);
+var _zebraPlantJpeg = require("./../images/zebra-plant.jpeg");
+var _zebraPlantJpegDefault = parcelHelpers.interopDefault(_zebraPlantJpeg);
+var _zzPlantJpeg = require("./../images/zz-plant.jpeg");
+var _zzPlantJpegDefault = parcelHelpers.interopDefault(_zzPlantJpeg);
+exports.default = {
+    zzplant: _zzPlantJpegDefault.default,
+    zebraplant: _zebraPlantJpegDefault.default,
+    yuccacane: _yuccaCaneJpegDefault.default,
+    vegetableplant: _vegetablePlantJpegDefault.default,
+    tradescantiazebrina: _tradescantiaZebrinaJpegDefault.default,
+    succulent: _succulentJpegDefault.default,
+    stromanthe: _stromantheJpegDefault.default,
+    spiderplant: _spiderPlantJpegDefault.default,
+    schefflera: _scheffleraJpegDefault.default,
+    sansevieria: _sansevieriaJpegDefault.default,
+    rhoeooyster: _rhoeooysterJpegDefault.default,
+    rhaphidophora: _rhaphidophoraJpegDefault.default,
+    purplewaffle: _purpleWaffleJpegDefault.default,
+    prayerplant: _prayerPlantJpegDefault.default,
+    pothos: _pothosJpegDefault.default,
+    ponytailpalm: _ponytailPalmJpegDefault.default,
+    poinsettia: _poinsettiaJpegDefault.default,
+    pilea: _pileaJpegDefault.default,
+    philodendron: _philodendronJpegDefault.default,
+    peperomia: _peperomiaJpegDefault.default,
+    peacelily: _peaceLilyJpegDefault.default,
+    palm: _palmJpegDefault.default,
+    oxalis: _oxalisJpegDefault.default,
+    orchid: _orchidJpegDefault.default,
+    norfolkpine: _norfolkPineJpegDefault.default,
+    monstera: _monsteraJpegDefault.default,
+    moneytree: _moneyTreeJpegDefault.default,
+    luckybamboo: _luckyBambooJpegDefault.default,
+    lipstickplant: _lipstickPlantJpegDefault.default,
+    jade: _jadeJpegDefault.default,
+    ivy: _ivyJpegDefault.default,
+    hypoestes: _hypoestesJpegDefault.default,
+    hoya: _hoyaJpegDefault.default,
+    homalomena: _homalomenaJpegDefault.default,
+    herbs: _herbsJpegDefault.default,
+    fittonia: _fittoniaJpegDefault.default,
+    fiddleleaffig: _fiddleLeafFigJpegDefault.default,
+    ficus: _ficusJpegDefault.default,
+    fern: _fernJpegDefault.default,
+    fatsia: _fatsiaJpegDefault.default,
+    dwarfbananatree: _dwarfBananaTreeJpegDefault.default,
+    dracaena: _dracaenaJpegDefault.default,
+    dieffenbachia: _dieffenbachiaJpegDefault.default,
+    croton: _crotonJpegDefault.default,
+    carnivorousplant: _carnivorousPlantJpegDefault.default,
+    calathea: _calatheaJpegDefault.default,
+    cactus: _cactusJpegDefault.default,
+    burgundyrubbertree: _burgundyRubberTreeJpegDefault.default,
+    bromeliad: _bromeliadJpegDefault.default,
+    birdofparadise: _birdOfParadiseJpegDefault.default,
+    begonia: _begoniaJpegDefault.default,
+    arrowheadplant: _arrowheadPlantJpegDefault.default,
+    aralia: _araliaJpegDefault.default,
+    anthurium: _anthuriumJpegDefault.default,
+    aloe: _aloeJpegDefault.default,
+    alocasia: _alocasiaJpegDefault.default,
+    airplant: _airPlantJpegDefault.default,
+    aglaonema: _aglaonemaJpegDefault.default
+};
+
+},{"./../images/aglaonema.jpeg":"1ETvn","./../images/air-plant.jpeg":"cvP8C","./../images/alocasia.jpeg":"kcDCj","./../images/aloe.jpeg":"2pQcN","./../images/anthurium.jpeg":"g9OBS","./../images/aralia.jpeg":"7sQ3g","./../images/arrowhead-plant.jpeg":"lRz4C","./../images/begonia.jpeg":"dE7xi","./../images/bird-of-paradise.jpeg":"iPSNC","./../images/bromeliad.jpeg":"273MW","./../images/burgundy-rubber-tree.jpeg":"4NBTq","./../images/cactus.jpeg":"hN4Je","./../images/calathea.jpeg":"4pJcy","./../images/carnivorous-plant.jpeg":"1zmWS","./../images/croton.jpeg":"5cN1Y","./../images/dieffenbachia.jpeg":"43ayU","./../images/dracaena.jpeg":"cOP6u","./../images/dwarf-banana-tree.jpeg":"5FS9Z","./../images/fatsia.jpeg":"jNyTG","./../images/fern.jpeg":"40RGh","./../images/ficus.jpeg":"iUItv","./../images/fiddle-leaf-fig.jpeg":"6pRZF","./../images/fittonia.jpeg":"bqGbD","./../images/herbs.jpeg":"arNHF","./../images/homalomena.jpeg":"g5TRg","./../images/hoya.jpeg":"7aao7","./../images/hypoestes.jpeg":"lu3XN","./../images/ivy.jpeg":"5gefW","./../images/jade.jpeg":"5Rhwc","./../images/lipstick-plant.jpeg":"eoLY8","./../images/lucky-bamboo.jpeg":"jJQgl","./../images/money-tree.jpeg":"lY4eE","./../images/monstera.jpeg":"aPGhV","./../images/norfolk-pine.jpeg":"gEjnZ","./../images/orchid.jpeg":"fUGqw","./../images/oxalis.jpeg":"bMQtZ","./../images/peace-lily.jpeg":"l4d1x","./../images/peperomia.jpeg":"7eOi5","./../images/philodendron.jpeg":"jOSln","./../images/pilea.jpeg":"hyqGo","./../images/poinsettia.jpeg":"1t1xB","./../images/ponytail-palm.jpeg":"iFCQM","./../images/pothos.jpeg":"1Edpu","./../images/prayer-plant.jpeg":"kFVmY","./../images/purple-waffle.jpeg":"iNois","./../images/rhaphidophora.jpeg":"dHVLQ","./../images/sansevieria.jpeg":"g6sMA","./../images/schefflera.jpeg":"bEBR6","./../images/spider-plant.jpeg":"e4tHX","./../images/stromanthe.jpeg":"1MC14","./../images/succulent.jpeg":"fN73Q","./../images/tradescantia-zebrina.jpeg":"ahN0C","./../images/vegetable-plant.jpeg":"3YWIr","./../images/yucca-cane.jpeg":"7rTwD","./../images/zebra-plant.jpeg":"14nEZ","./../images/zz-plant.jpeg":"2eQgw","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./../images/rhoeooyster.jpeg":"btBgi","./../images/palm.jpeg":"ewhSq"}],"1ETvn":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "aglaonema.8c8ef5a4.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"8YnfL":[function(require,module,exports) {
+"use strict";
+var bundleURL = {
+};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"cvP8C":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "air-plant.ac1fc7bf.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"kcDCj":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "alocasia.e648298a.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"2pQcN":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "aloe.3ddd862f.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"g9OBS":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "anthurium.6aaa2c0a.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"7sQ3g":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "aralia.b9b4ecb8.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"lRz4C":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "arrowhead-plant.4da3cc64.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"dE7xi":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "begonia.f8dffd65.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"iPSNC":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "bird-of-paradise.b231e397.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"273MW":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "bromeliad.5412bf59.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"4NBTq":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "burgundy-rubber-tree.c9e764c1.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"hN4Je":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "cactus.a6cc3a97.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"4pJcy":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "calathea.959d78e7.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"1zmWS":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "carnivorous-plant.e9bc5afa.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"5cN1Y":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "croton.770d4c3e.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"43ayU":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "dieffenbachia.e55a9978.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"cOP6u":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "dracaena.587904ec.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"5FS9Z":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "dwarf-banana-tree.6c710701.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"jNyTG":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "fatsia.9f1ee3a8.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"40RGh":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "fern.8bc4cf30.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"iUItv":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "ficus.d46f3b6e.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"6pRZF":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "fiddle-leaf-fig.3b912ea3.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"bqGbD":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "fittonia.0d71f5bd.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"arNHF":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "herbs.5ad9c0b9.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"g5TRg":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "homalomena.02d08acd.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"7aao7":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "hoya.a81599f8.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"lu3XN":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "hypoestes.7c5ab152.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"5gefW":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "ivy.85c8432b.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"5Rhwc":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "jade.dfb14e5b.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"eoLY8":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "lipstick-plant.a9af8d0b.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"jJQgl":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "lucky-bamboo.c318c01a.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"lY4eE":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "money-tree.99dda6bd.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"aPGhV":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "monstera.b0a5103b.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"gEjnZ":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "norfolk-pine.51eb083a.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"fUGqw":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "orchid.8bf89297.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"bMQtZ":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "oxalis.47ca211f.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"l4d1x":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "peace-lily.163f75cd.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"7eOi5":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "peperomia.203f2b97.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"jOSln":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "philodendron.fb248edd.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"hyqGo":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "pilea.6540a7ed.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"1t1xB":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "poinsettia.64be753f.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"iFCQM":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "ponytail-palm.6f6d9cda.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"1Edpu":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "pothos.7e189ac1.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"kFVmY":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "prayer-plant.6f147b9f.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"iNois":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "purple-waffle.a9e53253.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"dHVLQ":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "rhaphidophora.0b786f4e.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"g6sMA":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "sansevieria.a9fd8d70.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"bEBR6":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "schefflera.6291e638.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"e4tHX":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "spider-plant.1d078c79.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"1MC14":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "stromanthe.8cae2dfd.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"fN73Q":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "succulent.656347e1.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"ahN0C":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "tradescantia-zebrina.bebfa7d4.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"3YWIr":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "vegetable-plant.69df37c1.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"7rTwD":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "yucca-cane.94930285.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"14nEZ":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "zebra-plant.e0adf53f.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"2eQgw":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "zz-plant.a25d5322.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"btBgi":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "rhoeooyster.8a71237e.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"ewhSq":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "palm.add0cd66.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"90k1u":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$abdf = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -38505,7 +38902,7 @@ function AllPlants(props) {
             className: "plant-card",
             __source: {
                 fileName: "src/components/AllPlants.jsx",
-                lineNumber: 25
+                lineNumber: 24
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_plantCardDefault.default, {
@@ -38517,7 +38914,7 @@ function AllPlants(props) {
                 onRemoveFromFavorites: onRemoveFromFavorites,
                 __source: {
                     fileName: "src/components/AllPlants.jsx",
-                    lineNumber: 26
+                    lineNumber: 25
                 },
                 __self: this
             })
@@ -38528,7 +38925,7 @@ function AllPlants(props) {
         className: "pageContents",
         __source: {
             fileName: "src/components/AllPlants.jsx",
-            lineNumber: 39
+            lineNumber: 38
         },
         __self: this,
         children: loading ? /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Spinner, {
@@ -38536,29 +38933,29 @@ function AllPlants(props) {
             role: "status",
             __source: {
                 fileName: "src/components/AllPlants.jsx",
-                lineNumber: 42
+                lineNumber: 41
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx("span", {
                 className: "visually-hidden",
                 __source: {
                     fileName: "src/components/AllPlants.jsx",
-                    lineNumber: 43
+                    lineNumber: 42
                 },
                 __self: this
             })
         }) : /*#__PURE__*/ _jsxRuntime.jsxs("div", {
-            className: "varietal all-plants",
+            className: "all-plants",
             __source: {
                 fileName: "src/components/AllPlants.jsx",
-                lineNumber: 45
+                lineNumber: 44
             },
             __self: this,
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                     __source: {
                         fileName: "src/components/AllPlants.jsx",
-                        lineNumber: 46
+                        lineNumber: 45
                     },
                     __self: this,
                     children: "All Plants"
@@ -38566,7 +38963,7 @@ function AllPlants(props) {
                 /*#__PURE__*/ _jsxRuntime.jsx("div", {
                     __source: {
                         fileName: "src/components/AllPlants.jsx",
-                        lineNumber: 47
+                        lineNumber: 46
                     },
                     __self: this,
                     children: plantCards
@@ -38601,6 +38998,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _varietalCard = require("./VarietalCard");
 var _varietalCardDefault = parcelHelpers.interopDefault(_varietalCard);
 var _reactRouterDom = require("react-router-dom");
+var _images = require("./../../images");
+var _imagesDefault = parcelHelpers.interopDefault(_images);
 var _s = $RefreshSig$();
 function AllVarietals() {
     _s();
@@ -38641,7 +39040,9 @@ function AllVarietals() {
     }, [
         parentPlant
     ]);
-    // if empty return loading state
+    let img_name;
+    img_name = plantName.toLowerCase();
+    if (img_name.indexOf(' ') != 0) img_name = img_name.replace(/ +/g, '');
     const varietalCards = [];
     let varietalCard = null;
     for (const [varietal, care] of Object.entries(plants)){
@@ -38649,7 +39050,7 @@ function AllVarietals() {
             className: "search-results",
             __source: {
                 fileName: "src/components/AllVarietals.jsx",
-                lineNumber: 49
+                lineNumber: 55
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_varietalCardDefault.default, {
@@ -38661,7 +39062,7 @@ function AllVarietals() {
                 temperature: care.Temperature,
                 __source: {
                     fileName: "src/components/AllVarietals.jsx",
-                    lineNumber: 50
+                    lineNumber: 56
                 },
                 __self: this
             })
@@ -38670,34 +39071,39 @@ function AllVarietals() {
     }
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         className: "pageContents body-text varietal",
+        style: {
+            backgroundImage: `url(${_imagesDefault.default[img_name]})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: '30% 30%'
+        },
         __source: {
             fileName: "src/components/AllVarietals.jsx",
-            lineNumber: 64
+            lineNumber: 69
         },
         __self: this,
         children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-                className: "title",
+            /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                className: "varietal-cover",
                 __source: {
                     fileName: "src/components/AllVarietals.jsx",
-                    lineNumber: 65
+                    lineNumber: 74
                 },
                 __self: this,
-                children: plantName
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("img", {
-                id: "varietal-image",
-                src: parentPlant,
-                __source: {
-                    fileName: "src/components/AllVarietals.jsx",
-                    lineNumber: 66
-                },
-                __self: this
+                children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                    className: "title",
+                    __source: {
+                        fileName: "src/components/AllVarietals.jsx",
+                        lineNumber: 75
+                    },
+                    __self: this,
+                    children: plantName
+                })
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/AllVarietals.jsx",
-                    lineNumber: 67
+                    lineNumber: 77
                 },
                 __self: this,
                 children: varietalCards
@@ -38718,7 +39124,7 @@ $RefreshReg$(_c, "AllVarietals");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./VarietalCard":"9lRy4","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"9lRy4":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./VarietalCard":"9lRy4","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./../../images":"84CDa"}],"9lRy4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$fc6e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -38779,7 +39185,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-brightness-high",
+                                        className: "bi bi-brightness-high",
                                         __source: {
                                             fileName: "src/components/VarietalCard.jsx",
                                             lineNumber: 12
@@ -38806,7 +39212,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-water",
+                                        className: "bi bi-water",
                                         __source: {
                                             fileName: "src/components/VarietalCard.jsx",
                                             lineNumber: 14
@@ -38833,7 +39239,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-cloud-fill",
+                                        className: "bi bi-cloud-fill",
                                         __source: {
                                             fileName: "src/components/VarietalCard.jsx",
                                             lineNumber: 16
@@ -38860,7 +39266,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-exclamation-diamond",
+                                        className: "bi bi-exclamation-diamond",
                                         __source: {
                                             fileName: "src/components/VarietalCard.jsx",
                                             lineNumber: 18
@@ -38887,7 +39293,7 @@ function VarietalCard(props) {
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx("i", {
-                                        class: "bi bi-thermometer-half",
+                                        className: "bi bi-thermometer-half",
                                         __source: {
                                             fileName: "src/components/VarietalCard.jsx",
                                             lineNumber: 20
