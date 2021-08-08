@@ -26453,10 +26453,40 @@ function Homepage(props) {
         },
         __self: this,
         children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+            /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                className: "image-credit",
                 __source: {
                     fileName: "src/components/Homepage.jsx",
                     lineNumber: 8
+                },
+                __self: this,
+                children: [
+                    "Photo by ",
+                    /*#__PURE__*/ _jsxRuntime.jsx("a", {
+                        href: "https://unsplash.com/@kaufmann_mercantile?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+                        __source: {
+                            fileName: "src/components/Homepage.jsx",
+                            lineNumber: 8
+                        },
+                        __self: this,
+                        children: "Kaufmann Mercantile"
+                    }),
+                    " on ",
+                    /*#__PURE__*/ _jsxRuntime.jsx("a", {
+                        href: "https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+                        __source: {
+                            fileName: "src/components/Homepage.jsx",
+                            lineNumber: 8
+                        },
+                        __self: this,
+                        children: "Unsplash"
+                    })
+                ]
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/Homepage.jsx",
+                    lineNumber: 9
                 },
                 __self: this,
                 children: "Welcome!"
@@ -26464,7 +26494,7 @@ function Homepage(props) {
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 9
+                    lineNumber: 10
                 },
                 __self: this,
                 children: "Not sure how to care for your green housemates?"
@@ -26472,7 +26502,7 @@ function Homepage(props) {
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 10
+                    lineNumber: 11
                 },
                 __self: this,
                 children: "Know Your Greens"
@@ -26480,7 +26510,7 @@ function Homepage(props) {
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 11
+                    lineNumber: 12
                 },
                 __self: this,
                 children: "Enter a name to find out how to take care of your plants!"
@@ -26491,14 +26521,23 @@ function Homepage(props) {
         className: "pageContents body-text homepage-contents",
         __source: {
             fileName: "src/components/Homepage.jsx",
-            lineNumber: 16
+            lineNumber: 17
         },
         __self: this,
         children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("span", {
+                className: "image-credit",
+                __source: {
+                    fileName: "src/components/Homepage.jsx",
+                    lineNumber: 18
+                },
+                __self: this,
+                children: "Photo by Ksenia Chernaya from Pexels"
+            }),
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 17
+                    lineNumber: 19
                 },
                 __self: this,
                 children: "Not sure how to care for your green housemates?"
@@ -26506,7 +26545,7 @@ function Homepage(props) {
             /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 18
+                    lineNumber: 20
                 },
                 __self: this,
                 children: "Know Your Greens"
@@ -26514,7 +26553,7 @@ function Homepage(props) {
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/Homepage.jsx",
-                    lineNumber: 19
+                    lineNumber: 21
                 },
                 __self: this,
                 children: "Enter a name to find out how to take care of your plants!"
@@ -39083,27 +39122,59 @@ function AllVarietals() {
         },
         __self: this,
         children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("div", {
+            /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                 className: "varietal-cover",
                 __source: {
                     fileName: "src/components/AllVarietals.jsx",
                     lineNumber: 70
                 },
                 __self: this,
-                children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-                    className: "title",
-                    __source: {
-                        fileName: "src/components/AllVarietals.jsx",
-                        lineNumber: 71
-                    },
-                    __self: this,
-                    children: plantName
-                })
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("span", {
+                        className: "image-credit",
+                        __source: {
+                            fileName: "src/components/AllVarietals.jsx",
+                            lineNumber: 71
+                        },
+                        __self: this,
+                        children: [
+                            "Photo by ",
+                            /*#__PURE__*/ _jsxRuntime.jsx("a", {
+                                href: "https://unsplash.com/@kaufmann_mercantile?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+                                __source: {
+                                    fileName: "src/components/AllVarietals.jsx",
+                                    lineNumber: 71
+                                },
+                                __self: this,
+                                children: "Kaufmann Mercantile"
+                            }),
+                            " on ",
+                            /*#__PURE__*/ _jsxRuntime.jsx("a", {
+                                href: "https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+                                __source: {
+                                    fileName: "src/components/AllVarietals.jsx",
+                                    lineNumber: 71
+                                },
+                                __self: this,
+                                children: "Unsplash"
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        className: "title",
+                        __source: {
+                            fileName: "src/components/AllVarietals.jsx",
+                            lineNumber: 72
+                        },
+                        __self: this,
+                        children: plantName
+                    })
+                ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("div", {
                 __source: {
                     fileName: "src/components/AllVarietals.jsx",
-                    lineNumber: 73
+                    lineNumber: 74
                 },
                 __self: this,
                 children: varietalCards

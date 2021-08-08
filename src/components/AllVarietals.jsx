@@ -68,6 +68,7 @@ export default function AllVarietals(){
     return(
         <div className="pageContents body-text varietal"> 
             <div className="varietal-cover">
+                <span className="image-credit">Photo by <a href="https://unsplash.com/@kaufmann_mercantile?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kaufmann Mercantile</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span>
                 <h1 className="title">{plantName}</h1> 
             </div>
             <div>{varietalCards}</div>
