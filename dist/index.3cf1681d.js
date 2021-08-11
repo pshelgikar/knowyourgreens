@@ -26244,14 +26244,14 @@ function App() {
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactDefault.default.Fragment, {
         __source: {
             fileName: "src/knowYourGreens.jsx",
-            lineNumber: 135
+            lineNumber: 134
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
             className: "App",
             __source: {
                 fileName: "src/knowYourGreens.jsx",
-                lineNumber: 136
+                lineNumber: 135
             },
             __self: this,
             children: [
@@ -26260,7 +26260,7 @@ function App() {
                     logUserOut: onLogout,
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 137
+                        lineNumber: 136
                     },
                     __self: this
                 }),
@@ -26269,14 +26269,14 @@ function App() {
                     path: "/",
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 138
+                        lineNumber: 137
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                         className: "bg-image",
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 139
+                            lineNumber: 138
                         },
                         __self: this,
                         children: [
@@ -26284,14 +26284,14 @@ function App() {
                                 isLoggedIn: user,
                                 __source: {
                                     fileName: "src/knowYourGreens.jsx",
-                                    lineNumber: 140
+                                    lineNumber: 139
                                 },
                                 __self: this
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_searchBarDefault.default, {
                                 __source: {
                                     fileName: "src/knowYourGreens.jsx",
-                                    lineNumber: 141
+                                    lineNumber: 140
                                 },
                                 __self: this
                             })
@@ -26303,7 +26303,7 @@ function App() {
                     path: "/all-plants",
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 145
+                        lineNumber: 144
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_allPlantsDefault.default, {
@@ -26313,7 +26313,7 @@ function App() {
                         onRemoveFromFavorites: onRemoveFromFavorites,
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 146
+                            lineNumber: 145
                         },
                         __self: this
                     })
@@ -26323,13 +26323,13 @@ function App() {
                     path: "/plants/:plantName",
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 152
+                        lineNumber: 151
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_allVarietalsDefault.default, {
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 153
+                            lineNumber: 152
                         },
                         __self: this
                     })
@@ -26339,7 +26339,7 @@ function App() {
                     path: "/sign-up",
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 156
+                        lineNumber: 155
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_signUpDefault.default, {
@@ -26347,7 +26347,7 @@ function App() {
                         isNewUser: isNewUser,
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 157
+                            lineNumber: 156
                         },
                         __self: this
                     })
@@ -26357,7 +26357,7 @@ function App() {
                     path: "/login",
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 159
+                        lineNumber: 158
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_loginDefault.default, {
@@ -26365,7 +26365,7 @@ function App() {
                         isValid: isValid,
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 160
+                            lineNumber: 159
                         },
                         __self: this
                     })
@@ -26375,7 +26375,7 @@ function App() {
                     path: "/favorites",
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 163
+                        lineNumber: 162
                     },
                     __self: this,
                     children: user ? /*#__PURE__*/ _jsxRuntime.jsx(_favoritesDefault.default, {
@@ -26385,14 +26385,14 @@ function App() {
                         onRemoveFromFavorites: onRemoveFromFavorites,
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 165
+                            lineNumber: 164
                         },
                         __self: this
                     }) : /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
                         to: "/login",
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 172
+                            lineNumber: 171
                         },
                         __self: this
                     })
@@ -26402,14 +26402,14 @@ function App() {
                     path: "/logout",
                     __source: {
                         fileName: "src/knowYourGreens.jsx",
-                        lineNumber: 175
+                        lineNumber: 174
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_homepageDefault.default, {
                         isLoggedIn: user,
                         __source: {
                             fileName: "src/knowYourGreens.jsx",
-                            lineNumber: 176
+                            lineNumber: 175
                         },
                         __self: this
                     })

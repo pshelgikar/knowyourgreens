@@ -112,7 +112,6 @@ export default function App() {
             body: JSON.stringify({
                 'plant': name, 
             })
-            //.catch()
         })
     }
 

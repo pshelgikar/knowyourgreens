@@ -106,7 +106,7 @@ input {
 }
 
 .btn.btn-primary{
-    background-color:#224229;
+    background-color:#224229 !important;
     margin-top: 20px;
     border-color: green;
 }
