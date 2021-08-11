@@ -8,6 +8,7 @@ body {
 }
 
 .nav-links {
+
     list-style: none;
     justify-content:space-around;
     padding-top: 10px;
@@ -19,7 +20,7 @@ body {
     color: #224229;
     font-size: 3vh;
     background-color:white;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .bg-image {
