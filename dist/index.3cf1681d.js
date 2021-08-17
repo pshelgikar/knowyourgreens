@@ -38230,7 +38230,7 @@ $RefreshReg$(_c, "PlantCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./AddToFavorites":"1q9bn","react-bootstrap":"h2YVd","./NavigateToPlant":"9bWXn","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./../../images":"84CDa"}],"1q9bn":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./AddToFavorites":"1q9bn","react-bootstrap":"h2YVd","./NavigateToPlant":"9bWXn","./../../images":"84CDa","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"1q9bn":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$beea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -38528,7 +38528,7 @@ exports.default = {
     aglaonema: _aglaonemaJpegDefault.default
 };
 
-},{"./../images/aglaonema.jpeg":"1ETvn","./../images/air-plant.jpeg":"cvP8C","./../images/alocasia.jpeg":"kcDCj","./../images/aloe.jpeg":"2pQcN","./../images/anthurium.jpeg":"g9OBS","./../images/aralia.jpeg":"7sQ3g","./../images/arrowhead-plant.jpeg":"lRz4C","./../images/begonia.jpeg":"dE7xi","./../images/bird-of-paradise.jpeg":"iPSNC","./../images/bromeliad.jpeg":"273MW","./../images/burgundy-rubber-tree.jpeg":"4NBTq","./../images/cactus.jpeg":"hN4Je","./../images/calathea.jpeg":"4pJcy","./../images/carnivorous-plant.jpeg":"1zmWS","./../images/croton.jpeg":"5cN1Y","./../images/dieffenbachia.jpeg":"43ayU","./../images/dracaena.jpeg":"cOP6u","./../images/dwarf-banana-tree.jpeg":"5FS9Z","./../images/fatsia.jpeg":"jNyTG","./../images/fern.jpeg":"40RGh","./../images/ficus.jpeg":"iUItv","./../images/fiddle-leaf-fig.jpeg":"6pRZF","./../images/fittonia.jpeg":"bqGbD","./../images/herbs.jpeg":"arNHF","./../images/homalomena.jpeg":"g5TRg","./../images/hoya.jpeg":"7aao7","./../images/hypoestes.jpeg":"lu3XN","./../images/ivy.jpeg":"5gefW","./../images/jade.jpeg":"5Rhwc","./../images/lipstick-plant.jpeg":"eoLY8","./../images/lucky-bamboo.jpeg":"jJQgl","./../images/money-tree.jpeg":"lY4eE","./../images/monstera.jpeg":"aPGhV","./../images/norfolk-pine.jpeg":"gEjnZ","./../images/orchid.jpeg":"fUGqw","./../images/oxalis.jpeg":"bMQtZ","./../images/peace-lily.jpeg":"l4d1x","./../images/peperomia.jpeg":"7eOi5","./../images/philodendron.jpeg":"jOSln","./../images/pilea.jpeg":"hyqGo","./../images/poinsettia.jpeg":"1t1xB","./../images/ponytail-palm.jpeg":"iFCQM","./../images/pothos.jpeg":"1Edpu","./../images/prayer-plant.jpeg":"kFVmY","./../images/purple-waffle.jpeg":"iNois","./../images/rhaphidophora.jpeg":"dHVLQ","./../images/sansevieria.jpeg":"g6sMA","./../images/schefflera.jpeg":"bEBR6","./../images/spider-plant.jpeg":"e4tHX","./../images/stromanthe.jpeg":"1MC14","./../images/succulent.jpeg":"fN73Q","./../images/tradescantia-zebrina.jpeg":"ahN0C","./../images/vegetable-plant.jpeg":"3YWIr","./../images/yucca-cane.jpeg":"7rTwD","./../images/zebra-plant.jpeg":"14nEZ","./../images/zz-plant.jpeg":"2eQgw","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./../images/rhoeooyster.jpeg":"btBgi","./../images/palm.jpeg":"ewhSq","./../images/kaufmann-mercantile-a7Woj8W6J0s-unsplash.jpg":"iDQQW"}],"1ETvn":[function(require,module,exports) {
+},{"./../images/aglaonema.jpeg":"1ETvn","./../images/air-plant.jpeg":"cvP8C","./../images/alocasia.jpeg":"kcDCj","./../images/aloe.jpeg":"2pQcN","./../images/anthurium.jpeg":"g9OBS","./../images/aralia.jpeg":"7sQ3g","./../images/arrowhead-plant.jpeg":"lRz4C","./../images/begonia.jpeg":"dE7xi","./../images/bird-of-paradise.jpeg":"iPSNC","./../images/bromeliad.jpeg":"273MW","./../images/burgundy-rubber-tree.jpeg":"4NBTq","./../images/cactus.jpeg":"hN4Je","./../images/calathea.jpeg":"4pJcy","./../images/carnivorous-plant.jpeg":"1zmWS","./../images/croton.jpeg":"5cN1Y","./../images/dieffenbachia.jpeg":"43ayU","./../images/dracaena.jpeg":"cOP6u","./../images/dwarf-banana-tree.jpeg":"5FS9Z","./../images/fatsia.jpeg":"jNyTG","./../images/fern.jpeg":"40RGh","./../images/ficus.jpeg":"iUItv","./../images/fiddle-leaf-fig.jpeg":"6pRZF","./../images/fittonia.jpeg":"bqGbD","./../images/herbs.jpeg":"arNHF","./../images/homalomena.jpeg":"g5TRg","./../images/hoya.jpeg":"7aao7","./../images/hypoestes.jpeg":"lu3XN","./../images/ivy.jpeg":"5gefW","./../images/jade.jpeg":"5Rhwc","./../images/lipstick-plant.jpeg":"eoLY8","./../images/lucky-bamboo.jpeg":"jJQgl","./../images/money-tree.jpeg":"lY4eE","./../images/monstera.jpeg":"aPGhV","./../images/norfolk-pine.jpeg":"gEjnZ","./../images/orchid.jpeg":"fUGqw","./../images/oxalis.jpeg":"bMQtZ","./../images/palm.jpeg":"ewhSq","./../images/peace-lily.jpeg":"l4d1x","./../images/peperomia.jpeg":"7eOi5","./../images/philodendron.jpeg":"jOSln","./../images/pilea.jpeg":"hyqGo","./../images/poinsettia.jpeg":"1t1xB","./../images/ponytail-palm.jpeg":"iFCQM","./../images/pothos.jpeg":"1Edpu","./../images/prayer-plant.jpeg":"kFVmY","./../images/purple-waffle.jpeg":"iNois","./../images/rhoeooyster.jpeg":"btBgi","./../images/rhaphidophora.jpeg":"dHVLQ","./../images/sansevieria.jpeg":"g6sMA","./../images/schefflera.jpeg":"bEBR6","./../images/spider-plant.jpeg":"e4tHX","./../images/stromanthe.jpeg":"1MC14","./../images/succulent.jpeg":"fN73Q","./../images/tradescantia-zebrina.jpeg":"ahN0C","./../images/vegetable-plant.jpeg":"3YWIr","./../images/yucca-cane.jpeg":"7rTwD","./../images/zebra-plant.jpeg":"14nEZ","./../images/zz-plant.jpeg":"2eQgw","./../images/kaufmann-mercantile-a7Woj8W6J0s-unsplash.jpg":"iDQQW","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"1ETvn":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "aglaonema.8c8ef5a4.jpeg";
 
 },{"./helpers/bundle-url":"8YnfL"}],"8YnfL":[function(require,module,exports) {
@@ -38671,6 +38671,9 @@ module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "orchid
 },{"./helpers/bundle-url":"8YnfL"}],"bMQtZ":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "oxalis.47ca211f.jpeg";
 
+},{"./helpers/bundle-url":"8YnfL"}],"ewhSq":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "palm.add0cd66.jpeg";
+
 },{"./helpers/bundle-url":"8YnfL"}],"l4d1x":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "peace-lily.163f75cd.jpeg";
 
@@ -38697,6 +38700,9 @@ module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "prayer
 
 },{"./helpers/bundle-url":"8YnfL"}],"iNois":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "purple-waffle.a9e53253.jpeg";
+
+},{"./helpers/bundle-url":"8YnfL"}],"btBgi":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "rhoeooyster.8a71237e.jpeg";
 
 },{"./helpers/bundle-url":"8YnfL"}],"dHVLQ":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "rhaphidophora.0b786f4e.jpeg";
@@ -38730,12 +38736,6 @@ module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "zebra-
 
 },{"./helpers/bundle-url":"8YnfL"}],"2eQgw":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "zz-plant.a25d5322.jpeg";
-
-},{"./helpers/bundle-url":"8YnfL"}],"btBgi":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "rhoeooyster.8a71237e.jpeg";
-
-},{"./helpers/bundle-url":"8YnfL"}],"ewhSq":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "palm.add0cd66.jpeg";
 
 },{"./helpers/bundle-url":"8YnfL"}],"iDQQW":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('17ux7') + "kaufmann-mercantile-a7Woj8W6J0s-unsplash.1133bb4c.jpg";
@@ -39172,7 +39172,7 @@ $RefreshReg$(_c, "AllVarietals");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./VarietalCard":"9lRy4","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./../../images":"84CDa"}],"9lRy4":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","./VarietalCard":"9lRy4","react-router-dom":"cpyQW","./../../images":"84CDa","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"9lRy4":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$fc6e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
