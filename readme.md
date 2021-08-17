@@ -1,6 +1,5 @@
-ReadMe
 
-**Welcome to Know Your Greens!**
+#Welcome to Know Your Greens!
 This project is intended to help you take care of your houseplants.
 The website content is powered by scraping Bloomscape.com using Beautiful Soup. With a front end written in React, Know Your Greens also gives you the ability to create your account and add your favorite plants to a 
 Favorites list that can be kept up to date.
