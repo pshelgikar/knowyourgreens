@@ -1,11 +1,11 @@
 ReadMe
 
-Welcome to Know Your Greens! This project is intended to help you take care of your houseplants.
-The website content is powered by scraping Bloomscape.com using Beautiful Soup. With a front end written in React,
-Know Your Greens also gives you the ability to create your account and add your favorite plants to a 
+**Welcome to Know Your Greens!**
+This project is intended to help you take care of your houseplants.
+The website content is powered by scraping Bloomscape.com using Beautiful Soup. With a front end written in React, Know Your Greens also gives you the ability to create your account and add your favorite plants to a 
 Favorites list that can be kept up to date.
 
-Technologies Used:
+**Technologies Used:**
 - Python
 - Beautiful Soup
 - Flask
@@ -15,7 +15,7 @@ Technologies Used:
 - SQLAlchemy
 - JSON
 
-How to run Know Your Greens:
+**How to run Know Your Greens:**
 
 - Create and start a virtual environment by running virtualenv env.
 - Run source env/bin/activate
@@ -30,3 +30,10 @@ npm start
 - From your python terminal, run the following from root:
 python3 api/server.py
 
+
+**How to use Know Your Greens:**
+
+- As a visitor, you can look for a houseplant either by searching for it directly from the homepage, or by browsing the full list of plants from the All Plants page.
+- The website will display care instructions for different varietals of the plant looked for.
+- Visitors can create an account with the website to add their favorite plants to a Favorites list.
+- This way, they can come back and refer to the care instructions of their favorite houseplants without having to search for them each time.
