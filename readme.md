@@ -17,17 +17,17 @@ Favorites list that can be kept up to date.
 **How to run Know Your Greens:**
 
 - Create and start a virtual environment by running virtualenv env.
-- Run source env/bin/activate
+- Run `source env/bin/activate`
 - Run the following command to install dependencies:
-Pip3 install -r requirements.txt
+`Pip3 install -r requirements.txt`
 - Run the following command to set up a Postgres SQL: 
-Createdb knowyourgreens
+`Createdb knowyourgreens`
 - Dump the db into the created database. 
-psql knowyourgreens < knowyourgreens.sql
+`psql knowyourgreens < knowyourgreens.sql`
 - From your terminal run the following from root
-npm start
+`npm start`
 - From your python terminal, run the following from root:
-python3 api/server.py
+`python3 api/server.py`
 
 
 **How to use Know Your Greens:**
